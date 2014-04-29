@@ -8,11 +8,16 @@
 
 #include <iostream>
 
-int main(int argc, const char * argv[])
-{
+#include "World.h"
 
-    // insert code here...
-    std::cout << "Hello, World!\n";
+using namespace std;
+
+int main(int argc, char ** argv)
+{
+    cout << "Initializing world object\n";
+    World *world = new World::World();
+    world->init(argc, argv);
+    
     return 0;
 }
 
