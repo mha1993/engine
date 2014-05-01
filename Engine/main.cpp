@@ -12,11 +12,11 @@
 
 using namespace std;
 
-int main(int argc, char ** argv)
+int main(int argc, char *argv[])
 {
-    cout << "Initializing world object\n";
+    cout << "Initializing world object\n\n";
     World *world = new World::World();
-    world->init(argc, argv);
+    world->init();
     
     return 0;
 }

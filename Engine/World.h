@@ -18,7 +18,7 @@ class World {
     vector<Object*> objects;
     
 public:
-    void init(int argc, char ** argv);
+    void init();
 };
 
 #endif /* defined(__Engine__World__) */

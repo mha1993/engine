@@ -12,7 +12,6 @@
 #include <iostream>
 #include <vector>
 #include "glm.hpp"
-#include <OpenGL/OpenGL.h>
 
 using namespace std;
 
