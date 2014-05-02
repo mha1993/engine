@@ -12,6 +12,7 @@
 #include "World.h"
 #include "Shader.h"
 #include "Program.h"
+#include "Object.h"
 
 #include <OpenGL/gl3.h>
 #include <GL/glfw.h>
@@ -25,6 +26,8 @@
 GLuint gVAO = 0;
 GLuint gVBO = 0;
 
+vector<Object> objects;
+
 Program *program = NULL;
 
 // loads the vertex shader and fragment shader, and links them to make the global gProgram
@@ -37,56 +40,32 @@ static void loadShaders() {
     shaders.push_back(*fragShader);
     
     program = new Program::Program(shaders);
+    Object *object = new Object::Object();
+    object->addProgram(program);
+    
+    objects.push_back(*object);
 }
 
 static void loadTriangle() {
-    // make and bind the VAO
-    glGenVertexArrays(1, &gVAO);
-    glBindVertexArray(gVAO);
-    
-    // make and bind the VBO
-    glGenBuffers(1, &gVBO);
-    glBindBuffer(GL_ARRAY_BUFFER, gVBO);
-    
     // Put the three triangle verticies into the VBO
     GLfloat vertexData[] = {
         //  X     Y     Z
-        0.0f, 0.8f, 0.0f,
-        -0.8f,-0.8f, 0.0f,
-        0.8f,-0.8f, 0.0f,
+        0.0f, 0.8f, 0.1f,
+        -0.8f,-0.8f, 0.1f,
+        0.8f,-0.8f, 0.1f,
     };
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
-    
-    // connect the xyz to the "vert" attribute of the vertex shader
-    glEnableVertexAttribArray(program->attrib("vert"));
-    glVertexAttribPointer(program->attrib("vert"), 3, GL_FLOAT, GL_FALSE, 0, NULL);
-    
-    // unbind the VBO and VAO
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glBindVertexArray(0);
+    int numVerts = 3;
+    objects[0].Object::addVertices(numVerts, vertexData);
 }
 
 void renderScene() {
-    // clear everything
-    glClearColor(0, 0, 0, 1); // black
+    glClearColor(0, 0, 0, 1);
     glClear(GL_COLOR_BUFFER_BIT);
     
-    // bind the program (the shaders)
-    glUseProgram(program->getProgram());
+    for (int i=0; i<objects.size(); i++) {
+        objects[i].render();
+    }
     
-    // bind the VAO (the triangle)
-    glBindVertexArray(gVAO);
-    
-    // draw the VAO
-    glDrawArrays(GL_TRIANGLES, 0, 3);
-    
-    // unbind the VAO
-    glBindVertexArray(0);
-    
-    // unbind the program
-    glUseProgram(0);
-    
-    // swap the display buffers (displays what was just drawn)
     glfwSwapBuffers();
 }
 

@@ -22,7 +22,9 @@ class Object {
     
 public:
     Object();
-    void addVertices(vector<glm::vec3> *verts);
+    void addVertices(int numVerts, GLfloat *_vertices);
+    void addProgram(Program *_program);
+    void render();
 };
 
 #endif /* defined(__Engine__Object__) */

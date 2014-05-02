@@ -12,6 +12,14 @@ Object::Object() {
     renderer = new Renderer();
 }
 
-void Object::addVertices(vector<glm::vec3> *verts) {
-    renderer->addVertices(verts);
+void Object::addVertices(int numVerts, GLfloat *_vertices) {
+    renderer->addVertices(numVerts, _vertices);
+}
+
+void Object::addProgram(Program *_program) {
+    renderer->addProgram(_program);
+}
+
+void Object::render() {
+    renderer->Renderer::render();
 }

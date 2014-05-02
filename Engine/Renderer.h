@@ -12,14 +12,23 @@
 #include <iostream>
 #include <vector>
 #include "glm.hpp"
+#include <GL/glew.h>
+
+#include "Program.h"
 
 using namespace std;
 
 class Renderer {
-    vector<glm::vec3> *vertices;
+    GLfloat *vertices;
+    
+    GLuint vbo;
+    GLuint vao;
+    Program *program;
     
 public:
-    void addVertices(vector<glm::vec3> *verts);
+    void addProgram(Program *_program);
+    void addVertices(int numVerts, GLfloat *_vertices);
+    void render();
 };
 
 #endif /* defined(__Engine__Renderer__) */
