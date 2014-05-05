@@ -22,12 +22,8 @@ class Object {
     
 public:
     Object();
-    void addVertices(int numVerts, GLfloat *_vertices);
-    glm::vec3 getVertex(int i);
-    int getNumberOfVertices();
-    void addProgram(Program *_program);
-    void setDrawMethod(GLuint _drawMethod);
-    void setCameraMatrix(glm::mat4 matrix);
+    void setRenderer(Renderer* renderer);
+    Renderer * getRenderer();
     void render();
 };
 

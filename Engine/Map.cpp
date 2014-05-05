@@ -22,11 +22,13 @@
 
 void Map::render(tdogl::Camera *camera) {
     for (int i=0; i<tiles.size(); i++) {
-        tiles[i].object->setCameraMatrix(camera->Camera::matrix());
+        Renderer *r = tiles[i].object->getRenderer();
+        r->setCameraMatrix(camera->Camera::matrix());
         tiles[i].render();
     }
     for (int i=0; i<edges.size(); i++) {
-        edges[i].object->setCameraMatrix(camera->Camera::matrix());
+        Renderer *r =  edges[i].object->getRenderer();
+        r->setCameraMatrix(camera->Camera::matrix());
         edges[i].render();
     }
 }
@@ -65,7 +67,9 @@ void Map::processLine(vector<string> line, int lineNumber) {
         Tile tile;
         tile.id = atoi(line[1].c_str());
         tile.numberOfVertices = atoi(line[2].c_str());
+        Renderer *r = new Renderer();
         tile.object = new Object::Object();
+        tile.object->setRenderer(r);
         GLfloat vertices[tile.numberOfVertices * 3];
         for (int i = 0; i<3*tile.numberOfVertices; i+=3) {
             float x = atof(line[3+i].c_str());
@@ -76,17 +80,20 @@ void Map::processLine(vector<string> line, int lineNumber) {
             vertices[i+2] = z;
         }
         
-        tile.object->addProgram(tileProgram);
-        tile.object->setDrawMethod(GL_TRIANGLE_FAN);
-        tile.object->Object::addVertices(tile.numberOfVertices, vertices);
+        
+        
+        r->addProgram(tileProgram);
+        r->setDrawMethod(GL_TRIANGLE_FAN);
+        r->addVertices(tile.numberOfVertices, vertices);
+        
         for (int i = 0; i<tile.numberOfVertices ; i++){
             int pos = 3+3*tile.numberOfVertices + i;
             int e = atoi(line[pos].c_str());
             if (e == 0){
                 
                 GLfloat vertices[6];
-                glm::vec3 vert1 = tile.object->getVertex(i);
-                glm::vec3 vert2 = i+1 < tile.object->getNumberOfVertices() ? tile.object->getVertex(i+1) : tile.object->getVertex(0);
+                glm::vec3 vert1 = r->getVertex(i);
+                glm::vec3 vert2 = i+1 < r->getNumberOfVertices() ? r->getVertex(i+1) : r->getVertex(0);
                 vertices[0] = vert1.x;
                 vertices[1] = vert1.y;
                 vertices[2] = vert1.z;
@@ -97,9 +104,13 @@ void Map::processLine(vector<string> line, int lineNumber) {
                 
                 Edge e;
                 e.object = new Object();
-                e.object->Object::addProgram(edgeProgram);
-                e.object->Object::setDrawMethod(GL_LINES);
-                e.object->Object::addVertices(2, vertices);
+                
+                Renderer *edgeRenderer = new Renderer();
+                e.object->setRenderer(edgeRenderer);
+                
+                edgeRenderer->addProgram(edgeProgram);
+                edgeRenderer->setDrawMethod(GL_LINES);
+                edgeRenderer->addVertices(2, vertices);
                 edges.push_back(e);
             }
         }

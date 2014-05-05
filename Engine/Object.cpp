@@ -8,35 +8,21 @@
 
 #include "Object.h"
 
+
 Object::Object() {
-    renderer = new Renderer();
 	//test -- remove this line it <-----
 }
 
-void Object::addVertices(int numVerts, GLfloat *_vertices) {
-    renderer->addVertices(numVerts, _vertices);
+
+void Object::setRenderer(Renderer* renderer){
+    this->renderer = renderer;
 }
 
-glm::vec3 Object::getVertex(int i) {
-    return renderer->getVertex(i);
-}
+Renderer* Object::getRenderer(){
 
-int Object::getNumberOfVertices() {
-    return renderer->getNumberOfVertices();
-}
-
-void Object::setDrawMethod(GLuint _drawMethod) {
-    renderer->Renderer::setDrawMethod(_drawMethod);
-}
-
-void Object::addProgram(Program *_program) {
-    renderer->addProgram(_program);
+    return renderer;
 }
 
 void Object::render() {
     renderer->Renderer::render();
-}
-
-void Object::setCameraMatrix(glm::mat4 matrix) {
-    renderer->Renderer::setCameraMatrix(matrix);
 }
