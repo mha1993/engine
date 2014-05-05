@@ -784,9 +784,9 @@
 		B003ADE41910830A005838F5 /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
+				B003ADE619108329005838F5 /* shader.vsh */,
 				B003ADE519108329005838F5 /* green.fsh */,
 				B08E02A619172C220030C111 /* red.fsh */,
-				B003ADE619108329005838F5 /* shader.vsh */,
 			);
 			name = Shaders;
 			sourceTree = "<group>";

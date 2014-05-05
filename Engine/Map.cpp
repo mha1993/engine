@@ -21,16 +21,35 @@
 
 
 void Map::render(tdogl::Camera *camera) {
+    
+    glm::mat4 *cam;
+    glm::mat4 bla = camera->Camera::matrix();
+    cam = &bla;
+    
     for (int i=0; i<tiles.size(); i++) {
         Renderer *r = tiles[i].object->getRenderer();
-        r->setCameraMatrix(camera->Camera::matrix());
+        r->setCameraMatrix(cam);
         tiles[i].render();
     }
+     
+    /*
+    Renderer *r = tiles[0].object->getRenderer();
+    r->setCameraMatrix(cam);
+    r->render();
+    
+    for (int i=0;i<4;i++){
+        glm::vec3 dsa = r->getVertex(i);
+        printf("hi: %f\t%f\t%f\t\n",dsa.x,dsa.y,dsa.z);
+    }
+    printf("\n\n\n");
+   */
+    
     for (int i=0; i<edges.size(); i++) {
         Renderer *r =  edges[i].object->getRenderer();
-        r->setCameraMatrix(camera->Camera::matrix());
+        r->setCameraMatrix(cam);
         edges[i].render();
     }
+    
 }
 
 void Map::constructTileProgram() {
@@ -70,7 +89,7 @@ void Map::processLine(vector<string> line, int lineNumber) {
         Renderer *r = new Renderer();
         tile.object = new Object::Object();
         tile.object->setRenderer(r);
-        GLfloat vertices[tile.numberOfVertices * 3];
+        GLfloat *vertices = new GLfloat[tile.numberOfVertices * 3];
         for (int i = 0; i<3*tile.numberOfVertices; i+=3) {
             float x = atof(line[3+i].c_str());
             float y = atof(line[3+i+1].c_str());
@@ -80,11 +99,37 @@ void Map::processLine(vector<string> line, int lineNumber) {
             vertices[i+2] = z;
         }
         
-        
-        
         r->addProgram(tileProgram);
         r->setDrawMethod(GL_TRIANGLE_FAN);
         r->addVertices(tile.numberOfVertices, vertices);
+     
+        
+        //---------CALCULATE-NORMAL
+        
+        glm::vec3 a = r->getVertex(0);
+        glm::vec3 b = r->getVertex(1);
+        glm::vec3 c = r->getVertex(2);
+        
+        b = b - a;
+        c = c - a;
+        
+        glm::vec3 norm = glm::cross(b, c);
+        
+        norm = glm::normalize(norm);
+        
+        int nrv = r->getNumberOfVertices();
+        
+        GLfloat normals[nrv * 3];
+        for (int i = 0; i< nrv * 3; i+=3){
+            normals[i+0] = norm.x;
+            normals[i+1] = norm.y;
+            normals[i+2] = norm.z;
+        }
+        
+        r->addNormals(nrv , normals);
+        
+        //---------CALCULATE-NORMAL------------END
+
         
         for (int i = 0; i<tile.numberOfVertices ; i++){
             int pos = 3+3*tile.numberOfVertices + i;
@@ -135,13 +180,9 @@ void Map::processLine(vector<string> line, int lineNumber) {
                             atof(line[4].c_str()));
       ***********************/
     }else{
-    
         std::cout << "Warning: invalid name: " + line[0] << endl;
-    
     }
-    
 }
-
 
 Map::Map(string file) {
     constructTileProgram();

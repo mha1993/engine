@@ -26,7 +26,7 @@ Shader::Shader(string filename, GLenum t) {
     GLint status;
     glGetShaderiv(shader, GL_COMPILE_STATUS, &status);
     if (status == GL_FALSE) {
-        string msg("\nCompile failure in shader:\n");
+        string msg("\nCompile failure in shader:\n" + filename);
         
         GLint infoLogLength;
         glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLogLength);

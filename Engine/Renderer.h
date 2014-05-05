@@ -16,6 +16,10 @@
 
 #include "Program.h"
 
+#define VERT_SHADER_NAME "vert"
+
+#define NORM_SHADER_NAME "aVertexNormal"
+
 using namespace std;
 
 class Renderer {
@@ -25,15 +29,21 @@ class Renderer {
     
     GLuint vbo;
     GLuint vao;
+    
+    GLuint vbo_norm;
+    GLuint vao_norm;
+    
     Program *program;
     
 public:
     void addProgram(Program *_program);
+    
     void addVertices(int numVerts, GLfloat *_vertices);
+    void addNormals(int numVerts, GLfloat *_vertices);
     glm::vec3 getVertex(int i);
     int getNumberOfVertices();
     void setDrawMethod(GLuint _drawMethod);
-    void setCameraMatrix(glm::mat4 matrix);
+    void setCameraMatrix(const glm::mat4 *matrix);
     void render();
     Renderer();
 };

@@ -26,12 +26,12 @@
 
 void World::loadMap() {
     FileReader *fr = new FileReader::FileReader();
-    map = new Map::Map(fr->readFile("maps/hole02.db"));
+    map = new Map::Map(fr->readFile("maps/hole.02.db"));
 }
 
 void World::renderScene() {
     glClearColor(0, 0, 0, 1);
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     map->render(camera);
     glfwSwapBuffers();
@@ -113,6 +113,11 @@ void World::init() {
     
     // run while the window is open
     double lastTime = glfwGetTime();
+    
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
+    
+    
     while(glfwGetWindowParam(GLFW_OPENED)){
         double thisTime = glfwGetTime();
         Update(thisTime - lastTime);

@@ -9,12 +9,13 @@
 #include "Renderer.h"
 #include <glm/gtc/type_ptr.hpp>
 
-void Renderer::setCameraMatrix(glm::mat4 matrix) {
+
+void Renderer::setCameraMatrix(const glm::mat4 *matrix) {
     glUseProgram(program->getProgram());
     GLint uniform = glGetUniformLocation(program->getProgram(), "camera");
     if(uniform == -1)
         throw std::runtime_error(std::string("Program uniform not found: ") + "camera");
-    glUniformMatrix4fv(uniform, 1, GL_FALSE, glm::value_ptr(matrix));
+    glUniformMatrix4fv(uniform, 1, GL_FALSE, glm::value_ptr(*matrix));
     glUseProgram(0);
 }
 
@@ -33,20 +34,46 @@ void Renderer::addVertices(int numVerts, GLfloat *_vertices) {
     glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * numVerts * 3, vertices, GL_STATIC_DRAW);
     
     // connect the xyz to the "vert" attribute of the vertex shader
-    glEnableVertexAttribArray(program->attrib("vert"));
-    glVertexAttribPointer(program->attrib("vert"), 3, GL_FLOAT, GL_FALSE, 0, NULL);
+    glEnableVertexAttribArray(program->attrib(VERT_SHADER_NAME));
+    glVertexAttribPointer(program->attrib(VERT_SHADER_NAME), 3, GL_FLOAT, GL_FALSE, 0, NULL);
     
     // unbind the VBO and VAO
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
 }
 
+void Renderer::addNormals(int numVerts, GLfloat *_normals) {
+    // make and bind the VAO
+    
+    if (numVerts != numberOfVertices){
+        throw std::runtime_error(std::string("must be as many normals as vertecis"));
+    }
+    glBindVertexArray(vao);
+    
+    // make and bind the VBO
+    glGenBuffers(1, &vbo_norm);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo_norm);
+    
+    // Put the three triangle verticies into the VBO
+    glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * numVerts * 3, _normals, GL_STATIC_DRAW);
+    
+    // connect the xyz to the "vert" attribute of the vertex shader
+    glEnableVertexAttribArray(program->attrib(NORM_SHADER_NAME));
+    glVertexAttribPointer(program->attrib(NORM_SHADER_NAME), 3, GL_FLOAT, GL_FALSE, 0, NULL);
+    
+    // unbind the VBO and VAO
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindVertexArray(0);
+}
+
+
+
 glm::vec3 Renderer::getVertex(int i) {
-    if (i > (numberOfVertices-1)) {
-        cerr << "invalid vertex index!\n" << endl;
-        return glm::vec3(0,0,0);
-    } else {
+    if (i < numberOfVertices) {
         return glm::vec3(vertices[3*i], vertices[3*i+1], vertices[3*i+2]);
+    } else {
+        cerr << "invalid vertex index!\n" << endl;
+        return glm::vec3(0.0,0.0,0.0);
     }
 }
 
@@ -71,7 +98,7 @@ void Renderer::render() {
     glBindVertexArray(vao);
     
     // draw the VAO
-    glDrawArrays(drawMethod, 0, numberOfVertices*3);
+    glDrawArrays(drawMethod, 0, numberOfVertices);
     
     // unbind the VAO
     glBindVertexArray(0);
