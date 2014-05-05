@@ -57,6 +57,20 @@ void World::Update(float secondsElapsed) {
     } else if(glfwGetKey('X')){
         camera->offsetPosition(secondsElapsed * moveSpeed * glm::vec3(0,1,0));
     }
+    
+    float angleSpeed = 4.0f;
+    
+    if (glfwGetKey('I')){
+        camera->offsetOrientation(secondsElapsed * moveSpeed * angleSpeed, 0);
+    }else if (glfwGetKey('K')){
+        camera->offsetOrientation( - secondsElapsed * moveSpeed * angleSpeed, 0);
+    }
+    if (glfwGetKey('L')){
+        camera->offsetOrientation(0, secondsElapsed * moveSpeed * angleSpeed);
+
+    }else if (glfwGetKey('J')){
+        camera->offsetOrientation(0, - secondsElapsed * moveSpeed * angleSpeed);
+    }
 }
 
 void World::init() {
