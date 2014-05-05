@@ -26,7 +26,7 @@
 
 void World::loadMap() {
     FileReader *fr = new FileReader::FileReader();
-    map = new Map::Map(fr->readFile("maps/hole.02.db"));
+    map = new Map::Map(fr->readFile("maps/testcourse1.db"));
 }
 
 void World::renderScene() {
@@ -83,7 +83,7 @@ void World::init() {
     glfwOpenWindowHint(GLFW_OPENGL_VERSION_MAJOR, 3);
     glfwOpenWindowHint(GLFW_OPENGL_VERSION_MINOR, 2);
     glfwOpenWindowHint(GLFW_WINDOW_NO_RESIZE, GL_TRUE);
-    if(!glfwOpenWindow(WINDOW_WIDTH, WINDOW_HEIGHT, 8, 8, 8, 8, 0, 0, GLFW_WINDOW))
+    if(!glfwOpenWindow(WINDOW_WIDTH, WINDOW_HEIGHT, 8, 8, 8, 8, 24, 0, GLFW_WINDOW))
         throw std::runtime_error("glfwOpenWindow failed. Can your hardware handle OpenGL 3.2?");
     
     // initialise GLEW

@@ -31,19 +31,6 @@ void Map::render(tdogl::Camera *camera) {
         r->setCameraMatrix(cam);
         tiles[i].render();
     }
-     
-    /*
-    Renderer *r = tiles[0].object->getRenderer();
-    r->setCameraMatrix(cam);
-    r->render();
-    
-    for (int i=0;i<4;i++){
-        glm::vec3 dsa = r->getVertex(i);
-        printf("hi: %f\t%f\t%f\t\n",dsa.x,dsa.y,dsa.z);
-    }
-    printf("\n\n\n");
-   */
-    
     for (int i=0; i<edges.size(); i++) {
         Renderer *r =  edges[i].object->getRenderer();
         r->setCameraMatrix(cam);
