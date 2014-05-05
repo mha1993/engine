@@ -25,6 +25,10 @@ void Map::render(tdogl::Camera *camera) {
         tiles[i].object->setCameraMatrix(camera->Camera::matrix());
         tiles[i].render();
     }
+    for (int i=0; i<edges.size(); i++) {
+        edges[i].object->setCameraMatrix(camera->Camera::matrix());
+        edges[i].render();
+    }
 }
 
 void Map::constructTileProgram() {
@@ -46,7 +50,7 @@ void Map::constructEdgeProgram() {
     shaders.push_back(*vertShader);
     shaders.push_back(*fragShader);
     
-    tileProgram = new Program::Program(shaders);
+    edgeProgram = new Program::Program(shaders);
 }
 
 void Map::processLine(vector<string> line, int lineNumber) {
@@ -75,31 +79,30 @@ void Map::processLine(vector<string> line, int lineNumber) {
         tile.object->addProgram(tileProgram);
         tile.object->setDrawMethod(GL_TRIANGLE_FAN);
         tile.object->Object::addVertices(tile.numberOfVertices, vertices);
-//**************** EDGES **********************
-//        for (int i = 0; i<tile.numberOfVertices ; i++){
-//            int pos = 3+3*tile.numberOfVertices + i;
-//            int e = atoi(line[pos].c_str());
-//            if (e == 0){
-//                
-//                GLfloat vertices[6];
-//                glm::vec3 vert1 = tile.object->getVertex(i);
-//                glm::vec3 vert2 = i+1 < tile.object->getNumberOfVertices() ? tile.object->getVertex(i+1) : tile.object->getVertex(0);
-//                vertices[0] = vert1.x;
-//                vertices[1] = vert1.y;
-//                vertices[2] = vert1.z;
-//                vertices[3] = vert2.x;
-//                vertices[4] = vert2.y;
-//                vertices[5] = vert2.z;
-//                
-//                
-//                Edge e;
-//                e.object = new Object();
-//                e.object->Object::addProgram(edgeProgram);
-//                e.object->Object::setDrawMethod(GL_LINES);
-//                e.object->Object::addVertices(2, vertices);
-//                edges.push_back(e);
-//            }
-//        }
+        for (int i = 0; i<tile.numberOfVertices ; i++){
+            int pos = 3+3*tile.numberOfVertices + i;
+            int e = atoi(line[pos].c_str());
+            if (e == 0){
+                
+                GLfloat vertices[6];
+                glm::vec3 vert1 = tile.object->getVertex(i);
+                glm::vec3 vert2 = i+1 < tile.object->getNumberOfVertices() ? tile.object->getVertex(i+1) : tile.object->getVertex(0);
+                vertices[0] = vert1.x;
+                vertices[1] = vert1.y;
+                vertices[2] = vert1.z;
+                vertices[3] = vert2.x;
+                vertices[4] = vert2.y;
+                vertices[5] = vert2.z;
+                
+                
+                Edge e;
+                e.object = new Object();
+                e.object->Object::addProgram(edgeProgram);
+                e.object->Object::setDrawMethod(GL_LINES);
+                e.object->Object::addVertices(2, vertices);
+                edges.push_back(e);
+            }
+        }
         
         tiles.push_back(tile);
      /****** TEES AND CUPS ****
@@ -131,6 +134,7 @@ void Map::processLine(vector<string> line, int lineNumber) {
 
 Map::Map(string file) {
     constructTileProgram();
+    constructEdgeProgram();
 
     string line;
     istringstream f((file));
