@@ -19,11 +19,6 @@ void Renderer::setCameraMatrix(glm::mat4 matrix) {
 }
 
 void Renderer::addVertices(int numVerts, GLfloat *_vertices) {
-    cout << "VERTICES:" << endl;
-    cout << "\tnumber of verts: " << numVerts << endl;
-    for (int i=0; i<numVerts*3; i++) {
-        cout << "\t#" << i << ": " << _vertices[i] << endl;
-    }
     numberOfVertices = numVerts;
     vertices = _vertices;
     // make and bind the VAO

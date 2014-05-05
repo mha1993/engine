@@ -14,7 +14,6 @@ Object::Object() {
 }
 
 void Object::addVertices(int numVerts, GLfloat *_vertices) {
-    cout << _vertices[2]<<endl;
     renderer->addVertices(numVerts, _vertices);
 }
 
