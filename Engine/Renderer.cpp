@@ -7,8 +7,24 @@
 //
 
 #include "Renderer.h"
+#include <glm/gtc/type_ptr.hpp>
 
-void Renderer::addVertices(int numVerts, GLfloat _vertices[]) {
+void Renderer::setCameraMatrix(glm::mat4 matrix) {
+    glUseProgram(program->getProgram());
+    GLint uniform = glGetUniformLocation(program->getProgram(), "camera");
+    if(uniform == -1)
+        throw std::runtime_error(std::string("Program uniform not found: ") + "camera");
+    glUniformMatrix4fv(uniform, 1, GL_FALSE, glm::value_ptr(matrix));
+    glUseProgram(0);
+}
+
+void Renderer::addVertices(int numVerts, GLfloat *_vertices) {
+    cout << "VERTICES:" << endl;
+    cout << "\tnumber of verts: " << numVerts << endl;
+    for (int i=0; i<numVerts*3; i++) {
+        cout << "\t#" << i << ": " << _vertices[i] << endl;
+    }
+    numberOfVertices = numVerts;
     vertices = _vertices;
     // make and bind the VAO
     glGenVertexArrays(1, &vao);
@@ -42,11 +58,15 @@ void Renderer::render() {
     glBindVertexArray(vao);
     
     // draw the VAO
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    glDrawArrays(drawMethod, 0, numberOfVertices*3);
     
     // unbind the VAO
     glBindVertexArray(0);
     
     // unbind the program
     glUseProgram(0);
+}
+
+Renderer::Renderer() {
+    drawMethod = GL_TRIANGLE_FAN;
 }

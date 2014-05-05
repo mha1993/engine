@@ -13,6 +13,8 @@
 #include "Shader.h"
 #include "Program.h"
 #include "Object.h"
+#include "Map.h"
+#include "FileReader.h"
 
 #include <OpenGL/gl3.h>
 #include <GL/glfw.h>
@@ -22,51 +24,39 @@
 #define WINDOW_HEIGHT 400
 
 
-// globals
-GLuint gVAO = 0;
-GLuint gVBO = 0;
-
-vector<Object> objects;
-
-Program *program = NULL;
-
-// loads the vertex shader and fragment shader, and links them to make the global gProgram
-static void loadShaders() {
-    vector<Shader> shaders;
-    Shader *vertShader = new Shader::Shader("shader.vsh", GL_VERTEX_SHADER);
-    Shader *fragShader = new Shader::Shader("shader.fsh", GL_FRAGMENT_SHADER);
-    
-    shaders.push_back(*vertShader);
-    shaders.push_back(*fragShader);
-    
-    program = new Program::Program(shaders);
-    Object *object = new Object::Object();
-    object->addProgram(program);
-    
-    objects.push_back(*object);
+void World::loadMap() {
+    FileReader *fr = new FileReader::FileReader();
+    map = new Map::Map(fr->readFile("maps/hole02.db"));
 }
 
-static void loadTriangle() {
-    // Put the three triangle verticies into the VBO
-    GLfloat vertexData[] = {
-        //  X     Y     Z
-        0.0f, 0.8f, 0.1f,
-        -0.8f,-0.8f, 0.1f,
-        0.8f,-0.8f, 0.1f,
-    };
-    int numVerts = 3;
-    objects[0].Object::addVertices(numVerts, vertexData);
-}
-
-void renderScene() {
+void World::renderScene() {
     glClearColor(0, 0, 0, 1);
     glClear(GL_COLOR_BUFFER_BIT);
     
-    for (int i=0; i<objects.size(); i++) {
-        objects[i].render();
-    }
-    
+    map->render(camera);
     glfwSwapBuffers();
+}
+
+// update the scene based on the time elapsed since last update
+void World::Update(float secondsElapsed) {
+    
+    //move position of camera based on WASD keys, and XZ keys for up and down
+    const float moveSpeed = 8.0; //units per second
+    if(glfwGetKey('S')){
+        camera->offsetPosition(secondsElapsed * moveSpeed * -camera->forward());
+    } else if(glfwGetKey('W')){
+        camera->offsetPosition(secondsElapsed * moveSpeed * camera->forward());
+    }
+    if(glfwGetKey('A')){
+        camera->offsetPosition(secondsElapsed * moveSpeed * -camera->right());
+    } else if(glfwGetKey('D')){
+        camera->offsetPosition(secondsElapsed * moveSpeed * camera->right());
+    }
+    if(glfwGetKey('Z')){
+        camera->offsetPosition(secondsElapsed * moveSpeed * -glm::vec3(0,1,0));
+    } else if(glfwGetKey('X')){
+        camera->offsetPosition(secondsElapsed * moveSpeed * glm::vec3(0,1,0));
+    }
 }
 
 void World::init() {
@@ -92,21 +82,40 @@ void World::init() {
     std::cout << "GLSL version: " << glGetString(GL_SHADING_LANGUAGE_VERSION) << std::endl;
     std::cout << "Vendor: " << glGetString(GL_VENDOR) << std::endl;
     std::cout << "Renderer: " << glGetString(GL_RENDERER) << std::endl;
+    cout << endl;
     
     // make sure OpenGL version 3.2 API is available
     if(!GLEW_VERSION_3_2)
         throw std::runtime_error("OpenGL 3.2 API is not available.");
     
-    // load vertex and fragment shaders into opengl
-    loadShaders();
-    
     // create buffer and fill it with the points of the triangle
-    loadTriangle();
+    loadMap();
+    
+    camera = new tdogl::Camera::Camera();
+    camera->setPosition(glm::vec3(0,5,5));
+    camera->lookAt(glm::vec3(0,0,0));
+    camera->setViewportAspectRatio(WINDOW_WIDTH/ WINDOW_HEIGHT);
+    
     
     // run while the window is open
+    double lastTime = glfwGetTime();
     while(glfwGetWindowParam(GLFW_OPENED)){
-        // draw one frame
+        double thisTime = glfwGetTime();
+        Update(thisTime - lastTime);
+        lastTime = thisTime;
+        
         renderScene();
+        
+        // check for errors
+        GLenum error = glGetError();
+        while(error != GL_NO_ERROR) {
+            std::cerr << endl << "OpenGL Error " << error << ": " << (const char*)gluErrorString(error) << std::endl;
+            error = glGetError();
+        }
+        
+        //exit program if escape key is pressed
+        if(glfwGetKey(GLFW_KEY_ESC))
+            glfwCloseWindow();
     }
     
     // clean up and exit

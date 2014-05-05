@@ -24,6 +24,7 @@ public:
     Object();
     void addVertices(int numVerts, GLfloat *_vertices);
     void addProgram(Program *_program);
+    void setCameraMatrix(glm::mat4 matrix);
     void render();
 };
 

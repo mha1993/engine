@@ -19,7 +19,9 @@
 using namespace std;
 
 class Renderer {
+    int numberOfVertices;
     GLfloat *vertices;
+    GLuint drawMethod;
     
     GLuint vbo;
     GLuint vao;
@@ -28,7 +30,9 @@ class Renderer {
 public:
     void addProgram(Program *_program);
     void addVertices(int numVerts, GLfloat *_vertices);
+    void setCameraMatrix(glm::mat4 matrix);
     void render();
+    Renderer();
 };
 
 #endif /* defined(__Engine__Renderer__) */

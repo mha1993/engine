@@ -17,6 +17,8 @@
 		B08E02981912C2710030C111 /* libglfw.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B08E001F1912C26D0030C111 /* libglfw.a */; };
 		B08E029C1912D08B0030C111 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B003A8BB1910540B005838F5 /* main.cpp */; };
 		B08E029F1912D1A10030C111 /* Program.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B08E029D1912D1A10030C111 /* Program.cpp */; };
+		B08E02A219147D8E0030C111 /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B08E02A019147D8E0030C111 /* Map.cpp */; };
+		B08E02A51915D1030030C111 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B08E02A31915D1030030C111 /* Camera.cpp */; };
 		B08EFFF51912C2290030C111 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B08EFFF41912C2290030C111 /* IOKit.framework */; };
 		B08EFFF71912C2310030C111 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B08EFFF61912C2310030C111 /* Cocoa.framework */; };
 		B08EFFF91912C2380030C111 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B08EFFF81912C2380030C111 /* OpenGL.framework */; };
@@ -696,6 +698,10 @@
 		B08E02941912C2710030C111 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		B08E029D1912D1A10030C111 /* Program.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Program.cpp; sourceTree = "<group>"; };
 		B08E029E1912D1A10030C111 /* Program.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Program.h; sourceTree = "<group>"; };
+		B08E02A019147D8E0030C111 /* Map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Map.cpp; sourceTree = "<group>"; };
+		B08E02A119147D8E0030C111 /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Map.h; sourceTree = "<group>"; };
+		B08E02A31915D1030030C111 /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
+		B08E02A41915D1030030C111 /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
 		B08EFFF41912C2290030C111 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		B08EFFF61912C2310030C111 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		B08EFFF81912C2380030C111 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -765,6 +771,10 @@
 				B003A9D1191054CE005838F5 /* Object.h */,
 				B003A9D319105549005838F5 /* Renderer.cpp */,
 				B003A9D419105549005838F5 /* Renderer.h */,
+				B08E02A019147D8E0030C111 /* Map.cpp */,
+				B08E02A119147D8E0030C111 /* Map.h */,
+				B08E02A31915D1030030C111 /* Camera.cpp */,
+				B08E02A41915D1030030C111 /* Camera.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1651,7 +1661,9 @@
 			files = (
 				B08E029C1912D08B0030C111 /* main.cpp in Sources */,
 				B003A9D519105549005838F5 /* Renderer.cpp in Sources */,
+				B08E02A51915D1030030C111 /* Camera.cpp in Sources */,
 				B003A9D2191054CE005838F5 /* Object.cpp in Sources */,
+				B08E02A219147D8E0030C111 /* Map.cpp in Sources */,
 				B08E02951912C2710030C111 /* glew.c in Sources */,
 				B08E029F1912D1A10030C111 /* Program.cpp in Sources */,
 				B003A9D819105C89005838F5 /* World.cpp in Sources */,

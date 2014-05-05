@@ -13,6 +13,7 @@ Object::Object() {
 }
 
 void Object::addVertices(int numVerts, GLfloat *_vertices) {
+    cout << _vertices[2]<<endl;
     renderer->addVertices(numVerts, _vertices);
 }
 
@@ -22,4 +23,8 @@ void Object::addProgram(Program *_program) {
 
 void Object::render() {
     renderer->Renderer::render();
+}
+
+void Object::setCameraMatrix(glm::mat4 matrix) {
+    renderer->Renderer::setCameraMatrix(matrix);
 }

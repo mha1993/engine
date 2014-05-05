@@ -12,13 +12,20 @@
 #include <iostream>
 #include <vector>
 
-#include "Object.h"
+#include "Map.h"
+#include "Camera.h"
 
 class World {
-    vector<Object*> objects;
+    Map *map;
+    tdogl::Camera *camera;
     
 public:
     void init();
+
+private:
+    void loadMap();
+    void renderScene();
+    void Update(float secondsElapsed);
 };
 
 #endif /* defined(__Engine__World__) */
