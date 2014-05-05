@@ -10,6 +10,7 @@
 
 Object::Object() {
     renderer = new Renderer();
+	//test -- remove this line it <-----
 }
 
 void Object::addVertices(int numVerts, GLfloat *_vertices) {
