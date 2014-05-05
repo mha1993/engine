@@ -30,7 +30,18 @@ void Map::render(tdogl::Camera *camera) {
 void Map::constructTileProgram() {
     vector<Shader> shaders;
     Shader *vertShader = new Shader::Shader("shader.vsh", GL_VERTEX_SHADER);
-    Shader *fragShader = new Shader::Shader("shader.fsh", GL_FRAGMENT_SHADER);
+    Shader *fragShader = new Shader::Shader("green.fsh", GL_FRAGMENT_SHADER);
+    
+    shaders.push_back(*vertShader);
+    shaders.push_back(*fragShader);
+    
+    tileProgram = new Program::Program(shaders);
+}
+
+void Map::constructEdgeProgram() {
+    vector<Shader> shaders;
+    Shader *vertShader = new Shader::Shader("shader.vsh", GL_VERTEX_SHADER);
+    Shader *fragShader = new Shader::Shader("red.fsh", GL_FRAGMENT_SHADER);
     
     shaders.push_back(*vertShader);
     shaders.push_back(*fragShader);
@@ -62,23 +73,33 @@ void Map::processLine(vector<string> line, int lineNumber) {
         }
         
         tile.object->addProgram(tileProgram);
+        tile.object->setDrawMethod(GL_TRIANGLE_FAN);
         tile.object->Object::addVertices(tile.numberOfVertices, vertices);
-        
-        for (int i = 0; i<tile.numberOfVertices ; i++){
-            /****** EDGE HANDLING ****
-            int pos = 3+3*tile.numberOfVertices + i;
-            int e = atoi(line[pos].c_str());
-            if (e == 0){
-                
-                Edge e;
-                
-                e.vert1 = tile.vertices[i];
-                e.vert2 = i+1 < tile.numberOfVertices ?  tile.vertices[i+1] : tile.vertices[0] ;
-                edges.push_back(e);
-            }
-             ***********************/
-            
-        }
+//**************** EDGES **********************
+//        for (int i = 0; i<tile.numberOfVertices ; i++){
+//            int pos = 3+3*tile.numberOfVertices + i;
+//            int e = atoi(line[pos].c_str());
+//            if (e == 0){
+//                
+//                GLfloat vertices[6];
+//                glm::vec3 vert1 = tile.object->getVertex(i);
+//                glm::vec3 vert2 = i+1 < tile.object->getNumberOfVertices() ? tile.object->getVertex(i+1) : tile.object->getVertex(0);
+//                vertices[0] = vert1.x;
+//                vertices[1] = vert1.y;
+//                vertices[2] = vert1.z;
+//                vertices[3] = vert2.x;
+//                vertices[4] = vert2.y;
+//                vertices[5] = vert2.z;
+//                
+//                
+//                Edge e;
+//                e.object = new Object();
+//                e.object->Object::addProgram(edgeProgram);
+//                e.object->Object::setDrawMethod(GL_LINES);
+//                e.object->Object::addVertices(2, vertices);
+//                edges.push_back(e);
+//            }
+//        }
         
         tiles.push_back(tile);
      /****** TEES AND CUPS ****

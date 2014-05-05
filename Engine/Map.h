@@ -41,8 +41,11 @@ struct Cup {
 };
 
 struct Edge {
-    glm::vec3 vert1;
-    glm::vec3 vert2;
+    Object *object;
+    
+    void render() {
+        object->render();
+    }
 };
 
 class Map {
@@ -53,6 +56,7 @@ class Map {
     Cup cup;
     Tee tee;
     Program *tileProgram;
+    Program *edgeProgram;
     
 public:
     Map(string file);
@@ -62,6 +66,7 @@ public:
 private:
     void processLine(vector<string> line, int lineNumber);
     void constructTileProgram();
+    void constructEdgeProgram();
 };
 
 #endif /* defined(__GameEngine__Map__) */

@@ -18,6 +18,18 @@ void Object::addVertices(int numVerts, GLfloat *_vertices) {
     renderer->addVertices(numVerts, _vertices);
 }
 
+glm::vec3 Object::getVertex(int i) {
+    return renderer->getVertex(i);
+}
+
+int Object::getNumberOfVertices() {
+    return renderer->getNumberOfVertices();
+}
+
+void Object::setDrawMethod(GLuint _drawMethod) {
+    renderer->Renderer::setDrawMethod(_drawMethod);
+}
+
 void Object::addProgram(Program *_program) {
     renderer->addProgram(_program);
 }

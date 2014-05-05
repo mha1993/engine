@@ -46,6 +46,24 @@ void Renderer::addVertices(int numVerts, GLfloat *_vertices) {
     glBindVertexArray(0);
 }
 
+glm::vec3 Renderer::getVertex(int i) {
+    if (i > (numberOfVertices-1)) {
+        cerr << "invalid vertex index!\n" << endl;
+        return glm::vec3(0,0,0);
+    } else {
+        return glm::vec3(vertices[3*i], vertices[3*i+1], vertices[3*i+2]);
+    }
+}
+
+int Renderer::getNumberOfVertices() {
+    return numberOfVertices;
+}
+
+void Renderer::setDrawMethod(GLuint _drawMethod) {
+    drawMethod = _drawMethod;
+}
+
+
 void Renderer::addProgram(Program *_program) {
     program = _program;
 }
@@ -68,5 +86,5 @@ void Renderer::render() {
 }
 
 Renderer::Renderer() {
-    drawMethod = GL_TRIANGLE_FAN;
+    drawMethod = GL_TRIANGLES;
 }
