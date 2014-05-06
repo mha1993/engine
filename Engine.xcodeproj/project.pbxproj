@@ -23,6 +23,7 @@
 		B08EFFF51912C2290030C111 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B08EFFF41912C2290030C111 /* IOKit.framework */; };
 		B08EFFF71912C2310030C111 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B08EFFF61912C2310030C111 /* Cocoa.framework */; };
 		B08EFFF91912C2380030C111 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B08EFFF81912C2380030C111 /* OpenGL.framework */; };
+		D62BAA551917FDD900240308 /* TileRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D62BAA531917FDD900240308 /* TileRenderer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -710,6 +711,8 @@
 		B08EFFFD1912C26D0030C111 /* advanced.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = advanced.html; sourceTree = "<group>"; };
 		B08EFFFE1912C26D0030C111 /* basic.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = basic.html; sourceTree = "<group>"; };
 		B08EFFFF1912C26D0030C111 /* build.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = build.html; sourceTree = "<group>"; };
+		D62BAA531917FDD900240308 /* TileRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TileRenderer.cpp; sourceTree = "<group>"; };
+		D62BAA541917FDD900240308 /* TileRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileRenderer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -777,6 +780,8 @@
 				B08E02A119147D8E0030C111 /* Map.h */,
 				B08E02A31915D1030030C111 /* Camera.cpp */,
 				B08E02A41915D1030030C111 /* Camera.h */,
+				D62BAA531917FDD900240308 /* TileRenderer.cpp */,
+				D62BAA541917FDD900240308 /* TileRenderer.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1672,6 +1677,7 @@
 				B08E02A719172C220030C111 /* red.fsh in Sources */,
 				B003A9D819105C89005838F5 /* World.cpp in Sources */,
 				B003ADE319107D17005838F5 /* Shader.cpp in Sources */,
+				D62BAA551917FDD900240308 /* TileRenderer.cpp in Sources */,
 				B003ADE019107CF4005838F5 /* FileReader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

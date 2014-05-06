@@ -15,46 +15,18 @@
 #include "glm.hpp"
 
 #include "Object.h"
+#include "TileRenderer.h"
 #include "Program.h"
 #include "Shader.h"
 #include "Camera.h"
 
 
 using namespace std;
-
-struct Tile {
-    int id;
-    int numberOfVertices;
-    Object *object;
-    
-    void render() {
-        object->render();
-    }
-};
-
-struct Tee {
-    glm::vec3 loc;
-};
-
-struct Cup {
-    glm::vec3 loc;
-};
-
-struct Edge {
-    Object *object;
-    
-    void render() {
-        object->render();
-    }
-};
-
 class Map {
-    vector<Tile> tiles;
-    vector<Edge> edges;
+    vector<Renderer *> renderers;
+    vector<Object*> objects;
     vector<Object*> neighbors;
     vector<int> neighborIds;
-    Cup cup;
-    Tee tee;
     Program *tileProgram;
     Program *edgeProgram;
     

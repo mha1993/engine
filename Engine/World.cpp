@@ -16,7 +16,6 @@
 #include "Map.h"
 #include "FileReader.h"
 
-#include <OpenGL/gl3.h>
 #include <GL/glfw.h>
 
 
@@ -26,7 +25,7 @@
 
 void World::loadMap() {
     FileReader *fr = new FileReader::FileReader();
-    map = new Map::Map(fr->readFile("maps/testcourse1.db"));
+    map = new Map::Map(fr->readFile("maps/hole.02.db"));
 }
 
 void World::renderScene() {

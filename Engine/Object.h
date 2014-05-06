@@ -12,19 +12,30 @@
 #include <iostream>
 #include <vector>
 #include "glm.hpp"
+#include <GL/glew.h>
 
-#include "Renderer.h"
+class Renderer;
 
 using namespace std;
 
 class Object {
-    Renderer *renderer;
-    
 public:
+    
+    GLfloat* getVertecis();
+    int getNrVert();
+    
     Object();
     void setRenderer(Renderer* renderer);
     Renderer * getRenderer();
     void render();
+    
+    void setNRVertAndVertex(int numberOfVertices,GLfloat *vertices);
+    
+private:
+    int numberOfVertices;
+    GLfloat *vertices;
+    Renderer *renderer;
 };
+
 
 #endif /* defined(__Engine__Object__) */

@@ -19,9 +19,18 @@ void Renderer::setCameraMatrix(const glm::mat4 *matrix) {
     glUseProgram(0);
 }
 
-void Renderer::addVertices(int numVerts, GLfloat *_vertices) {
-    numberOfVertices = numVerts;
-    vertices = _vertices;
+
+void Renderer::setObject(Object *o){
+    myObject = o;
+}
+
+void Renderer::setVertexBuffer() {
+    
+    int numVerts = myObject->getNrVert();
+
+    
+    GLfloat *vertices = myObject->getVertecis();
+    
     // make and bind the VAO
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
@@ -40,34 +49,11 @@ void Renderer::addVertices(int numVerts, GLfloat *_vertices) {
     // unbind the VBO and VAO
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
+    
+    bufferIsSet = true;
+    
 }
-
-void Renderer::addNormals(int numVerts, GLfloat *_normals) {
-    // make and bind the VAO
-    
-    if (numVerts != numberOfVertices){
-        throw std::runtime_error(std::string("must be as many normals as vertecis"));
-    }
-    glBindVertexArray(vao);
-    
-    // make and bind the VBO
-    glGenBuffers(1, &vbo_norm);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo_norm);
-    
-    // Put the three triangle verticies into the VBO
-    glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * numVerts * 3, _normals, GL_STATIC_DRAW);
-    
-    // connect the xyz to the "vert" attribute of the vertex shader
-    glEnableVertexAttribArray(program->attrib(NORM_SHADER_NAME));
-    glVertexAttribPointer(program->attrib(NORM_SHADER_NAME), 3, GL_FLOAT, GL_FALSE, 0, NULL);
-    
-    // unbind the VBO and VAO
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glBindVertexArray(0);
-}
-
-
-
+/*
 glm::vec3 Renderer::getVertex(int i) {
     if (i < numberOfVertices) {
         return glm::vec3(vertices[3*i], vertices[3*i+1], vertices[3*i+2]);
@@ -76,10 +62,7 @@ glm::vec3 Renderer::getVertex(int i) {
         return glm::vec3(0.0,0.0,0.0);
     }
 }
-
-int Renderer::getNumberOfVertices() {
-    return numberOfVertices;
-}
+*/
 
 void Renderer::setDrawMethod(GLuint _drawMethod) {
     drawMethod = _drawMethod;
@@ -91,6 +74,11 @@ void Renderer::addProgram(Program *_program) {
 }
 
 void Renderer::render() {
+    
+    if (!bufferIsSet){
+        setVertexBuffer();
+    }
+    
     // bind the program (the shaders)
     glUseProgram(program->getProgram());
     
@@ -98,7 +86,7 @@ void Renderer::render() {
     glBindVertexArray(vao);
     
     // draw the VAO
-    glDrawArrays(drawMethod, 0, numberOfVertices);
+    glDrawArrays(drawMethod, 0, myObject->getNrVert());
     
     // unbind the VAO
     glBindVertexArray(0);

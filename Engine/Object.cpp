@@ -8,6 +8,7 @@
 
 #include "Object.h"
 
+#include "Renderer.h"
 
 Object::Object() {
 	//test -- remove this line it <-----
@@ -25,4 +26,21 @@ Renderer* Object::getRenderer(){
 
 void Object::render() {
     renderer->Renderer::render();
+}
+
+
+GLfloat * Object::getVertecis(){
+    return vertices;
+}
+int Object::getNrVert(){
+    return numberOfVertices;
+}
+
+void Object::setNRVertAndVertex(int nrv,GLfloat *v){
+
+    numberOfVertices = nrv;
+    
+    vertices = v;
+    
+
 }

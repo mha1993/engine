@@ -14,6 +14,8 @@
 #include "glm.hpp"
 #include <GL/glew.h>
 
+#include "Object.h"
+
 #include "Program.h"
 
 #define VERT_SHADER_NAME "vert"
@@ -23,29 +25,35 @@
 using namespace std;
 
 class Renderer {
-    int numberOfVertices;
-    GLfloat *vertices;
-    GLuint drawMethod;
-    
-    GLuint vbo;
-    GLuint vao;
-    
-    GLuint vbo_norm;
-    GLuint vao_norm;
-    
-    Program *program;
-    
+
 public:
     void addProgram(Program *_program);
     
-    void addVertices(int numVerts, GLfloat *_vertices);
-    void addNormals(int numVerts, GLfloat *_vertices);
-    glm::vec3 getVertex(int i);
+    //glm::vec3 getVertex(int i);
     int getNumberOfVertices();
     void setDrawMethod(GLuint _drawMethod);
     void setCameraMatrix(const glm::mat4 *matrix);
     void render();
     Renderer();
+    
+    void setObject(Object *o);
+    
+protected:
+    Object *myObject;
+    virtual void setVertexBuffer();
+    void addNormals(int numVerts, GLfloat *_vertices);
+    
+    GLuint drawMethod;
+    
+    GLuint vbo;
+    GLuint vao;
+    
+    
+    Program *program;
+    
+    bool bufferIsSet = false;
+
+    
 };
 
 #endif /* defined(__Engine__Renderer__) */
