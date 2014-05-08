@@ -11,6 +11,12 @@
 #include "Program.h"
 
 
+TileRenderer::TileRenderer(){
+    
+    drawMethod = GL_TRIANGLE_FAN;
+    
+}
+
 void TileRenderer::setVertexBuffer() {
     
 

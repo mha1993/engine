@@ -8,6 +8,8 @@
 
 #include "Program.h"
 
+
+
 Program::Program(vector<Shader> _shaders) {
     //create the program object
     program = glCreateProgram();
@@ -69,4 +71,23 @@ GLint Program::uniform(const GLchar* uniformName) const {
         cerr << "Program uniform not found: " << uniformName << endl;
     
     return uniform;
+}
+
+
+Program* Program::m_teaInstance = NULL;
+
+Program* Program::TeaProgram()
+{
+    if (!Program::m_teaInstance){   // Only allow one instance of class to be generated.
+        
+        vector<Shader> shaders;
+        Shader *vertShader = new Shader::Shader("shader.vsh", GL_VERTEX_SHADER);
+        Shader *fragShader = new Shader::Shader("blue.fsh", GL_FRAGMENT_SHADER);
+        
+        shaders.push_back(*vertShader);
+        shaders.push_back(*fragShader);
+        
+        Program::m_teaInstance = new Program::Program(shaders);
+    }
+    return Program::m_teaInstance;
 }

@@ -24,6 +24,8 @@
 		B08EFFF71912C2310030C111 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B08EFFF61912C2310030C111 /* Cocoa.framework */; };
 		B08EFFF91912C2380030C111 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B08EFFF81912C2380030C111 /* OpenGL.framework */; };
 		D62BAA551917FDD900240308 /* TileRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D62BAA531917FDD900240308 /* TileRenderer.cpp */; };
+		D69834C2191AF8A20074B5C4 /* PhysicsEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D69834C0191AF8A20074B5C4 /* PhysicsEngine.cpp */; };
+		D6E9E9F6191AFB3400F4778F /* PhysicsObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6E9E9F4191AFB3400F4778F /* PhysicsObject.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -713,6 +715,11 @@
 		B08EFFFF1912C26D0030C111 /* build.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = build.html; sourceTree = "<group>"; };
 		D62BAA531917FDD900240308 /* TileRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TileRenderer.cpp; sourceTree = "<group>"; };
 		D62BAA541917FDD900240308 /* TileRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileRenderer.h; sourceTree = "<group>"; };
+		D69834C0191AF8A20074B5C4 /* PhysicsEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsEngine.cpp; sourceTree = "<group>"; };
+		D69834C1191AF8A20074B5C4 /* PhysicsEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsEngine.h; sourceTree = "<group>"; };
+		D6E9E9F4191AFB3400F4778F /* PhysicsObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsObject.cpp; sourceTree = "<group>"; };
+		D6E9E9F5191AFB3400F4778F /* PhysicsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsObject.h; sourceTree = "<group>"; };
+		D6E9E9FA191B0C1300F4778F /* blue.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = blue.fsh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -764,6 +771,7 @@
 		B003A9CC191054A5005838F5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D69834BF191AF86D0074B5C4 /* physics */,
 				B003ADDE19107CF4005838F5 /* FileReader.cpp */,
 				B003ADDF19107CF4005838F5 /* FileReader.h */,
 				B003A9D619105C89005838F5 /* World.cpp */,
@@ -792,6 +800,7 @@
 				B003ADE619108329005838F5 /* shader.vsh */,
 				B003ADE519108329005838F5 /* green.fsh */,
 				B08E02A619172C220030C111 /* red.fsh */,
+				D6E9E9FA191B0C1300F4778F /* blue.fsh */,
 			);
 			name = Shaders;
 			sourceTree = "<group>";
@@ -1616,6 +1625,17 @@
 			path = doc;
 			sourceTree = "<group>";
 		};
+		D69834BF191AF86D0074B5C4 /* physics */ = {
+			isa = PBXGroup;
+			children = (
+				D69834C0191AF8A20074B5C4 /* PhysicsEngine.cpp */,
+				D69834C1191AF8A20074B5C4 /* PhysicsEngine.h */,
+				D6E9E9F4191AFB3400F4778F /* PhysicsObject.cpp */,
+				D6E9E9F5191AFB3400F4778F /* PhysicsObject.h */,
+			);
+			name = physics;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1675,7 +1695,9 @@
 				B08E02951912C2710030C111 /* glew.c in Sources */,
 				B08E029F1912D1A10030C111 /* Program.cpp in Sources */,
 				B08E02A719172C220030C111 /* red.fsh in Sources */,
+				D6E9E9F6191AFB3400F4778F /* PhysicsObject.cpp in Sources */,
 				B003A9D819105C89005838F5 /* World.cpp in Sources */,
+				D69834C2191AF8A20074B5C4 /* PhysicsEngine.cpp in Sources */,
 				B003ADE319107D17005838F5 /* Shader.cpp in Sources */,
 				D62BAA551917FDD900240308 /* TileRenderer.cpp in Sources */,
 				B003ADE019107CF4005838F5 /* FileReader.cpp in Sources */,

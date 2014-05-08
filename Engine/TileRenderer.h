@@ -21,6 +21,8 @@ class TileRenderer : public Renderer {
 public:
     void setVertexBuffer();
     
+    TileRenderer();
+    
 private:
     GLuint vbo_norm;
     GLuint vao_norm;

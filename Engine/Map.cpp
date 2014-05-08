@@ -46,7 +46,7 @@ void Map::constructTileProgram() {
     tileProgram = new Program::Program(shaders);
 }
 
- 
+
 
 void Map::constructEdgeProgram() {
     vector<Shader> shaders;
@@ -121,24 +121,58 @@ void Map::processLine(vector<string> line, int lineNumber) {
         }
         
         renderers.push_back(tileRenderer);
-        /****** TEES AND CUPS ****
-         }else if (line[0].compare(TEE) == 0){
-         if (line.size() != 5) {
-         std::cout << "ERROR: invalid tee on line " << lineNumber+1;
-         exit(EXIT_FAILURE);
-         }
-         tee.loc = glm::vec3(atof(line[2].c_str()),
-         atof(line[3].c_str()),
-         atof(line[4].c_str()));
-         }else if (line[0].compare(CUP) == 0){
-         if (line.size() != 5) {
-         std::cout << "ERROR: invalid cup on line " << lineNumber+1;
-         exit(EXIT_FAILURE);
-         }
-         cup.loc = glm::vec3(atof(line[2].c_str()),
-         atof(line[3].c_str()),
-         atof(line[4].c_str()));
-         ***********************/
+        /****** TEES AND CUPS *****/
+    }else if (line[0].compare(TEE) == 0){
+       
+        if (line.size() != 5) {
+            std::cout << "ERROR: invalid tee on line " << lineNumber+1;
+            exit(EXIT_FAILURE);
+        }
+        glm::vec3 loc = glm::vec3(atof(line[2].c_str()),atof(line[3].c_str()),atof(line[4].c_str()));
+        
+        
+        loc = loc + glm::vec3(0,.001,0);
+        GLfloat *vertices = new GLfloat[4 * 3];
+        
+        
+        
+        vertices[0] = loc.x -.1;
+        vertices[1] = loc.y;
+        vertices[2] = loc.z -.1;
+        
+        vertices[3] = loc.x -.1;
+        vertices[4] = loc.y;
+        vertices[5] = loc.z +.1;
+        
+        vertices[6] = loc.x +.1;
+        vertices[7] = loc.y;
+        vertices[8] = loc.z +.1;
+        
+        vertices[9] = loc.x +.1;
+        vertices[10] = loc.y;
+        vertices[11] = loc.z -.1;
+        
+        Object *tea = new Object;
+        
+        TileRenderer *teaRenderer = new TileRenderer;
+        
+        teaRenderer->addProgram(Program::TeaProgram());
+        
+        tea->setRenderer(teaRenderer);
+        teaRenderer->setObject(tea);
+        
+        tea->setNRVertAndVertex(4, vertices);
+
+        renderers.push_back(teaRenderer);
+    
+    }else if (line[0].compare(CUP) == 0){
+        
+        if (line.size() != 5) {
+            std::cout << "ERROR: invalid cup on line " << lineNumber+1;
+            exit(EXIT_FAILURE);
+        }
+        glm::vec3 loc = glm::vec3(atof(line[2].c_str()),atof(line[3].c_str()),atof(line[4].c_str()));
+        
     }else{
         std::cout << "Warning: invalid name: " + line[0] << endl;
     }
@@ -147,6 +181,7 @@ void Map::processLine(vector<string> line, int lineNumber) {
 Map::Map(string file) {
     constructTileProgram();
     constructEdgeProgram();
+    
     
     string line;
     istringstream f((file));
