@@ -12,6 +12,8 @@
 #include <vector>
 #include <fstream>
 
+#include "SphereRenderer.h"
+
 #include "Map.h"
 
 #define TILE "tile"
@@ -182,7 +184,6 @@ Map::Map(string file) {
     constructTileProgram();
     constructEdgeProgram();
     
-    
     string line;
     istringstream f((file));
     int lineNumber = 0;
@@ -196,4 +197,8 @@ Map::Map(string file) {
         processLine(vec, lineNumber);
         lineNumber++;
     }
+    Renderer *sphere = new SphereRenderer(10.0);
+    
+    renderers.push_back(sphere);
+    
 }

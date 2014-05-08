@@ -38,16 +38,20 @@ public:
     
     void setObject(Object *o);
     
+    void setNormals(GLfloat *norm,int numberVertecis);
+    
 protected:
+    
     Object *myObject;
     virtual void setVertexBuffer();
-    void addNormals(int numVerts, GLfloat *_vertices);
+    virtual int numberOfVertecis();
     
     GLuint drawMethod;
     
     GLuint vbo;
     GLuint vao;
     
+    GLuint vbo_norm;
     
     Program *program;
     

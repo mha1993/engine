@@ -56,22 +56,8 @@ void TileRenderer::setVertexBuffer() {
         normals[i+2] = norm.z;
     }
     
-    // make and bind the VAO
-    
-    glBindVertexArray(vao);
-    
-    // make and bind the VBO
-    glGenBuffers(1, &vbo_norm);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo_norm);
-    
-    // Put the three triangle verticies into the VBO
-    glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * nrv * 3, normals, GL_STATIC_DRAW);
-    
-    // connect the xyz to the "vert" attribute of the vertex shader
-    glEnableVertexAttribArray(program->attrib(NORM_SHADER_NAME));
-    glVertexAttribPointer(program->attrib(NORM_SHADER_NAME), 3, GL_FLOAT, GL_FALSE, 0, NULL);
-    
-    // unbind the VBO and VAO
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glBindVertexArray(0);
+    setNormals(normals,nrv);
 }
+
+
+

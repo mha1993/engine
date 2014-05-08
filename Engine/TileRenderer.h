@@ -23,8 +23,5 @@ public:
     
     TileRenderer();
     
-private:
-    GLuint vbo_norm;
-    GLuint vao_norm;
     
 };
