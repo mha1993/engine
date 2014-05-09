@@ -39,7 +39,7 @@ public:
     
     void setObject(Object *o);
     
-    void setNormals(GLfloat *norm,int numberVertecis);
+    void setNormals(vector<glm::vec3> normals);
     
 private:
     glm::mat4 getModelMatrix();

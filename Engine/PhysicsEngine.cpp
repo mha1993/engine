@@ -7,13 +7,13 @@
 //
 
 #include "PhysicsEngine.h"
-
+#include "PhysicsPlane.h"
 #include <vector>
 
 void PhysicsEngine::addMovableObject(PhysicsObject *po) {
     movableObjects.push_back(po);
 }
-void PhysicsEngine::addImovableObject(PhysicsObject *po) {
+void PhysicsEngine::addPlane(PhysicsPlane *po) {
     imovableObjects.push_back(po);
 }
 

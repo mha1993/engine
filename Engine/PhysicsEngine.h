@@ -13,13 +13,17 @@
 #include "PhysicsObject.h"
 #include <vector>
 
+
 #endif /* defined(__Engine__PhysicsEngine__) */
 
 using namespace std;
 
+
+class PhysicsPlane;
+
 class PhysicsEngine{
     
-    vector<PhysicsObject *> imovableObjects;
+    vector<PhysicsPlane *> imovableObjects;
     vector<PhysicsObject *> movableObjects;
     
     PhysicsObject *firstCollisionObjectA;
@@ -28,7 +32,7 @@ class PhysicsEngine{
     
 public:
     void addMovableObject(PhysicsObject *po);
-    void addImovableObject(PhysicsObject *po);
+    void addPlane(PhysicsPlane *po);
     
     void updatePositions(float deltaT);
 };

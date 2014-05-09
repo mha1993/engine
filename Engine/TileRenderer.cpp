@@ -24,26 +24,12 @@ void TileRenderer::setVertexBuffer() {
 
     Renderer::setVertexBuffer();
     
-    GLfloat *v = myObject->getVertecis();
+    vector<glm::vec3> v = myObject->getVertecis();
     
-    int nrv = myObject->getNrVert();
-    
-    glm::vec3 a;
-    glm::vec3 b;
-    glm::vec3 c;
-    
-    a.x = v[0];
-    a.y = v[1];
-    a.z = v[2];
-    
-    b.x = v[3];
-    b.y = v[4];
-    b.z = v[5];
-    
-    c.x = v[6];
-    c.y = v[7];
-    c.z = v[8];
-    
+    glm::vec3 a = v[0];
+    glm::vec3 b = v[1];
+    glm::vec3 c = v[2];
+
     b = b - a;
     c = c - a;
     
@@ -51,14 +37,12 @@ void TileRenderer::setVertexBuffer() {
     
     norm = glm::normalize(norm);
     
-    GLfloat normals[nrv * 3];
-    for (int i = 0; i< nrv * 3; i+=3){
-        normals[i+0] = norm.x;
-        normals[i+1] = norm.y;
-        normals[i+2] = norm.z;
+    vector<glm::vec3> normals;
+    for (int i = 0; i<v.size(); i++){
+        normals.push_back(norm);
     }
     
-    setNormals(normals,nrv);
+    setNormals(normals);
 }
 
 

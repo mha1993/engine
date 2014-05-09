@@ -29,16 +29,14 @@ void Object::render() {
 }
 
 
-GLfloat * Object::getVertecis(){
+vector<glm::vec3> Object::getVertecis(){
     return vertices;
 }
 int Object::getNrVert(){
-    return numberOfVertices;
+    return vertices.size();
 }
 
-void Object::setNRVertAndVertex(int nrv,GLfloat *v){
-
-    numberOfVertices = nrv;
+void Object::setNRVertAndVertex(vector<glm::vec3> v){
     
     vertices = v;
     

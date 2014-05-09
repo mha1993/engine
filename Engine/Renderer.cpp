@@ -43,7 +43,7 @@ void Renderer::setVertexBuffer() {
     int numVerts = myObject->getNrVert();
 
     
-    GLfloat *vertices = myObject->getVertecis();
+    vector<glm::vec3> vertices = myObject->getVertecis();
     
     // make and bind the VAO
     glGenVertexArrays(1, &vao);
@@ -54,7 +54,7 @@ void Renderer::setVertexBuffer() {
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
     
     // Put the three triangle verticies into the VBO
-    glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * numVerts * 3, vertices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec3) * numVerts, &vertices[0], GL_STATIC_DRAW);
     
     // connect the xyz to the "vert" attribute of the vertex shader
     glEnableVertexAttribArray(program->attrib(VERT_SHADER_NAME));
@@ -110,7 +110,7 @@ Renderer::Renderer() {
 }
 
 
-void Renderer::setNormals(GLfloat *normals,int numberVertecis) {
+void Renderer::setNormals(vector<glm::vec3> normals) {
 
     // make and bind the VAO
     
@@ -121,7 +121,7 @@ void Renderer::setNormals(GLfloat *normals,int numberVertecis) {
     glBindBuffer(GL_ARRAY_BUFFER, vbo_norm);
     
     // Put the three triangle verticies into the VBO
-    glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * numberVertecis * 3, normals, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec3) * normals.size(), &normals[0], GL_STATIC_DRAW);
     
     // connect the xyz to the "vert" attribute of the vertex shader
     glEnableVertexAttribArray(program->attrib(NORM_SHADER_NAME));

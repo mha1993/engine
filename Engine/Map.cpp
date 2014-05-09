@@ -20,6 +20,8 @@
 #define TEE "tee"
 #define CUP "cup"
 
+#include "PhysicsUtil.h"
+#include "PhysicsPlane.h"
 
 
 void Map::render(tdogl::Camera *camera) {
@@ -87,32 +89,39 @@ void Map::processLine(vector<string> line, int lineNumber) {
         tileObject->setRenderer(tileRenderer);
         tileRenderer->setObject(tileObject);
         
-        GLfloat *vertices = new GLfloat[numberOfVertices * 3];
         
-        for (int i = 0; i<3*numberOfVertices; i++) {
-            vertices[i] = atof(line[i+3].c_str());
+        vector<glm::vec3> verts;
+        
+        for (int i = 0; i<3*numberOfVertices; i+=3) {
+            
+            glm::vec3 v = glm::vec3(atof(line[i+3+0].c_str()),atof(line[i+3+1].c_str()),atof(line[i+3+2].c_str()));
+            
+            verts.push_back(v);
         }
+        
+        glm::vec3 tileNormal = calcNormal(verts[0],verts[1],verts[2]);
+        
+        PhysicsPlane *tilePhysics = new PhysicsPlane(verts);
+        
+        tilePhysics->addNormal(tileNormal);
+        pe->addPlane(tilePhysics);
+        
         
         //tileRenderer->addProgram(tileProgram);
         //tileRenderer->setDrawMethod(GL_TRIANGLE_FAN);
-        tileObject->setNRVertAndVertex(numberOfVertices, vertices);
+        tileObject->setNRVertAndVertex(verts);
         
         for (int i = 0; i<numberOfVertices ; i++){
             int pos = 3+3*numberOfVertices + i;
             int e = atoi(line[pos].c_str());
             if (e == 0){
                 
-                GLfloat *lineVertices = new GLfloat[6];
+                vector<glm::vec3> lineVertices;
                 int v2 = i+1 < numberOfVertices ? i+1 : 0;
                 
                 
-                lineVertices[0] = vertices[i*3+0];
-                lineVertices[1] = vertices[i*3+1];
-                lineVertices[2] = vertices[i*3+2];
-                
-                lineVertices[3] = vertices[v2*3+0];
-                lineVertices[4] = vertices[v2*3+1];
-                lineVertices[5] = vertices[v2*3+2];
+                lineVertices.push_back(verts[i]);
+                lineVertices.push_back(verts[v2]);
                 
                 Object *edgeObject = new Object;
                 Renderer *edgeRenderer = new Renderer;
@@ -123,7 +132,17 @@ void Map::processLine(vector<string> line, int lineNumber) {
                 edgeRenderer->addProgram( Program::fetchProgram("shader.vsh", "red.fsh") );
                 edgeRenderer->setDrawMethod(GL_LINES);
                 
-                edgeObject->setNRVertAndVertex(2, lineVertices);
+                edgeObject->setNRVertAndVertex(lineVertices);
+                
+                PhysicsPlane *pp = new PhysicsPlane(lineVertices);
+                
+                
+                int v3 = i+2 < numberOfVertices ? i+2 : 1;
+                glm::vec3 edgeNormal = calcNormal(lineVertices[0], lineVertices[1], lineVertices[0] + tileNormal);
+                
+                pp->addNormal(edgeNormal);
+                
+                pe->addPlane(pp);
                 
                 renderers.push_back(edgeRenderer);
             }
@@ -141,25 +160,14 @@ void Map::processLine(vector<string> line, int lineNumber) {
         
         
         loc = loc + glm::vec3(0,.001,0);
-        GLfloat *vertices = new GLfloat[4 * 3];
+        vector<glm::vec3> teeVert;
         
         
-        
-        vertices[0] = loc.x -.1;
-        vertices[1] = loc.y;
-        vertices[2] = loc.z -.1;
-        
-        vertices[3] = loc.x -.1;
-        vertices[4] = loc.y;
-        vertices[5] = loc.z +.1;
-        
-        vertices[6] = loc.x +.1;
-        vertices[7] = loc.y;
-        vertices[8] = loc.z +.1;
-        
-        vertices[9] = loc.x +.1;
-        vertices[10] = loc.y;
-        vertices[11] = loc.z -.1;
+        teeVert.push_back(loc + glm::vec3(-.1,0,-.1));
+        teeVert.push_back(loc + glm::vec3(-.1,0,+.1));
+        teeVert.push_back(loc + glm::vec3(+.1,0,+.1));
+        teeVert.push_back(loc + glm::vec3(+.1,0,-.1));
+
         
         Object *tea = new Object;
         
@@ -171,7 +179,7 @@ void Map::processLine(vector<string> line, int lineNumber) {
         
         teaRenderer->addProgram(Program::fetchProgram("shader.vsh", "blue.fsh"));
         
-        tea->setNRVertAndVertex(4, vertices);
+        tea->setNRVertAndVertex(teeVert);
 
         renderers.push_back(teaRenderer);
     

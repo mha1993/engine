@@ -24,7 +24,7 @@ class Object {
     
 public:
     PhysicsObject* getPhysics();
-    GLfloat* getVertecis();
+    vector<glm::vec3> getVertecis();
     int getNrVert();
     
     Object();
@@ -32,13 +32,12 @@ public:
     Renderer * getRenderer();
     void render();
     
-    void setNRVertAndVertex(int numberOfVertices,GLfloat *vertices);
+    void setNRVertAndVertex(vector<glm::vec3> v);
     
     glm::mat4 getModelMatrix();
     
 private:
-    int numberOfVertices;
-    GLfloat *vertices;
+    vector<glm::vec3> vertices;
     Renderer *renderer;
 };
 
