@@ -15,6 +15,8 @@ TileRenderer::TileRenderer(){
     
     drawMethod = GL_TRIANGLE_FAN;
     
+    program = Program::fetchProgram("shader.vsh", "green.fsh");
+    
 }
 
 void TileRenderer::setVertexBuffer() {

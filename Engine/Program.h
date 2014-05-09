@@ -10,19 +10,32 @@
 #define __Engine__Program__
 
 #include <iostream>
+
+
+
 #include <vector>
 #include "Shader.h"
 
+
+#if defined __GNUC__ || defined __APPLE__
+#include <ext/hash_map>
+#else
+#include <hash_map>
+#endif
+
+
 using namespace std;
+
+using namespace __gnu_cxx;
 
 class Program {
     GLuint program;
     
 public:
     
-    static Program* TeaProgram();
+    static Program* fetchProgram(string vs, string fs);
     
-    Program(vector<Shader> _shaders);
+    Program(GLuint vs, GLuint fs);
     GLuint getProgram();
     
     GLint attrib(const GLchar* attribName) const;
@@ -30,7 +43,8 @@ public:
     
     
 private:
-    static Program *m_teaInstance;
+    static GLuint makeShader(string filename, GLenum t);
+    static hash_map<string, Program *> *instances;
 };
 
 #endif /* defined(__Engine__Program__) */

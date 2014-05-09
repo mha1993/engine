@@ -7,27 +7,70 @@
 //
 
 #include "Program.h"
+#include "FileReader.h"
 
+GLuint Program::makeShader(string filename, GLenum t) {
+    //create shader
+    
+    GLuint shader = glCreateShader(t);
+    
+    //load source
+    FileReader *filereader = new FileReader();
+    
+    string str = filereader->FileReader::readFile(filename);
+    const char *source = str.c_str();
+    int s = sizeof(char)*str.length();
+    const GLint *size = &s;
+    glShaderSource(shader, 1, (const GLchar**)&source, size);
+    
+    //compile shader
+    glCompileShader(shader);
+    
+    //throw exception if compile error occurred
+    GLint status;
+    glGetShaderiv(shader, GL_COMPILE_STATUS, &status);
+    if (status == GL_FALSE) {
+        string msg("\nCompile failure in shader:\n" + filename);
+        
+        GLint infoLogLength;
+        glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLogLength);
+        char* strInfoLog = new char[infoLogLength + 1];
+        glGetShaderInfoLog(shader, infoLogLength, NULL, strInfoLog);
+        msg += strInfoLog;
+        delete[] strInfoLog;
+        
+        glDeleteShader(shader);
+        shader = 0;
+        
+        cerr << msg << endl;
+        exit(EXIT_FAILURE);
+        
+    } else {
+        cout << "Shader compiled from file " << filename << endl;
+    }
+    
+    return shader;
 
+}
 
-Program::Program(vector<Shader> _shaders) {
+Program::Program(GLuint vs, GLuint fs) {
     //create the program object
+    
+    
     program = glCreateProgram();
     if(program == 0)
         throw std::runtime_error("glCreateProgram failed");
     
-    //attach all the shaders
-    for(unsigned i = 0; i < _shaders.size(); ++i)
-        glAttachShader(program, _shaders[i].getShader());
+    glAttachShader(program,vs);
+    glAttachShader(program,fs);
     
     //link the shaders together
     glLinkProgram(program);
     
-    //detach all the shaders
-    for(unsigned i = 0; i < _shaders.size(); ++i)
-        glDetachShader(program, _shaders[i].getShader());
+    glDetachShader(program,vs);
+    glDetachShader(program,fs);
     
-    //throw exception if linking failed
+      //throw exception if linking failed
     GLint status;
     glGetProgramiv(program, GL_LINK_STATUS, &status);
     if (status == GL_FALSE) {
@@ -73,21 +116,32 @@ GLint Program::uniform(const GLchar* uniformName) const {
     return uniform;
 }
 
+hash_map<string, Program *> *Program::instances;
 
-Program* Program::m_teaInstance = NULL;
-
-Program* Program::TeaProgram()
+Program* Program::fetchProgram(string vs,string fs)
 {
-    if (!Program::m_teaInstance){   // Only allow one instance of class to be generated.
-        
-        vector<Shader> shaders;
-        Shader *vertShader = new Shader::Shader("shader.vsh", GL_VERTEX_SHADER);
-        Shader *fragShader = new Shader::Shader("blue.fsh", GL_FRAGMENT_SHADER);
-        
-        shaders.push_back(*vertShader);
-        shaders.push_back(*fragShader);
-        
-        Program::m_teaInstance = new Program::Program(shaders);
+    if (!Program::instances){   // Only allow one instance of class to be generated.
+        Program::instances = new hash_map<string, Program*>;
     }
-    return Program::m_teaInstance;
+    
+    
+    string key = vs + fs;
+    
+    hash_map<string, Program *>::iterator i = Program::instances->find(key);
+    
+    if (i == Program::instances->end()) {
+        /* Not found */
+        
+        GLuint vsp = Program::makeShader(vs, GL_VERTEX_SHADER);
+        GLuint fsp = Program::makeShader(fs, GL_FRAGMENT_SHADER);
+        
+        Program *p = new Program(vsp,fsp);
+        
+        (*Program::instances)[key] = p;
+        return p;
+    }
+    else {
+        /* i->first will contain "apple", i->second will contain 5 */
+        return i->second;
+    }
 }

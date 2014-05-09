@@ -38,6 +38,7 @@ void Map::render(tdogl::Camera *camera) {
 
 
 void Map::constructTileProgram() {
+    /*
     vector<Shader> shaders;
     Shader *vertShader = new Shader::Shader("shader.vsh", GL_VERTEX_SHADER);
     Shader *fragShader = new Shader::Shader("green.fsh", GL_FRAGMENT_SHADER);
@@ -46,11 +47,13 @@ void Map::constructTileProgram() {
     shaders.push_back(*fragShader);
     
     tileProgram = new Program::Program(shaders);
+     */
 }
 
 
 
 void Map::constructEdgeProgram() {
+    /*
     vector<Shader> shaders;
     Shader *vertShader = new Shader::Shader("shader.vsh", GL_VERTEX_SHADER);
     Shader *fragShader = new Shader::Shader("red.fsh", GL_FRAGMENT_SHADER);
@@ -59,6 +62,7 @@ void Map::constructEdgeProgram() {
     shaders.push_back(*fragShader);
     
     edgeProgram = new Program::Program(shaders);
+     */
 }
 
 void Map::processLine(vector<string> line, int lineNumber) {
@@ -74,7 +78,7 @@ void Map::processLine(vector<string> line, int lineNumber) {
         int numberOfVertices = atoi(line[2].c_str());
         
         Renderer *tileRenderer = new TileRenderer;
-        tileRenderer->addProgram(tileProgram);
+        //tileRenderer->addProgram(tileProgram);
         Object *tileObject = new Object::Object();
         
         tileObject->setRenderer(tileRenderer);
@@ -86,8 +90,8 @@ void Map::processLine(vector<string> line, int lineNumber) {
             vertices[i] = atof(line[i+3].c_str());
         }
         
-        tileRenderer->addProgram(tileProgram);
-        tileRenderer->setDrawMethod(GL_TRIANGLE_FAN);
+        //tileRenderer->addProgram(tileProgram);
+        //tileRenderer->setDrawMethod(GL_TRIANGLE_FAN);
         tileObject->setNRVertAndVertex(numberOfVertices, vertices);
         
         for (int i = 0; i<numberOfVertices ; i++){
@@ -113,7 +117,7 @@ void Map::processLine(vector<string> line, int lineNumber) {
                 edgeObject->setRenderer(edgeRenderer);
                 edgeRenderer->setObject(edgeObject);
                 
-                edgeRenderer->addProgram(edgeProgram);
+                edgeRenderer->addProgram( Program::fetchProgram("shader.vsh", "red.fsh") );
                 edgeRenderer->setDrawMethod(GL_LINES);
                 
                 edgeObject->setNRVertAndVertex(2, lineVertices);
@@ -158,10 +162,11 @@ void Map::processLine(vector<string> line, int lineNumber) {
         
         TileRenderer *teaRenderer = new TileRenderer;
         
-        teaRenderer->addProgram(Program::TeaProgram());
-        
         tea->setRenderer(teaRenderer);
         teaRenderer->setObject(tea);
+        
+        
+        teaRenderer->addProgram(Program::fetchProgram("shader.vsh", "blue.fsh"));
         
         tea->setNRVertAndVertex(4, vertices);
 

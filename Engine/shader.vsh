@@ -8,6 +8,7 @@ out vec3 aNormal;
 
 void main() {
     
+    
     aNormal = aVertexNormal;
     
     gl_Position = camera * vec4(vert, 1.0);

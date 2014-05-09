@@ -47,7 +47,8 @@ SphereRenderer::SphereRenderer(float r)
     
     numberOfV = vertices.size();
     
-    addProgram(Program::TeaProgram());
+    program = Program::fetchProgram("shader.vsh", "blue.fsh");
+    
     setDrawMethod(GL_TRIANGLE_STRIP);
     
     // make and bind the VAO
