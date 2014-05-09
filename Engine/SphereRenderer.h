@@ -21,7 +21,7 @@ class SphereRenderer : public Renderer {
     int numberOfV;
     
 public:
-    SphereRenderer(float Radius);
+    SphereRenderer();
     
 protected:
     int numberOfVertecis();

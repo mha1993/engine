@@ -221,15 +221,21 @@ Map::Map(string file) {
         lineNumber++;
     }
     
+    float ballRadius = 0.1;
+    
+    
     Object *sphere = new Object::Object();
-    Renderer *sphereRenderer = new SphereRenderer(0.1);
+    PhysicsObject *ballPhysics = new PhysicsObject(ballRadius);
+    sphere->setPhysics(ballPhysics);
+    Renderer *sphereRenderer = new SphereRenderer();
     sphereRenderer->setObject(sphere);
+    
     sphere->Object::setRenderer(sphereRenderer);
-    pe->addMovableObject(sphere->getPhysics());
-    sphere->getPhysics()->setVelocity(glm::vec3(0,0,-0.1));
-    sphere->getPhysics()->scale(glm::scale(glm::mat4(), glm::vec3(.1,.1,.1)));
-    sphere->getPhysics()->setPosition(teeLoc);
-    sphere->getPhysics()->offsetPosition(glm::vec3(0,0.1,0));
+    pe->addMovableObject(ballPhysics);
+    ballPhysics->setVelocity(glm::vec3(0,0,-0.1));
+    //sphere->getPhysics()->scale(glm::scale(glm::mat4(), glm::vec3(.1,.1,.1)));
+    ballPhysics->setPosition(teeLoc);
+    ballPhysics->offsetPosition(glm::vec3(0,ballRadius,0));
     
     
     

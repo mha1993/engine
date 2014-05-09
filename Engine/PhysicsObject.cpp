@@ -43,7 +43,17 @@ void PhysicsObject::scale(glm::mat4 s) {
 }
 
 
-PhysicsObject::PhysicsObject() {
+float PhysicsObject::getRadius(){
+    return radius;
+}
+
+
+PhysicsObject::PhysicsObject(float _raduis) {
     position = glm::vec3();
     velocity = glm::vec3();
+    
+    radius = _raduis;
+    
+    scale(glm::scale(glm::mat4(), glm::vec3(radius,radius,radius)));
+    
 }

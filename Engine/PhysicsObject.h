@@ -21,7 +21,13 @@ class PhysicsObject{
     glm::mat4 scaleMatrix;
     glm::mat4 translateMatrix;
     
+    float radius;
+    
+    
 public:
+    
+    float getRadius();
+    
     glm::vec3 getPosition();
     glm::vec3 getVelocity();
     glm::mat4 getModelMatrix();
@@ -32,7 +38,7 @@ public:
     void offsetPosition(glm::vec3 _p);
     void offsetVelocity(glm::vec3 _v);
     
-    PhysicsObject();
+    PhysicsObject(float _raduis);
     
 };
 

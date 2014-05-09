@@ -13,7 +13,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 
-SphereRenderer::SphereRenderer(float r)
+SphereRenderer::SphereRenderer()
 {
     int lats = 5;
     int longs = 10;

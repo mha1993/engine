@@ -27,6 +27,8 @@ public:
     vector<glm::vec3> getVertecis();
     int getNrVert();
     
+    void setPhysics(PhysicsObject * po);
+    
     Object();
     void setRenderer(Renderer* renderer);
     Renderer * getRenderer();

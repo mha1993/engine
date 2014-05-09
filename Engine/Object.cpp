@@ -11,7 +11,7 @@
 #include "Renderer.h"
 
 Object::Object() {
-	physics = new PhysicsObject();
+	physics = new PhysicsObject(1.0);
 }
 
 
@@ -29,6 +29,16 @@ void Object::render() {
 }
 
 
+
+void Object::setPhysics(PhysicsObject * po){
+    
+    if (physics){
+        delete physics;
+    }
+    
+    physics = po;
+}
+
 vector<glm::vec3> Object::getVertecis(){
     return vertices;
 }
@@ -39,8 +49,6 @@ int Object::getNrVert(){
 void Object::setNRVertAndVertex(vector<glm::vec3> v){
     
     vertices = v;
-    
-
 }
 
 glm::mat4 Object::getModelMatrix() {

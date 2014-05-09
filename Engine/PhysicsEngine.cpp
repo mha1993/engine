@@ -21,20 +21,40 @@ void PhysicsEngine::addPlane(PhysicsPlane *po) {
 PhysicsPlane* PhysicsEngine::getCurrentTile() {
     PhysicsObject *ball = movableObjects[0];
     glm::vec3 ballPosition = ball->getPosition();
+    
+    bool jakob = false;
+    
     for (int i = 0; i < imovableObjects.size(); i++) {
-        if (pointInPoly(imovableObjects[i]->getVerts(), ballPosition)) {
-            std::cout << i << std::endl;
-            return imovableObjects[i];
+        
+        PhysicsPlane *pp = imovableObjects[i];
+        
+        float dfp = distanceFromPlane(pp->getVerts()[0],pp->getNormal(), ballPosition);
+        
+        if (d0(dfp, ball->getRadius())){
+            if (pointInPoly3D(pp->getVerts(), ballPosition)) {
+                std::cout << i << std::endl;
+                return pp;
+            }
+        }else{
+            jakob = true;
         }
     }
     
-    std::cout << "aNOOOO" << std::endl;
+    if (!jakob){
+        printf("DSAHDHSAHDSAS\n");
+        exit(321);
+    }
     
     return NULL;
 }
 
 void PhysicsEngine::calcForces() {
     PhysicsPlane*tile = getCurrentTile();
+    
+    if (tile == NULL){
+        return;
+    }
+    
     glm::vec3 n = tile->getNormal();
     glm::vec3 v = movableObjects[0]->getVelocity();
     movableObjects[0]->setVelocity(-(n*(glm::dot(v, n))-v));
