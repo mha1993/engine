@@ -203,6 +203,9 @@ Map::Map(string file) {
     string line;
     istringstream f((file));
     int lineNumber = 0;
+    
+    pe = new PhysicsEngine();
+    
     while ( getline (f,line) )
     {
         vector<string> vec;
@@ -214,7 +217,6 @@ Map::Map(string file) {
         lineNumber++;
     }
     
-    pe = new PhysicsEngine();
     Object *sphere = new Object::Object();
     Renderer *sphereRenderer = new SphereRenderer(10.0);
     sphereRenderer->setObject(sphere);
