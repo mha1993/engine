@@ -11,7 +11,7 @@
 #include "Renderer.h"
 
 Object::Object() {
-	//test -- remove this line it <-----
+	physics = new PhysicsObject();
 }
 
 
@@ -43,4 +43,12 @@ void Object::setNRVertAndVertex(int nrv,GLfloat *v){
     vertices = v;
     
 
+}
+
+glm::mat4 Object::getModelMatrix() {
+    return physics->getModelMatrix();
+}
+
+PhysicsObject* Object::getPhysics() {
+    return physics;
 }

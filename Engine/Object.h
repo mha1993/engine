@@ -13,14 +13,17 @@
 #include <vector>
 #include "glm.hpp"
 #include <GL/glew.h>
+#include "PhysicsObject.h"
 
 class Renderer;
 
 using namespace std;
 
 class Object {
-public:
+    PhysicsObject *physics;
     
+public:
+    PhysicsObject* getPhysics();
     GLfloat* getVertecis();
     int getNrVert();
     
@@ -30,6 +33,8 @@ public:
     void render();
     
     void setNRVertAndVertex(int numberOfVertices,GLfloat *vertices);
+    
+    glm::mat4 getModelMatrix();
     
 private:
     int numberOfVertices;

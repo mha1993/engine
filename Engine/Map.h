@@ -18,6 +18,7 @@
 #include "TileRenderer.h"
 #include "Program.h"
 #include "Shader.h"
+#include "PhysicsEngine.h"
 #include "Camera.h"
 
 
@@ -29,6 +30,7 @@ class Map {
     vector<int> neighborIds;
     Program *tileProgram;
     Program *edgeProgram;
+    PhysicsEngine *pe;
     
 public:
     Map(string file);

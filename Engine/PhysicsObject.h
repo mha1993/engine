@@ -10,17 +10,27 @@
 #define __Engine__PhysicsObject__
 
 #include <iostream>
+#include <glm.hpp>
 
 
 class PhysicsObject{
-
-    /**
-        returns the time it takes before objects collide if both remain in current speed
-        returns -1 if the objects will not collide within maxtime
-     */
-    float timeToCollision(PhysicsObject *po, float maxTime);
-
     
+    glm::vec3 position;
+    glm::vec3 velocity;
+    
+    glm::mat4 model;
+    
+public:
+    glm::vec3 getPosition();
+    glm::vec3 getVelocity();
+    glm::mat4 getModelMatrix();
+    
+    void setPosition(glm::vec3 _p);
+    void setVelocity(glm::vec3 _v);
+    void offsetPosition(glm::vec3 _p);
+    void offsetVelocity(glm::vec3 _v);
+    
+    PhysicsObject();
     
 };
 

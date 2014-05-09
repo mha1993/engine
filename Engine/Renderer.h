@@ -33,6 +33,7 @@ public:
     int getNumberOfVertices();
     void setDrawMethod(GLuint _drawMethod);
     void setCameraMatrix(const glm::mat4 *matrix);
+    void setModelMatrix();
     void render();
     Renderer();
     
@@ -40,8 +41,10 @@ public:
     
     void setNormals(GLfloat *norm,int numberVertecis);
     
-protected:
+private:
+    glm::mat4 getModelMatrix();
     
+protected:
     Object *myObject;
     virtual void setVertexBuffer();
     virtual int numberOfVertecis();

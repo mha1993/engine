@@ -28,8 +28,11 @@ void Map::render(tdogl::Camera *camera) {
     glm::mat4 bla = camera->Camera::matrix();
     cam = &bla;
     
+    pe->updatePositions(0.1);
+    
     for (int i=0; i<renderers.size(); i++) {
         renderers[i]->setCameraMatrix(cam);
+        
         renderers[i]->render();
     }
     
@@ -202,8 +205,17 @@ Map::Map(string file) {
         processLine(vec, lineNumber);
         lineNumber++;
     }
-    Renderer *sphere = new SphereRenderer(10.0);
     
-    renderers.push_back(sphere);
+    pe = new PhysicsEngine();
+    Object *sphere = new Object::Object();
+    Renderer *sphereRenderer = new SphereRenderer(10.0);
+    sphereRenderer->setObject(sphere);
+    sphere->Object::setRenderer(sphereRenderer);
+    pe->addMovableObject(sphere->getPhysics());
+    sphere->getPhysics()->setVelocity(glm::vec3(1,0,0));
+    
+    
+    
+    renderers.push_back(sphereRenderer);
     
 }

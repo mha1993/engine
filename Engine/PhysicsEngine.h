@@ -17,22 +17,18 @@
 
 using namespace std;
 
-class PysicsEngine{
+class PhysicsEngine{
     
     vector<PhysicsObject *> imovableObjects;
     vector<PhysicsObject *> movableObjects;
     
     PhysicsObject *firstCollisionObjectA;
-    PhysicsObject *firstCollisionObjectB;
+    
+    float nextColTime;
     
 public:
-    
     void addMovableObject(PhysicsObject *po);
     void addImovableObject(PhysicsObject *po);
     
-    void removeObject(PhysicsObject * po);
-    
-    void tick(float timeElapsed);
-    
-    
+    void updatePositions(float deltaT);
 };

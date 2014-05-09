@@ -9,6 +9,9 @@
 #include "Renderer.h"
 #include <glm/gtc/type_ptr.hpp>
 
+glm::mat4 Renderer::getModelMatrix() {
+    return myObject->getModelMatrix();
+}
 
 void Renderer::setCameraMatrix(const glm::mat4 *matrix) {
     glUseProgram(program->getProgram());
@@ -18,6 +21,17 @@ void Renderer::setCameraMatrix(const glm::mat4 *matrix) {
     glUniformMatrix4fv(uniform, 1, GL_FALSE, glm::value_ptr(*matrix));
     glUseProgram(0);
 }
+
+void Renderer::setModelMatrix() {
+    glm::mat4 matrix = getModelMatrix();
+    glUseProgram(program->getProgram());
+    GLint uniform = glGetUniformLocation(program->getProgram(), "model");
+    if(uniform == -1)
+        throw std::runtime_error(std::string("Program uniform not found: ") + "model");
+    glUniformMatrix4fv(uniform, 1, GL_FALSE, glm::value_ptr(matrix));
+    glUseProgram(0);
+}
+
 
 
 void Renderer::setObject(Object *o){
@@ -52,16 +66,6 @@ void Renderer::setVertexBuffer() {
     
     
 }
-/*
-glm::vec3 Renderer::getVertex(int i) {
-    if (i < numberOfVertices) {
-        return glm::vec3(vertices[3*i], vertices[3*i+1], vertices[3*i+2]);
-    } else {
-        cerr << "invalid vertex index!\n" << endl;
-        return glm::vec3(0.0,0.0,0.0);
-    }
-}
-*/
 
 void Renderer::setDrawMethod(GLuint _drawMethod) {
     drawMethod = _drawMethod;
@@ -77,6 +81,7 @@ int Renderer::numberOfVertecis(){
 }
 
 void Renderer::render() {
+    setModelMatrix();
     
     if (!bufferIsSet){
         setVertexBuffer();
