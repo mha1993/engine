@@ -10,13 +10,13 @@
 
 #include <vector>
 #include "glm.hpp"
+#include <glm/gtc/matrix_transform.hpp>
 
 
 SphereRenderer::SphereRenderer(float r)
 {
     int lats = 5;
     int longs = 10;
-    
     
     vector<glm::vec3> vertices;
     vector<glm::vec3> normals;

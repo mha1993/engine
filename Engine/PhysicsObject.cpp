@@ -19,8 +19,7 @@ glm::vec3 PhysicsObject::getVelocity() {
 }
 
 glm::mat4 PhysicsObject::getModelMatrix() {
-    glm::mat4 mat = glm::translate(glm::mat4(), position);
-    return mat;
+    return glm::translate(glm::mat4(), position)*scaleMatrix;
 }
 
 void PhysicsObject::setPosition(glm::vec3 _p) {
@@ -37,6 +36,10 @@ void PhysicsObject::offsetPosition(glm::vec3 _p) {
 
 void PhysicsObject::offsetVelocity(glm::vec3 _v) {
     velocity = velocity + _v;
+}
+
+void PhysicsObject::scale(glm::mat4 s) {
+    scaleMatrix *= s;
 }
 
 

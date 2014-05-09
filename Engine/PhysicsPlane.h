@@ -34,4 +34,6 @@ public:
     PhysicsPlane(vector<glm::vec3> vertecis);
     void addNormal(glm::vec3 v);
     float collisionTime(PhysicsObject *po);
+    vector<glm::vec3> getVerts();
+    glm::vec3 getNormal();
 };

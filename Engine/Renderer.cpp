@@ -32,8 +32,6 @@ void Renderer::setModelMatrix() {
     glUseProgram(0);
 }
 
-
-
 void Renderer::setObject(Object *o){
     myObject = o;
 }

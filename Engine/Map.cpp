@@ -20,8 +20,12 @@
 #define TEE "tee"
 #define CUP "cup"
 
+#include <glm/gtc/matrix_transform.hpp>
+
 #include "PhysicsUtil.h"
 #include "PhysicsPlane.h"
+
+glm::vec3 teeLoc;
 
 
 void Map::render(tdogl::Camera *camera) {
@@ -30,7 +34,7 @@ void Map::render(tdogl::Camera *camera) {
     glm::mat4 bla = camera->Camera::matrix();
     cam = &bla;
     
-    pe->updatePositions(0.1);
+    pe->tick(0.1);
     
     for (int i=0; i<renderers.size(); i++) {
         renderers[i]->setCameraMatrix(cam);
@@ -158,7 +162,7 @@ void Map::processLine(vector<string> line, int lineNumber) {
         }
         glm::vec3 loc = glm::vec3(atof(line[2].c_str()),atof(line[3].c_str()),atof(line[4].c_str()));
         
-        
+        teeLoc = loc;
         loc = loc + glm::vec3(0,.001,0);
         vector<glm::vec3> teeVert;
         
@@ -169,19 +173,19 @@ void Map::processLine(vector<string> line, int lineNumber) {
         teeVert.push_back(loc + glm::vec3(+.1,0,-.1));
 
         
-        Object *tea = new Object;
+        tee = new Object;
         
-        TileRenderer *teaRenderer = new TileRenderer;
+        TileRenderer *teeRenderer = new TileRenderer;
         
-        tea->setRenderer(teaRenderer);
-        teaRenderer->setObject(tea);
+        tee->setRenderer(teeRenderer);
+        teeRenderer->setObject(tee);
         
         
-        teaRenderer->addProgram(Program::fetchProgram("shader.vsh", "blue.fsh"));
+        teeRenderer->addProgram(Program::fetchProgram("shader.vsh", "blue.fsh"));
         
-        tea->setNRVertAndVertex(teeVert);
+        tee->setNRVertAndVertex(teeVert);
 
-        renderers.push_back(teaRenderer);
+        renderers.push_back(teeRenderer);
     
     }else if (line[0].compare(CUP) == 0){
         
@@ -218,11 +222,14 @@ Map::Map(string file) {
     }
     
     Object *sphere = new Object::Object();
-    Renderer *sphereRenderer = new SphereRenderer(10.0);
+    Renderer *sphereRenderer = new SphereRenderer(0.1);
     sphereRenderer->setObject(sphere);
     sphere->Object::setRenderer(sphereRenderer);
     pe->addMovableObject(sphere->getPhysics());
-    sphere->getPhysics()->setVelocity(glm::vec3(1,0,0));
+    sphere->getPhysics()->setVelocity(glm::vec3(0,0,-0.1));
+    sphere->getPhysics()->scale(glm::scale(glm::mat4(), glm::vec3(.1,.1,.1)));
+    sphere->getPhysics()->setPosition(teeLoc);
+    sphere->getPhysics()->offsetPosition(glm::vec3(0,0.1,0));
     
     
     

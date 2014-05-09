@@ -18,12 +18,14 @@ class PhysicsObject{
     glm::vec3 position;
     glm::vec3 velocity;
     
-    glm::mat4 model;
+    glm::mat4 scaleMatrix;
+    glm::mat4 translateMatrix;
     
 public:
     glm::vec3 getPosition();
     glm::vec3 getVelocity();
     glm::mat4 getModelMatrix();
+    void scale(glm::mat4 s);
     
     void setPosition(glm::vec3 _p);
     void setVelocity(glm::vec3 _v);

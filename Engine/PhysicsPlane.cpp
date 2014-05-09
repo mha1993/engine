@@ -27,3 +27,11 @@ float PhysicsPlane::collisionTime(PhysicsObject::PhysicsObject *po){
     return -1;
     
 }
+
+vector<glm::vec3> PhysicsPlane::getVerts() {
+    return verts;
+}
+
+glm::vec3 PhysicsPlane::getNormal() {
+    return normal;
+}

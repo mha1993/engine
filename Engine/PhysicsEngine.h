@@ -34,5 +34,10 @@ public:
     void addMovableObject(PhysicsObject *po);
     void addPlane(PhysicsPlane *po);
     
+    void tick(float deltaT);
+    
+private:
     void updatePositions(float deltaT);
+    PhysicsPlane* getCurrentTile();
+    void calcForces();
 };

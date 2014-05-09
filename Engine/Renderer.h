@@ -25,7 +25,7 @@
 using namespace std;
 
 class Renderer {
-
+    
 public:
     void addProgram(Program *_program);
     
@@ -33,7 +33,6 @@ public:
     int getNumberOfVertices();
     void setDrawMethod(GLuint _drawMethod);
     void setCameraMatrix(const glm::mat4 *matrix);
-    void setModelMatrix();
     void render();
     Renderer();
     
@@ -45,6 +44,7 @@ private:
     glm::mat4 getModelMatrix();
     
 protected:
+    void setModelMatrix();
     Object *myObject;
     virtual void setVertexBuffer();
     virtual int numberOfVertecis();

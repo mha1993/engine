@@ -59,7 +59,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "hole02.db"
+            argument = "hole1.map"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

@@ -10,8 +10,9 @@ out vec3 aNormal;
 
 void main() {
     
+    vec4 tmp = model * vec4(aVertexNormal,0.0);
     
-    aNormal = aVertexNormal;
+    aNormal = tmp.xyz;
     
     gl_Position = camera * model * vec4(vert, 1.0);
 }

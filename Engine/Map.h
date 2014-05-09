@@ -32,6 +32,7 @@ class Map {
     Program *tileProgram;
     Program *edgeProgram;
     PhysicsEngine *pe;
+    Object *tee;
     
 public:
     Map(string file);

@@ -25,7 +25,7 @@
 
 void World::loadMap() {
     FileReader *fr = new FileReader::FileReader();
-    map = new Map::Map(fr->readFile("maps/hole.02.db"));
+    map = new Map::Map(fr->readFile("maps/hole.00.db"));
 }
 
 void World::renderScene() {
@@ -105,7 +105,7 @@ void World::init() {
     loadMap();
     
     camera = new tdogl::Camera::Camera();
-    camera->setPosition(glm::vec3(0,5,5));
+    camera->setPosition(glm::vec3(0,1,5));
     camera->lookAt(glm::vec3(0,0,0));
     camera->setViewportAspectRatio(WINDOW_WIDTH/ WINDOW_HEIGHT);
     
