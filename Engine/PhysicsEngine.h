@@ -37,7 +37,14 @@ public:
     void tick(float deltaT);
     
 private:
+    
+    PhysicsPlane *planeCol;
+    PhysicsObject *ballCol;
+    
+    void resolve();
+    
     void updatePositions(float deltaT);
     PhysicsPlane* getCurrentTile();
     void calcForces();
+    float nextCol(vector<PhysicsObject*> movable,vector<PhysicsPlane*> imovable);;
 };

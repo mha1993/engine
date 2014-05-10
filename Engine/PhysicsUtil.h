@@ -20,8 +20,12 @@ glm::vec3 calcNormal(glm::vec3 v1, glm::vec3 v2, glm::vec3 v3);
 
 bool pointOnLineSeg(glm::vec3 v1, glm::vec3 v2, glm::vec3 point);
 
-bool pointInPoly3D(std::vector<glm::vec3> verts, glm::vec3 point);
+bool pointInPoly3Ds(std::vector<glm::vec3> verts, glm::vec3 point);
 
 float distanceFromPlane(glm::vec3 pointOnPlane, glm::vec3 planeNormal, glm::vec3 point);
 
 bool d0(float a, float b);
+
+bool d0s(float a, float b,float stepSize);
+
+bool onTile(std::vector<glm::vec3> verts, glm::vec3 point);

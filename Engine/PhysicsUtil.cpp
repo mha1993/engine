@@ -38,6 +38,11 @@ glm::vec3 calcNormal(glm::vec3 a, glm::vec3 b, glm::vec3 c) {
     
 }
 
+bool d0s(float a, float b,float stepSize){
+    return fabs(a - b) < stepSize;
+}
+
+
 bool d0(float a, float b){
     return fabs(a - b) < 0.00001;
 }
@@ -89,8 +94,28 @@ float distanceFromLine(glm::vec3 a,glm::vec3 b,glm::vec3 point){
     
 }
 
+bool onTile(std::vector<glm::vec3> verts, glm::vec3 point){
 
-bool pointInPoly3D(std::vector<glm::vec3> verts, glm::vec3 point) {
+    if (verts.size() < 3){
+        return false;
+    }
+    
+    std::vector<glm::vec2> vert2D;
+    
+    for (int i = 0 ; i< verts.size() ; i++){
+        vec2 tmp = stripAxes(verts[i],1);
+        
+        vert2D.push_back(tmp);
+    }
+    
+    vec2 point2D = stripAxes(point, 1);
+    return pointInPoly2D(vert2D, point2D);
+
+    
+}
+
+
+bool pointInPoly3Ds(std::vector<glm::vec3> verts, glm::vec3 point) {
     
     if (verts.size() < 2){
         throw std::runtime_error("You need at least two points dumbass");
@@ -102,7 +127,6 @@ bool pointInPoly3D(std::vector<glm::vec3> verts, glm::vec3 point) {
     }
     
     vec3 norm = calcNormal(verts[0],verts[1],verts[2]);
-    
     float m = 0.0;
     float rm = 0;
     for (int i = 0; i<3 ; i++){
@@ -110,12 +134,10 @@ bool pointInPoly3D(std::vector<glm::vec3> verts, glm::vec3 point) {
             rm = i;
         }
     }
-    
     std::vector<glm::vec2> vert2D;
     
     for (int i = 0 ; i< verts.size() ; i++){
         vec2 tmp = stripAxes(verts[i],rm);
-        
         vert2D.push_back(tmp);
     }
     

@@ -34,7 +34,7 @@ void Map::render(tdogl::Camera *camera) {
     glm::mat4 bla = camera->Camera::matrix();
     cam = &bla;
     
-    pe->tick(0.1);
+    pe->tick(.1);
     
     for (int i=0; i<renderers.size(); i++) {
         renderers[i]->setCameraMatrix(cam);
@@ -103,7 +103,7 @@ void Map::processLine(vector<string> line, int lineNumber) {
             verts.push_back(v);
         }
         
-        glm::vec3 tileNormal = calcNormal(verts[0],verts[1],verts[2]);
+        glm::vec3 tileNormal = -calcNormal(verts[0],verts[1],verts[2]);
         
         PhysicsPlane *tilePhysics = new PhysicsPlane(verts);
         
@@ -142,7 +142,7 @@ void Map::processLine(vector<string> line, int lineNumber) {
                 
                 
                 int v3 = i+2 < numberOfVertices ? i+2 : 1;
-                glm::vec3 edgeNormal = calcNormal(lineVertices[0], lineVertices[1], lineVertices[0] + tileNormal);
+                glm::vec3 edgeNormal = calcNormal(lineVertices[0], lineVertices[1], lineVertices[0] - tileNormal);
                 
                 pp->addNormal(edgeNormal);
                 
@@ -221,7 +221,7 @@ Map::Map(string file) {
         lineNumber++;
     }
     
-    float ballRadius = 0.1;
+    float ballRadius = .09;
     
     
     Object *sphere = new Object::Object();
@@ -232,12 +232,10 @@ Map::Map(string file) {
     
     sphere->Object::setRenderer(sphereRenderer);
     pe->addMovableObject(ballPhysics);
-    ballPhysics->setVelocity(glm::vec3(0,0,-0.1));
+    ballPhysics->setVelocity(glm::vec3(1.0,0,0.41));
     //sphere->getPhysics()->scale(glm::scale(glm::mat4(), glm::vec3(.1,.1,.1)));
     ballPhysics->setPosition(teeLoc);
     ballPhysics->offsetPosition(glm::vec3(0,ballRadius,0));
-    
-    
     
     renderers.push_back(sphereRenderer);
     

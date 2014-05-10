@@ -21,35 +21,26 @@ void PhysicsEngine::addPlane(PhysicsPlane *po) {
 PhysicsPlane* PhysicsEngine::getCurrentTile() {
     PhysicsObject *ball = movableObjects[0];
     glm::vec3 ballPosition = ball->getPosition();
-    
-    bool jakob = false;
-    
+
     for (int i = 0; i < imovableObjects.size(); i++) {
         
         PhysicsPlane *pp = imovableObjects[i];
-        
-        float dfp = distanceFromPlane(pp->getVerts()[0],pp->getNormal(), ballPosition);
-        
-        if (d0(dfp, ball->getRadius())){
-            if (pointInPoly3D(pp->getVerts(), ballPosition)) {
-                std::cout << i << std::endl;
+       
+        //float dfp = distanceFromPlane(pp->getVerts()[0],pp->getNormal(), ballPosition);
+        //if (d0(dfp, ball->getRadius())){
+            if (onTile(pp->getVerts(), ballPosition)) {
+                //std::cout << i << std::endl;
                 return pp;
             }
-        }else{
-            jakob = true;
-        }
-    }
-    
-    if (!jakob){
-        printf("DSAHDHSAHDSAS\n");
-        exit(321);
+        //}
     }
     
     return NULL;
 }
 
 void PhysicsEngine::calcForces() {
-    PhysicsPlane*tile = getCurrentTile();
+    
+    PhysicsPlane *tile = getCurrentTile();
     
     if (tile == NULL){
         return;
@@ -57,13 +48,91 @@ void PhysicsEngine::calcForces() {
     
     glm::vec3 n = tile->getNormal();
     glm::vec3 v = movableObjects[0]->getVelocity();
-    movableObjects[0]->setVelocity(-(n*(glm::dot(v, n))-v));
+    
+    glm::vec3 newV = -(n*(glm::dot(v, n))-v);
+    
+    movableObjects[0]->setVelocity(newV);
+    
+}
+
+float PhysicsEngine::nextCol(vector<PhysicsObject*> movable,vector<PhysicsPlane*> imovable){
+    
+    PhysicsObject *po = movable[0];
+    
+    glm::vec3 ballVel = po->getVelocity();
+    glm::vec3 ballPos = po->getPosition();
+    
+    float colTime = -1;
+    
+    for (int i = 0; i<imovable.size() ; i++){
+        
+        PhysicsPlane *pp = imovable[i];
+        glm::vec3 norm = pp->getNormal();
+        
+        glm::vec3 pointOnPlane = pp->getVerts()[0];
+        
+        if (d0(glm::dot(norm, ballVel),0.0)){
+            continue;
+        }
+        
+        glm::vec3 p = ballPos + (norm * po->getRadius());
+        
+        float c = glm::dot((pointOnPlane - p),norm)/ glm::dot(ballVel,norm);
+        
+        if (c > 0 && (colTime < 0 || c < colTime)){
+            
+            glm::vec3 hitPoint = p + c * ballVel;
+
+            if (pointInPoly3Ds(pp->getVerts(), hitPoint)){
+            
+                colTime = c;
+                ballCol = po;
+                planeCol = pp;
+                
+            }
+        }
+    }
+    return colTime;
+}
+
+void PhysicsEngine::resolve(){
+    
+    
+    glm::vec3 normal = planeCol->getNormal();
+    glm::vec3 vel = ballCol->getVelocity();
+    glm::vec3 newVec = vel - (normal * (glm::dot(vel, normal) * 2.0f));
+    
+    
+    ballCol->setVelocity(newVec);
+    
+    planeCol = nullptr;
+    ballCol = nullptr;
     
 }
 
 void PhysicsEngine::tick(float deltaT) {
     calcForces();
-    updatePositions(deltaT);
+    
+    float timeLeft = deltaT;
+    
+    
+    int nrloops = 0;
+    
+    while (timeLeft > 0) {
+        
+        float nextColision = nextCol(movableObjects,imovableObjects);
+        
+        if ( nextColision < 0.0 || nextColision >= timeLeft){
+            updatePositions(timeLeft);
+            timeLeft = 0;
+        }else{
+            updatePositions(nextColision);
+            resolve();
+            timeLeft -= nextColision;
+        }
+        nrloops++;
+    }
+
 }
 
 void PhysicsEngine::updatePositions(float deltaT) {

@@ -25,7 +25,7 @@
 
 void World::loadMap() {
     FileReader *fr = new FileReader::FileReader();
-    map = new Map::Map(fr->readFile("maps/hole.00.db"));
+    map = new Map::Map(fr->readFile("maps/hole.02.db"));
 }
 
 void World::renderScene() {
@@ -57,7 +57,7 @@ void World::Update(float secondsElapsed) {
         camera->offsetPosition(secondsElapsed * moveSpeed * glm::vec3(0,1,0));
     }
     
-    float angleSpeed = 4.0f;
+    float angleSpeed = 8.0f;
     
     if (glfwGetKey('I')){
         camera->offsetOrientation(secondsElapsed * moveSpeed * angleSpeed, 0);
