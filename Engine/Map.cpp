@@ -188,21 +188,71 @@ void Map::processLine(vector<string> line, int lineNumber) {
         renderers.push_back(teeRenderer);
     
     }else if (line[0].compare(CUP) == 0){
-        
+       
         if (line.size() != 5) {
             std::cout << "ERROR: invalid cup on line " << lineNumber+1;
             exit(EXIT_FAILURE);
         }
         glm::vec3 loc = glm::vec3(atof(line[2].c_str()),atof(line[3].c_str()),atof(line[4].c_str()));
         
+        PhysicsPlane * ppp = pe->getTuchingPlane(loc, 0);
+        
+        glm::vec3 n = ppp->getNormal();
+        
+        glm::vec3 p1 = glm::vec3(1.0,1.0,-(n.x + n.y)/n.z);
+        
+        p1 = glm::normalize(p1);
+        glm::vec3 p2 = glm::cross(n, p1);
+        p2 = glm::normalize(p2);
+        
+        vector<glm::vec3> cupVerts;
+        
+        float r = ballRadius*1.5f;
+        
+        for (float i = 0; i<= 2*M_PI ; i+= M_PI/10){
+            
+            glm::vec3 na = p1 * r * cosf(i);
+            glm::vec3 nb = p2 * r * sinf(i);
+            
+            glm::vec3 v = loc + na + nb + glm::vec3(0,0.001,0.0);
+            
+            printf("%f %f %f\n",v.x,v.y,v.z);
+            
+            cupVerts.push_back(v);
+            
+        }
+        
+        /////////////////
+        
+        Object *cup = new Object;
+        
+        TileRenderer *cupRenderer = new TileRenderer;
+        
+        cup->setRenderer(cupRenderer);
+        cupRenderer->setObject(cup);
+    
+        cupRenderer->addProgram(Program::fetchProgram("shader.vsh", "blue.fsh"));
+        
+        cup->setNRVertAndVertex(cupVerts);
+        
+        renderers.push_back(cupRenderer);
+
+        
+        /////////////////
+        
+        
+        
+        printf("found %f,%f,%f",n.x,n.y,n.z);
+
     }else{
         std::cout << "Warning: invalid name: " + line[0] << endl;
     }
 }
 
+
+
+
 Map::Map(string file) {
-    constructTileProgram();
-    constructEdgeProgram();
     
     string line;
     istringstream f((file));
@@ -221,8 +271,6 @@ Map::Map(string file) {
         lineNumber++;
     }
     
-    float ballRadius = .09;
-    
     
     Object *sphere = new Object::Object();
     PhysicsObject *ballPhysics = new PhysicsObject(ballRadius);
@@ -233,10 +281,18 @@ Map::Map(string file) {
     sphere->Object::setRenderer(sphereRenderer);
     pe->addMovableObject(ballPhysics);
     ballPhysics->setVelocity(glm::vec3(1.0,0,0.41));
-    //sphere->getPhysics()->scale(glm::scale(glm::mat4(), glm::vec3(.1,.1,.1)));
     ballPhysics->setPosition(teeLoc);
     ballPhysics->offsetPosition(glm::vec3(0,ballRadius,0));
     
     renderers.push_back(sphereRenderer);
     
+}
+
+vector<tdogl::Camera *> Map::getCameras(){
+    
+    vector<tdogl::Camera *> c;
+    
+    
+    
+    return c;
 }

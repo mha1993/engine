@@ -36,6 +36,9 @@ public:
     
     void tick(float deltaT);
     
+    PhysicsPlane* getCurrentTile();
+    PhysicsPlane* getTuchingPlane(glm::vec3 pos, float r);
+    
 private:
     
     PhysicsPlane *planeCol;
@@ -44,7 +47,6 @@ private:
     void resolve();
     
     void updatePositions(float deltaT);
-    PhysicsPlane* getCurrentTile();
     void calcForces();
     float nextCol(vector<PhysicsObject*> movable,vector<PhysicsPlane*> imovable);;
 };

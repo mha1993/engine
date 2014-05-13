@@ -18,6 +18,26 @@ void PhysicsEngine::addPlane(PhysicsPlane *po) {
     imovableObjects.push_back(po);
 }
 
+PhysicsPlane* PhysicsEngine::getTuchingPlane(glm::vec3 pos, float r){
+
+    
+    for (int i = 0; i < imovableObjects.size(); i++) {
+        
+        PhysicsPlane *pp = imovableObjects[i];
+        
+        float dfp = distanceFromPlane(pp->getVerts()[0],pp->getNormal(), pos);
+        if (d0(dfp, r)){
+            if (onTile(pp->getVerts(), pos)) {
+                return pp;
+            }
+        }
+    }
+    
+    return nullptr;
+}
+
+
+
 PhysicsPlane* PhysicsEngine::getCurrentTile() {
     PhysicsObject *ball = movableObjects[0];
     glm::vec3 ballPosition = ball->getPosition();

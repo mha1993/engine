@@ -32,12 +32,13 @@ class Map {
     Program *tileProgram;
     Program *edgeProgram;
     PhysicsEngine *pe;
+    float ballRadius = .09;
     Object *tee;
     
 public:
     Map(string file);
     void render(tdogl::Camera *camera);
-    
+    vector<tdogl::Camera *> getCameras();
     
 private:
     void processLine(vector<string> line, int lineNumber);
