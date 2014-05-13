@@ -10,17 +10,17 @@
 #define __Engine__FollowCamera__
 
 #include <iostream>
-#include "Camera.h"
 #include "PhysicsObject.h"
+#include "ECamera.h"
 
 #endif /* defined(__Engine__FollowCamera__) */
 
-using namespace tdogl;
 
-class FollowCamera : public Camera{
+class FollowCamera : public ECamera{
 
     PhysicsObject *followObject;
-    
+public:
     FollowCamera(PhysicsObject *po );
-    
+    glm::mat4 matrix();
+    void update(float time);
 };

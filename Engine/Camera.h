@@ -129,7 +129,7 @@ namespace tdogl {
 
          This is the complete matrix to use in the vertex shader.
          */
-        glm::mat4 matrix() const;
+       virtual glm::mat4 matrix() const;
 
         /**
          The perspective projection transformation matrix

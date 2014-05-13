@@ -13,11 +13,12 @@
 #include <vector>
 
 #include "Map.h"
-#include "Camera.h"
+#include "ECamera.h"
 
 class World {
     Map *map;
-    tdogl::Camera *camera;
+    vector<ECamera*> cameras;
+    int currCamera;
     
 public:
     void init();

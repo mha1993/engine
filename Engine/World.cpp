@@ -24,52 +24,31 @@
 
 
 void World::loadMap() {
+    currCamera = 0;
     FileReader *fr = new FileReader::FileReader();
     map = new Map::Map(fr->readFile("maps/hole.02.db"));
+    cameras = map->getCameras(WINDOW_WIDTH/WINDOW_HEIGHT);
 }
 
 void World::renderScene() {
     glClearColor(0, 0, 0, 1);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    map->render(camera);
+    map->render(cameras[currCamera]);
     glfwSwapBuffers();
 }
 
 // update the scene based on the time elapsed since last update
 void World::Update(float secondsElapsed) {
-    
-    //move position of camera based on WASD keys, and XZ keys for up and down
-    const float moveSpeed = 8.0; //units per second
-    if(glfwGetKey('S')){
-        camera->offsetPosition(secondsElapsed * moveSpeed * -camera->forward());
-    } else if(glfwGetKey('W')){
-        camera->offsetPosition(secondsElapsed * moveSpeed * camera->forward());
-    }
-    if(glfwGetKey('A')){
-        camera->offsetPosition(secondsElapsed * moveSpeed * -camera->right());
-    } else if(glfwGetKey('D')){
-        camera->offsetPosition(secondsElapsed * moveSpeed * camera->right());
-    }
-    if(glfwGetKey('Z')){
-        camera->offsetPosition(secondsElapsed * moveSpeed * -glm::vec3(0,1,0));
-    } else if(glfwGetKey('X')){
-        camera->offsetPosition(secondsElapsed * moveSpeed * glm::vec3(0,1,0));
-    }
-    
-    float angleSpeed = 8.0f;
-    
-    if (glfwGetKey('I')){
-        camera->offsetOrientation(secondsElapsed * moveSpeed * angleSpeed, 0);
-    }else if (glfwGetKey('K')){
-        camera->offsetOrientation( - secondsElapsed * moveSpeed * angleSpeed, 0);
-    }
-    if (glfwGetKey('L')){
-        camera->offsetOrientation(0, secondsElapsed * moveSpeed * angleSpeed);
 
-    }else if (glfwGetKey('J')){
-        camera->offsetOrientation(0, - secondsElapsed * moveSpeed * angleSpeed);
+    
+    if (glfwGetKey('C')){
+        printf("dsadsadsadadsdsaa");
+        currCamera = ++currCamera % cameras.size();
     }
+    
+    cameras[currCamera]->update(secondsElapsed);
+    
 }
 
 void World::init() {
@@ -103,11 +82,6 @@ void World::init() {
     
     // create buffer and fill it with the points of the triangle
     loadMap();
-    
-    camera = new tdogl::Camera::Camera();
-    camera->setPosition(glm::vec3(0,1,5));
-    camera->lookAt(glm::vec3(0,0,0));
-    camera->setViewportAspectRatio(WINDOW_WIDTH/ WINDOW_HEIGHT);
     
     
     // run while the window is open

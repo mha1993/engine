@@ -25,6 +25,8 @@
 		B08EFFF91912C2380030C111 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B08EFFF81912C2380030C111 /* OpenGL.framework */; };
 		D62BAA551917FDD900240308 /* TileRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D62BAA531917FDD900240308 /* TileRenderer.cpp */; };
 		D63FEE9D1922A97F00F254F6 /* FollowCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D63FEE9B1922A97F00F254F6 /* FollowCamera.cpp */; };
+		D63FEEA01922AD9400F254F6 /* FPCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D63FEE9E1922AD9400F254F6 /* FPCamera.cpp */; };
+		D63FEEA31922B03B00F254F6 /* ECamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D63FEEA11922B03B00F254F6 /* ECamera.cpp */; };
 		D69834C2191AF8A20074B5C4 /* PhysicsEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D69834C0191AF8A20074B5C4 /* PhysicsEngine.cpp */; };
 		D6C03FE9191C9280003757F7 /* PhysicsPlane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6C03FE7191C9280003757F7 /* PhysicsPlane.cpp */; };
 		D6C03FEE191C9899003757F7 /* PhysicsUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6C03FEC191C9899003757F7 /* PhysicsUtil.cpp */; };
@@ -721,6 +723,10 @@
 		D62BAA541917FDD900240308 /* TileRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileRenderer.h; sourceTree = "<group>"; };
 		D63FEE9B1922A97F00F254F6 /* FollowCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FollowCamera.cpp; sourceTree = "<group>"; };
 		D63FEE9C1922A97F00F254F6 /* FollowCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowCamera.h; sourceTree = "<group>"; };
+		D63FEE9E1922AD9400F254F6 /* FPCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FPCamera.cpp; sourceTree = "<group>"; };
+		D63FEE9F1922AD9400F254F6 /* FPCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPCamera.h; sourceTree = "<group>"; };
+		D63FEEA11922B03B00F254F6 /* ECamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ECamera.cpp; sourceTree = "<group>"; };
+		D63FEEA21922B03B00F254F6 /* ECamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECamera.h; sourceTree = "<group>"; };
 		D69834C0191AF8A20074B5C4 /* PhysicsEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsEngine.cpp; sourceTree = "<group>"; };
 		D69834C1191AF8A20074B5C4 /* PhysicsEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsEngine.h; sourceTree = "<group>"; };
 		D6C03FE7191C9280003757F7 /* PhysicsPlane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsPlane.cpp; sourceTree = "<group>"; };
@@ -806,6 +812,10 @@
 				D6E9E9FC191B41F800F4778F /* SphereRenderer.h */,
 				D63FEE9B1922A97F00F254F6 /* FollowCamera.cpp */,
 				D63FEE9C1922A97F00F254F6 /* FollowCamera.h */,
+				D63FEE9E1922AD9400F254F6 /* FPCamera.cpp */,
+				D63FEE9F1922AD9400F254F6 /* FPCamera.h */,
+				D63FEEA11922B03B00F254F6 /* ECamera.cpp */,
+				D63FEEA21922B03B00F254F6 /* ECamera.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1716,6 +1726,7 @@
 				B08E02951912C2710030C111 /* glew.c in Sources */,
 				B08E029F1912D1A10030C111 /* Program.cpp in Sources */,
 				B08E02A719172C220030C111 /* red.fsh in Sources */,
+				D63FEEA01922AD9400F254F6 /* FPCamera.cpp in Sources */,
 				D6E9E9FD191B41F800F4778F /* SphereRenderer.cpp in Sources */,
 				D6E9E9F6191AFB3400F4778F /* PhysicsObject.cpp in Sources */,
 				B003A9D819105C89005838F5 /* World.cpp in Sources */,
@@ -1724,6 +1735,7 @@
 				B003ADE319107D17005838F5 /* Shader.cpp in Sources */,
 				D63FEE9D1922A97F00F254F6 /* FollowCamera.cpp in Sources */,
 				D62BAA551917FDD900240308 /* TileRenderer.cpp in Sources */,
+				D63FEEA31922B03B00F254F6 /* ECamera.cpp in Sources */,
 				B003ADE019107CF4005838F5 /* FileReader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

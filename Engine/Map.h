@@ -21,10 +21,13 @@
 #include "PhysicsEngine.h"
 #include "Camera.h"
 
+class ECamera;
+
 
 
 using namespace std;
 class Map {
+    Object *mrBall;
     vector<Renderer *> renderers;
     vector<Object*> objects;
     vector<Object*> neighbors;
@@ -38,7 +41,7 @@ class Map {
 public:
     Map(string file);
     void render(tdogl::Camera *camera);
-    vector<tdogl::Camera *> getCameras();
+    vector<ECamera *> getCameras(float aspectRatio);
     
 private:
     void processLine(vector<string> line, int lineNumber);

@@ -12,6 +12,7 @@
 #include <vector>
 #include <fstream>
 
+
 #include "SphereRenderer.h"
 
 #include "Map.h"
@@ -24,6 +25,9 @@
 
 #include "PhysicsUtil.h"
 #include "PhysicsPlane.h"
+
+#include "FPCamera.h"
+#include "FollowCamera.h"
 
 glm::vec3 teeLoc;
 
@@ -215,9 +219,7 @@ void Map::processLine(vector<string> line, int lineNumber) {
             glm::vec3 nb = p2 * r * sinf(i);
             
             glm::vec3 v = loc + na + nb + glm::vec3(0,0.001,0.0);
-            
-            printf("%f %f %f\n",v.x,v.y,v.z);
-            
+
             cupVerts.push_back(v);
             
         }
@@ -272,15 +274,15 @@ Map::Map(string file) {
     }
     
     
-    Object *sphere = new Object::Object();
+    mrBall = new Object::Object();
     PhysicsObject *ballPhysics = new PhysicsObject(ballRadius);
-    sphere->setPhysics(ballPhysics);
+    mrBall->setPhysics(ballPhysics);
     Renderer *sphereRenderer = new SphereRenderer();
-    sphereRenderer->setObject(sphere);
+    sphereRenderer->setObject(mrBall);
     
-    sphere->Object::setRenderer(sphereRenderer);
+    mrBall->Object::setRenderer(sphereRenderer);
     pe->addMovableObject(ballPhysics);
-    ballPhysics->setVelocity(glm::vec3(1.0,0,0.41));
+    ballPhysics->setVelocity(glm::vec3(0.1,0,0.41));
     ballPhysics->setPosition(teeLoc);
     ballPhysics->offsetPosition(glm::vec3(0,ballRadius,0));
     
@@ -288,11 +290,25 @@ Map::Map(string file) {
     
 }
 
-vector<tdogl::Camera *> Map::getCameras(){
+vector<ECamera *> Map::getCameras(float aspectRatio){
     
-    vector<tdogl::Camera *> c;
+    vector<ECamera *> c;
     
     
+    ECamera *camera = new FPCamera();
+    camera->setPosition(glm::vec3(0,1,5));
+    camera->lookAt(glm::vec3(0,0,0));
+    camera->setViewportAspectRatio(aspectRatio);
+    
+    c.push_back(camera);
+    
+    
+    camera = new FollowCamera(mrBall->getPhysics());
+    camera->setPosition(glm::vec3(0,1,5));
+    camera->lookAt(glm::vec3(0,0,0));
+    camera->setViewportAspectRatio(aspectRatio);
+    
+    c.push_back(camera);
     
     return c;
 }
