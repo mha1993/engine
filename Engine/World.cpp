@@ -28,6 +28,7 @@ void World::loadMap() {
     FileReader *fr = new FileReader::FileReader();
     map = new Map::Map(fr->readFile("maps/hole.02.db"));
     cameras = map->getCameras(WINDOW_WIDTH/WINDOW_HEIGHT);
+    dsa = true;
 }
 
 void World::renderScene() {
@@ -43,8 +44,12 @@ void World::Update(float secondsElapsed) {
 
     
     if (glfwGetKey('C')){
-        printf("dsadsadsadadsdsaa");
-        currCamera = ++currCamera % cameras.size();
+        if (dsa){
+            dsa = false;
+            currCamera = ++currCamera % cameras.size();
+        }
+    }else{
+        dsa = true;
     }
     
     cameras[currCamera]->update(secondsElapsed);

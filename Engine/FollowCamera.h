@@ -19,6 +19,7 @@
 class FollowCamera : public ECamera{
 
     PhysicsObject *followObject;
+    glm::vec3 lastPos;
 public:
     FollowCamera(PhysicsObject *po );
     glm::mat4 matrix();

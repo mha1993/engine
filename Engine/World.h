@@ -20,6 +20,8 @@ class World {
     vector<ECamera*> cameras;
     int currCamera;
     
+    bool dsa;
+    
 public:
     void init();
 
