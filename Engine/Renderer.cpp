@@ -9,6 +9,9 @@
 #include "Renderer.h"
 #include <glm/gtc/type_ptr.hpp>
 
+
+
+
 glm::mat4 Renderer::getModelMatrix() {
     return myObject->getModelMatrix();
 }
@@ -111,7 +114,6 @@ Renderer::Renderer() {
 void Renderer::setNormals(vector<glm::vec3> normals) {
 
     // make and bind the VAO
-    
     glBindVertexArray(vao);
     
     // make and bind the VBO

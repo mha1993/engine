@@ -21,6 +21,7 @@ GLuint Program::makeShader(string filename, GLenum t) {
     const char *source = str.c_str();
     int s = sizeof(char)*str.length();
     const GLint *size = &s;
+    
     glShaderSource(shader, 1, (const GLchar**)&source, size);
     
     //compile shader
@@ -116,6 +117,15 @@ GLint Program::uniform(const GLchar* uniformName) const {
     return uniform;
 }
 
+void Program::setMatrixUniform(const GLint uniform, const glm::mat4 & mat) {
+    glUseProgram(program);
+    if(uniform == -1){
+        //throw std::runtime_error(std::string("Program uniform not found: ") + "model");
+    }
+    glUniformMatrix4fv(uniform, 1, GL_FALSE, glm::value_ptr(mat));
+    glUseProgram(0);
+}
+
 hash_map<string, Program *> *Program::instances;
 
 Program* Program::fetchProgram(string vs,string fs)
@@ -123,8 +133,6 @@ Program* Program::fetchProgram(string vs,string fs)
     if (!Program::instances){   // Only allow one instance of class to be generated.
         Program::instances = new hash_map<string, Program*>;
     }
-    
-    
     string key = vs + fs;
     
     hash_map<string, Program *>::iterator i = Program::instances->find(key);
@@ -132,8 +140,10 @@ Program* Program::fetchProgram(string vs,string fs)
     if (i == Program::instances->end()) {
         /* Not found */
         
-        GLuint vsp = Program::makeShader(vs, GL_VERTEX_SHADER);
+        printf("making new sizz");
+        
         GLuint fsp = Program::makeShader(fs, GL_FRAGMENT_SHADER);
+        GLuint vsp = Program::makeShader(vs, GL_VERTEX_SHADER);
         
         Program *p = new Program(vsp,fsp);
         

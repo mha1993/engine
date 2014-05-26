@@ -13,7 +13,7 @@ void main() {
     vec3 diffVec = vec3(0.0, 0.0, 0.0);
     
     if ( length(aNormal) > 0.0){
-        vec3 lightDir = normalize(vec3(6.0, 1.0, 1.0));
+        vec3 lightDir = normalize(vec3(1.0, 1.0, 1.0));
         float diffuse = dot(normalize(aNormal),lightDir);
 	
         if (diffuse < 0.0){

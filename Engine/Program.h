@@ -15,8 +15,8 @@
 
 #include <vector>
 #include "Shader.h"
-
-
+#include "glm.hpp"
+#include <glm/gtc/type_ptr.hpp>
 #if defined __GNUC__ || defined __APPLE__
 #include <ext/hash_map>
 #else
@@ -41,6 +41,7 @@ public:
     GLint attrib(const GLchar* attribName) const;
     GLint uniform(const GLchar* uniformName) const;
     
+    void setMatrixUniform(const GLint uniform, const glm::mat4 & mat);
     
 private:
     static GLuint makeShader(string filename, GLenum t);
