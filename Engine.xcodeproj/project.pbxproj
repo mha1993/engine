@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B002AAFA1937B3D00056F20E /* SceneManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B002AAF81937B3D00056F20E /* SceneManager.cpp */; };
+		B002AAFF1937F0500056F20E /* PE3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B002AAFD1937F0500056F20E /* PE3.cpp */; };
+		B002AB051937F0D30056F20E /* Force.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B002AB031937F0D30056F20E /* Force.cpp */; };
 		B003A8BE1910540B005838F5 /* Engine.1 in Copy Files */ = {isa = PBXBuildFile; fileRef = B003A8BD1910540B005838F5 /* Engine.1 */; };
 		B003A9D2191054CE005838F5 /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B003A9D0191054CE005838F5 /* Object.cpp */; };
 		B003A9D519105549005838F5 /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B003A9D319105549005838F5 /* Renderer.cpp */; };
@@ -56,6 +59,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B002AAF81937B3D00056F20E /* SceneManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneManager.cpp; sourceTree = "<group>"; };
+		B002AAF91937B3D00056F20E /* SceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneManager.h; sourceTree = "<group>"; };
+		B002AAFD1937F0500056F20E /* PE3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PE3.cpp; sourceTree = "<group>"; };
+		B002AAFE1937F0500056F20E /* PE3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PE3.h; sourceTree = "<group>"; };
+		B002AB031937F0D30056F20E /* Force.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Force.cpp; sourceTree = "<group>"; };
+		B002AB041937F0D30056F20E /* Force.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Force.h; sourceTree = "<group>"; };
 		B003A8B81910540B005838F5 /* Engine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Engine; sourceTree = BUILT_PRODUCTS_DIR; };
 		B003A8BB1910540B005838F5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		B003A8BD1910540B005838F5 /* Engine.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Engine.1; sourceTree = "<group>"; };
@@ -781,6 +790,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B002AAFC1937EFD70056F20E /* Physics3 */ = {
+			isa = PBXGroup;
+			children = (
+				B002AAFD1937F0500056F20E /* PE3.cpp */,
+				B002AAFE1937F0500056F20E /* PE3.h */,
+				B002AB031937F0D30056F20E /* Force.cpp */,
+				B002AB041937F0D30056F20E /* Force.h */,
+			);
+			name = Physics3;
+			sourceTree = "<group>";
+		};
 		B003A8AF1910540B005838F5 = {
 			isa = PBXGroup;
 			children = (
@@ -824,6 +844,7 @@
 		B003A9CC191054A5005838F5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B002AAFC1937EFD70056F20E /* Physics3 */,
 				D6FD257E1930082B0020A8C9 /* deprecated */,
 				D69834BF191AF86D0074B5C4 /* physics */,
 				B003ADDE19107CF4005838F5 /* FileReader.cpp */,
@@ -844,6 +865,8 @@
 				D63FEE9F1922AD9400F254F6 /* FPCamera.h */,
 				D63FEEA11922B03B00F254F6 /* ECamera.cpp */,
 				D63FEEA21922B03B00F254F6 /* ECamera.h */,
+				B002AAF81937B3D00056F20E /* SceneManager.cpp */,
+				B002AAF91937B3D00056F20E /* SceneManager.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1791,10 +1814,13 @@
 				D63FEEA01922AD9400F254F6 /* FPCamera.cpp in Sources */,
 				D6E9E9FD191B41F800F4778F /* SphereRenderer.cpp in Sources */,
 				D6E9E9F6191AFB3400F4778F /* PhysicsObject.cpp in Sources */,
+				B002AAFF1937F0500056F20E /* PE3.cpp in Sources */,
 				D6FD257D192FEADE0020A8C9 /* WindowManager.cpp in Sources */,
+				B002AAFA1937B3D00056F20E /* SceneManager.cpp in Sources */,
 				B003A9D819105C89005838F5 /* World.cpp in Sources */,
 				D69834C2191AF8A20074B5C4 /* PhysicsEngine.cpp in Sources */,
 				D6C03FEE191C9899003757F7 /* PhysicsUtil.cpp in Sources */,
+				B002AB051937F0D30056F20E /* Force.cpp in Sources */,
 				B003ADE319107D17005838F5 /* Shader.cpp in Sources */,
 				D63FEE9D1922A97F00F254F6 /* FollowCamera.cpp in Sources */,
 				D62BAA551917FDD900240308 /* TileRenderer.cpp in Sources */,
