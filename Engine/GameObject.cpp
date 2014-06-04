@@ -9,24 +9,17 @@
 #include "GameObject.h"
 
 
-static int idCounter = 0;
-
 GameObject::GameObject(int idd): objectId(idd){
-    mesh = nullptr;
-}
-GameObject::GameObject(): objectId(idCounter++){
-    mesh = nullptr;
+    
 }
 
 void GameObject::tick(float tickTime){
-
     
 }
 
 PObject * GameObject::getPhysicsObject(){
 
-    return nullptr;
-    
+    return physicsObject;
 }
 
 void GameObject::collidedWith(GameObject *other, vec3 hitNormal, vec3 pos){

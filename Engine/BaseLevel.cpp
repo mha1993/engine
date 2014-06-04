@@ -23,16 +23,52 @@ BaseLevel::BaseLevel(WindowManager *wm){
 void BaseLevel::setup(){}
 void BaseLevel::teardown(){}
 
+#include <chrono>
+#include <thread>
+
+#include <sys/time.h>
+
+long timemillis(){
+    
+    timeval time;
+    gettimeofday(&time, NULL);
+    return (time.tv_sec * 1000) + (time.tv_usec / 1000);
+}
+
+
+long clamp(long n,long min, long max){
+
+    return std::max(min, std::min(n, max));
+
+}
+
 void BaseLevel::run(){
 
-    long double lastTime = time(0);
+    shouldBeRunning = true;
+    
+    long lastTime = timemillis();
     
     while (shouldBeRunning) {
         
-        long double newTime = time(0);
+        long newTime = timemillis();
+        
+        printf("nt:%ld\n",newTime);
+        printf("lt:%ld\n",lastTime);
+        
         float timeDiff = newTime - lastTime;
+        
         lastTime = newTime;
-        tick(timeDiff);
+        
+        tick(timeDiff/1000.0f);
+        
+        long maxSleepTime = 20;
+        
+        long sleeptime = clamp(maxSleepTime - timeDiff , 0, maxSleepTime);
+        printf("st:%ld\n",sleeptime);
+        printf("-----\n");
+        
+        std::this_thread::sleep_for(std::chrono::milliseconds(sleeptime));
+        
     }
 }
 
@@ -43,8 +79,10 @@ void BaseLevel::render(){
     mat4 cameraMatrix = currentCamera->matrix();
     mat4 identityMatrix = mat4();
     
-    windowManager->beforRender();
-    for (int i=0; i<gameObjects.size(); ){
+    windowManager->beforeRender();
+    
+    for (int i=0; i<gameObjects.size(); i++){
+    
         GameObject *gameObject = gameObjects[i];
         Mesh *mesh = gameObject->getMesh();
         
@@ -55,7 +93,6 @@ void BaseLevel::render(){
         mesh->draw();
     }
     windowManager->afterRender();
-
 
 }
 void BaseLevel::tick(float deltaTime){
@@ -82,7 +119,6 @@ void BaseLevel::tick(float deltaTime){
 int BaseLevel::addObject(GameObject *go){
     
     return sceneManager->addObject(go);
-    
 }
 
 void BaseLevel::setCurrentCamera(ECamera *camera){

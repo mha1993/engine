@@ -27,6 +27,13 @@ int main(int argv, const char** argc) {
     
     TestLevel *tl = new TestLevel(wm);
 
+    tl->setup();
+    tl->run();
+    
+    wm->stop();
+    
+    delete tl;
+    delete wm;
     
     
 }
@@ -35,18 +42,6 @@ int main(int argv, const char** argc) {
 
 
 /*
-glm::vec3 calcNormaltmp(glm::vec3 a, glm::vec3 b, glm::vec3 c) {
-    
-    
-    b = b - a;
-    c = c - a;
-    
-    glm::vec3 norm = glm::cross(b, c);
-    norm = glm::normalize(norm);
-    
-    return norm;
-    
-}
 
 
 int main(int argv, const char** argc) {

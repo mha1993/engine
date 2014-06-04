@@ -17,11 +17,13 @@ class GameObject{
     
     const int objectId;
     int physicsID;
+
+protected:
+    PObject *physicsObject;
     Mesh* mesh;
 
 public:
     GameObject(int idd);
-    GameObject();
     PObject* getPhysicsObject();
     Mesh* getMesh();
     

@@ -21,7 +21,7 @@ public:
     
     void init();
     void stop();
-    void beforRender();
+    void beforeRender();
     void afterRender();
     bool quitRequest();
     std::string readString();

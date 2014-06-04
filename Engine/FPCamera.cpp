@@ -17,7 +17,7 @@
 void FPCamera::update(float secondsElapsed){
     
     //move position of camera based on WASD keys, and XZ keys for up and down
-    const float moveSpeed = 8.0; //units per second
+    const float moveSpeed = 4.0; //units per second
     if(glfwGetKey('S')){
         offsetPosition(secondsElapsed * moveSpeed * -forward());
     } else if(glfwGetKey('W')){

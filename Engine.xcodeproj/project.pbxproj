@@ -36,6 +36,7 @@
 		D6E9E9F6191AFB3400F4778F /* PhysicsObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6E9E9F4191AFB3400F4778F /* PhysicsObject.cpp */; };
 		D6E9E9FD191B41F800F4778F /* SphereRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6E9E9FB191B41F800F4778F /* SphereRenderer.cpp */; };
 		D6F7ED53193FAC3100F36A6F /* TestLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F7ED51193FAC3100F36A6F /* TestLevel.cpp */; };
+		D6F7ED57193FD66A00F36A6F /* Tile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F7ED55193FD66A00F36A6F /* Tile.cpp */; };
 		D6FD2576192FD1430020A8C9 /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FD2574192FD1430020A8C9 /* Mesh.cpp */; };
 		D6FD257D192FEADE0020A8C9 /* WindowManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FD257B192FEADE0020A8C9 /* WindowManager.cpp */; };
 		D6FD25841930093E0020A8C9 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FD25821930093E0020A8C9 /* GameObject.cpp */; };
@@ -757,8 +758,10 @@
 		D6E9E9FA191B0C1300F4778F /* blue.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = blue.fsh; sourceTree = "<group>"; };
 		D6E9E9FB191B41F800F4778F /* SphereRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SphereRenderer.cpp; sourceTree = "<group>"; };
 		D6E9E9FC191B41F800F4778F /* SphereRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SphereRenderer.h; sourceTree = "<group>"; };
-		D6F7ED51193FAC3100F36A6F /* TestLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestLevel.cpp; sourceTree = "<group>"; };
-		D6F7ED52193FAC3100F36A6F /* TestLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestLevel.h; sourceTree = "<group>"; };
+		D6F7ED51193FAC3100F36A6F /* TestLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TestLevel.cpp; path = Engine/TestLevel.cpp; sourceTree = "<group>"; };
+		D6F7ED52193FAC3100F36A6F /* TestLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestLevel.h; path = Engine/TestLevel.h; sourceTree = "<group>"; };
+		D6F7ED55193FD66A00F36A6F /* Tile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tile.cpp; sourceTree = "<group>"; };
+		D6F7ED56193FD66A00F36A6F /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
 		D6FD2574192FD1430020A8C9 /* Mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mesh.cpp; sourceTree = "<group>"; };
 		D6FD2575192FD1430020A8C9 /* Mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
 		D6FD257A192FE9AD0020A8C9 /* easylogging++.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "easylogging++.h"; sourceTree = "<group>"; };
@@ -807,6 +810,7 @@
 		B003A8AF1910540B005838F5 = {
 			isa = PBXGroup;
 			children = (
+				D6F7ED54193FD5CE00F36A6F /* Game */,
 				B08EFFFA1912C26C0030C111 /* thirdparty */,
 				B08EFFF81912C2380030C111 /* OpenGL.framework */,
 				B08EFFF61912C2310030C111 /* Cocoa.framework */,
@@ -840,8 +844,6 @@
 				D6FD2593193154250020A8C9 /* Physics2 */,
 				D669992E19319310005EF7D4 /* BaseLevel.cpp */,
 				D669992F19319310005EF7D4 /* BaseLevel.h */,
-				D6F7ED51193FAC3100F36A6F /* TestLevel.cpp */,
-				D6F7ED52193FAC3100F36A6F /* TestLevel.h */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -1725,6 +1727,17 @@
 			name = physics;
 			sourceTree = "<group>";
 		};
+		D6F7ED54193FD5CE00F36A6F /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				D6F7ED51193FAC3100F36A6F /* TestLevel.cpp */,
+				D6F7ED52193FAC3100F36A6F /* TestLevel.h */,
+				D6F7ED55193FD66A00F36A6F /* Tile.cpp */,
+				D6F7ED56193FD66A00F36A6F /* Tile.h */,
+			);
+			name = Game;
+			sourceTree = "<group>";
+		};
 		D6FD257E1930082B0020A8C9 /* deprecated */ = {
 			isa = PBXGroup;
 			children = (
@@ -1813,6 +1826,7 @@
 				D6FD2576192FD1430020A8C9 /* Mesh.cpp in Sources */,
 				B003A9D2191054CE005838F5 /* Object.cpp in Sources */,
 				D6C03FE9191C9280003757F7 /* PhysicsPlane.cpp in Sources */,
+				D6F7ED57193FD66A00F36A6F /* Tile.cpp in Sources */,
 				B08E02A219147D8E0030C111 /* Map.cpp in Sources */,
 				B08E02951912C2710030C111 /* glew.c in Sources */,
 				B08E029F1912D1A10030C111 /* Program.cpp in Sources */,
