@@ -20,6 +20,7 @@ vector<PObject*> SceneManager::getPhysicsObjects() {
 int SceneManager::addObject(GameObject *object){
     objects[idCounter] = object;
     idCounter++;
+    return idCounter;
 }
 
 GameObject* SceneManager::getObject(int id) {
@@ -32,4 +33,14 @@ void SceneManager::removeObject(int id) {
 
 SceneManager::SceneManager() {
     idCounter = 0;
+}
+
+
+vector<GameObject*> SceneManager::getObjects(){
+    vector<GameObject*> gameObjects;
+    map<int, GameObject*>::iterator it;
+    for (it=objects.begin(); it!=objects.end(); ++it) {
+        gameObjects.push_back(it->second);
+    }
+    return gameObjects;
 }

@@ -10,23 +10,28 @@
 #define __Engine__GameObject__
 
 #include <iostream>
-
+#include "PObject.h"
+#include "Mesh.h"
 
 class GameObject{
     
     const int objectId;
     int physicsID;
+    Mesh* mesh;
 
 public:
     GameObject(int idd);
     GameObject();
+    PObject* getPhysicsObject();
+    Mesh* getMesh();
+    
+    
     virtual void tick(float tickTime);
+    virtual void collidedWith(GameObject *other, vec3 hitNormal, vec3 pos);
     
 private:
     
     bool addPhysics();
-    
-    
 };
 
 #endif /* defined(__Engine__GameObject__) */

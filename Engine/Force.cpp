@@ -7,3 +7,10 @@
 //
 
 #include "Force.h"
+
+
+glm::vec3 Force::calcForce(){
+
+    return glm::vec3(0.0,0.0,0.0);
+
+}

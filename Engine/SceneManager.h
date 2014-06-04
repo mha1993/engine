@@ -27,6 +27,8 @@ public:
     void removeObject(int id);
     SceneManager();
     
+    vector<GameObject*> getObjects();
+    
 private:
     int idCounter;
 };

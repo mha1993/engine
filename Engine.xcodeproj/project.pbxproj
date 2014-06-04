@@ -35,6 +35,7 @@
 		D6C03FEE191C9899003757F7 /* PhysicsUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6C03FEC191C9899003757F7 /* PhysicsUtil.cpp */; };
 		D6E9E9F6191AFB3400F4778F /* PhysicsObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6E9E9F4191AFB3400F4778F /* PhysicsObject.cpp */; };
 		D6E9E9FD191B41F800F4778F /* SphereRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6E9E9FB191B41F800F4778F /* SphereRenderer.cpp */; };
+		D6F7ED53193FAC3100F36A6F /* TestLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F7ED51193FAC3100F36A6F /* TestLevel.cpp */; };
 		D6FD2576192FD1430020A8C9 /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FD2574192FD1430020A8C9 /* Mesh.cpp */; };
 		D6FD257D192FEADE0020A8C9 /* WindowManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FD257B192FEADE0020A8C9 /* WindowManager.cpp */; };
 		D6FD25841930093E0020A8C9 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FD25821930093E0020A8C9 /* GameObject.cpp */; };
@@ -756,6 +757,8 @@
 		D6E9E9FA191B0C1300F4778F /* blue.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = blue.fsh; sourceTree = "<group>"; };
 		D6E9E9FB191B41F800F4778F /* SphereRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SphereRenderer.cpp; sourceTree = "<group>"; };
 		D6E9E9FC191B41F800F4778F /* SphereRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SphereRenderer.h; sourceTree = "<group>"; };
+		D6F7ED51193FAC3100F36A6F /* TestLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestLevel.cpp; sourceTree = "<group>"; };
+		D6F7ED52193FAC3100F36A6F /* TestLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestLevel.h; sourceTree = "<group>"; };
 		D6FD2574192FD1430020A8C9 /* Mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mesh.cpp; sourceTree = "<group>"; };
 		D6FD2575192FD1430020A8C9 /* Mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
 		D6FD257A192FE9AD0020A8C9 /* easylogging++.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "easylogging++.h"; sourceTree = "<group>"; };
@@ -837,6 +840,8 @@
 				D6FD2593193154250020A8C9 /* Physics2 */,
 				D669992E19319310005EF7D4 /* BaseLevel.cpp */,
 				D669992F19319310005EF7D4 /* BaseLevel.h */,
+				D6F7ED51193FAC3100F36A6F /* TestLevel.cpp */,
+				D6F7ED52193FAC3100F36A6F /* TestLevel.h */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -1811,6 +1816,7 @@
 				B08E02A219147D8E0030C111 /* Map.cpp in Sources */,
 				B08E02951912C2710030C111 /* glew.c in Sources */,
 				B08E029F1912D1A10030C111 /* Program.cpp in Sources */,
+				D6F7ED53193FAC3100F36A6F /* TestLevel.cpp in Sources */,
 				D63FEEA01922AD9400F254F6 /* FPCamera.cpp in Sources */,
 				D6E9E9FD191B41F800F4778F /* SphereRenderer.cpp in Sources */,
 				D6E9E9F6191AFB3400F4778F /* PhysicsObject.cpp in Sources */,

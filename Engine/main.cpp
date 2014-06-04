@@ -9,20 +9,32 @@
 #include <iostream>
 
 #include "WindowManager.h"
-
-#include <string>
-
-#include "Mesh.h"
-#include <glm/gtc/matrix_transform.hpp>
-
-#include "FPCamera.h"
-
 #include "Physics2.h"
+#include "TestLevel.h"
 
 using namespace std;
 using namespace glm;
 
 
+
+
+
+int main(int argv, const char** argc) {
+
+    
+    WindowManager *wm = new WindowManager;
+    wm->init();
+    
+    TestLevel *tl = new TestLevel(wm);
+
+    
+    
+}
+
+
+
+
+/*
 glm::vec3 calcNormaltmp(glm::vec3 a, glm::vec3 b, glm::vec3 c) {
     
     
@@ -130,3 +142,4 @@ int main(int argv, const char** argc) {
     
     return 0;
 }
+ */

@@ -21,11 +21,11 @@ void PE3::move(PObject* obj, float dTime){
     obj->pos += dTime*obj->vel;
 }
 
-glm::vec3 support(PObject* obj1, PObject* obj2, glm::vec3 d) {
+glm::vec3 PE3::support(PObject* obj1, PObject* obj2, glm::vec3 d) {
     return obj1->ps->mSupport(d) - obj2->ps->mSupport(-d);
 }
 
-bool doSimplex(vector<glm::vec3> simplex, glm::vec3 d) {
+bool PE3::doSimplex(vector<glm::vec3> simplex, glm::vec3 d) {
     
     return false;
 }
@@ -48,6 +48,10 @@ bool PE3::boundingBoxCheck(PObject* obj1, PObject* obj2) {
             }
         }
     }
+}
+
+vector<Collision> PE3::getCollisions(){
+    return collisions;
 }
 
 void PE3::moveBack(Collision c) {

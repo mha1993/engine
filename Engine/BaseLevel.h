@@ -12,19 +12,34 @@
 #include <iostream>
 #include <vector>
 #include "GameObject.h"
+#include "SceneManager.h"
+#include "WindowManager.h"
+#include "PE3.h"
+#include "ECamera.h"
 
 using namespace std;
 
 class BaseLevel{
     
-    vector<GameObject *> gameObjects;
-    int addObject();
+    //vector<GameObject *> gameObjects;
+    SceneManager *sceneManager;
+    WindowManager *windowManager;
+    PE3 *physicsEngine;
+    
+    bool shouldBeRunning;
+    
+
+protected:
+    ECamera *currentCamera;
     
 public:
     
-    void stop();
+    BaseLevel(WindowManager *wm);
+    int addObject(GameObject *go);
+    virtual void setCurrentCamera(ECamera *camera);
+    virtual ECamera *getCurrentCamera();
+    virtual void run();
     virtual void setup();
-    virtual void start();
     virtual void teardown();
     virtual void tick(float deltaTime);
     virtual void render();

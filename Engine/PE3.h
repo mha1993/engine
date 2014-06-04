@@ -29,6 +29,7 @@ class PE3 {
     vector<Collision> collisions;
     
 public:
+    vector<Collision> getCollisions();
     void tick(vector<PObject*> objs, float dTime);
     void calcForces(PObject* obj);
     void move(PObject* obj, float dTime);
