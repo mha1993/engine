@@ -12,8 +12,8 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 
-BaseLevel::BaseLevel(WindowManager *wm){
-    windowManager = wm;
+BaseLevel::BaseLevel(WindowManager *wm) : Level(wm){
+
     sceneManager = new SceneManager();
     physicsEngine = new PE3();
     currentCamera = new FPCamera();
@@ -23,50 +23,7 @@ BaseLevel::BaseLevel(WindowManager *wm){
 void BaseLevel::setup(){}
 void BaseLevel::teardown(){}
 
-#include <chrono>
-#include <thread>
 
-#include <sys/time.h>
-
-long double timemillis(){
-    
-    timeval time;
-    gettimeofday(&time, NULL);
-    return (time.tv_sec * 1000.0) + (time.tv_usec / 1000.0);
-}
-
-
-long double clamp(long double n,long double min, long double max){
-
-    return std::max(min, std::min(n, max));
-
-}
-
-void BaseLevel::run(){
-
-    shouldBeRunning = true;
-    
-    long double lastTime = timemillis();
-    
-    while (shouldBeRunning) {
-        
-        long double newTime = timemillis();
-    
-        float timeDiff = newTime - lastTime;
-        
-        lastTime = newTime;
-        
-        
-        tick(timeDiff/1000.0f);
-        
-        long maxSleepTime = 20;
-        
-        long sleeptime = clamp(maxSleepTime - timeDiff , 0, maxSleepTime);
-        
-        std::this_thread::sleep_for(std::chrono::milliseconds(sleeptime));
-        
-    }
-}
 
 void BaseLevel::render(){
 
