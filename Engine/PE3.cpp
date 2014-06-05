@@ -72,11 +72,38 @@ void PE3::tick(vector<PObject*> objs, float dTime) {
         move(objs[i], dTime);
     }
     
-    //CHECK COLLISIONS
-    for (int i = 0; i < objs.size(); i++) {
+    vector<PObject*> moveables;
+    
+    for (int i = 0; i<objs.size(); i++) {
+        if (!objs[i]->isStatic) {
+            moveables.push_back(objs[i]);
+        }
+    }
+
+    
+    //CHECK COLLISIONS MOVABLE - MOVABLE
+    for (int i = 0; i < moveables.size(); i++) {
+        
+        PObject *a = moveables[i];
+        
+        for (int j = i+1; j < moveables.size(); j++) {
+            
+            PObject *b = moveables[j];
+            
+            if (boundingBoxCheck(a, b)){
+                cout << "COLLISION HAPPENED" << endl;
+            }
+            
+        }
+    }
+    //CHECK COLLISIONS MOVABLE - STATIC
+    for (int i = 0; i < moveables.size(); i++) {
+        PObject *moveable = moveables[i];
+        
         for (int j = 0; j < objs.size(); j++) {
-            if (i==j) continue;
-            if (boundingBoxCheck(objs[i], objs[j]))
+            PObject *imoveable = objs[j];
+            
+            if (boundingBoxCheck(moveable,imoveable))
                 cout << "COLLISION HAPPENED" << endl;
         }
     }

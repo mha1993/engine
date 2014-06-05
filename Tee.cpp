@@ -1,18 +1,18 @@
 //
-//  Tile.cpp
+//  Tee.cpp
 //  Engine
 //
 //  Created by Jakob Folkesson on 2014-06-04.
 //  Copyright (c) 2014 MHA. All rights reserved.
 //
 
-#include "Tile.h"
+#include "Tee.h"
 
 #include "PolygonShape.h"
 
 #include "PhysicsUtil.h"
 
-Tile::Tile(vector<glm::vec3> verts, int idd): GameObject::GameObject(idd){
+Tee::Tee(vector<glm::vec3> verts, int idd): GameObject::GameObject(idd){
     
     PhysicShape *pss = new PolygonShape(verts);
     
@@ -26,6 +26,6 @@ Tile::Tile(vector<glm::vec3> verts, int idd): GameObject::GameObject(idd){
         normal.push_back(n);
     }
     
-    mesh = new Mesh("default.vs","green.fsh", &verts,&normal,GL_TRIANGLES);
+    mesh = new Mesh("default.vs","blue.fsh", &verts,&normal,GL_TRIANGLES);
     
 }

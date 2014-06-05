@@ -19,14 +19,16 @@ class PObject{
     
 public:
     int id;
+    bool isStatic;
     bool collidable;
     vec3 pos;
     vec3 vel;
     PhysicShape * ps;
     float size;
     
+    
     PObject(int id, PhysicShape * ps, vec3 pos, bool collidable);
-    PObject(int id, PhysicShape * ps, vec3 pos, vec3 vel, bool collidable, float size);
+    PObject(int id, PhysicShape * ps, vec3 pos, vec3 vel, bool collidable, float size, bool isStatic);
     
 };
 

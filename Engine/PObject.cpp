@@ -13,20 +13,23 @@
 
 PObject::PObject(int idd, PhysicShape *pss, vec3 poss, bool collidablee){
     
-        id = idd;
-        ps = pss;
-        size = 1.0f;
-        pos = poss;
-        vel = vec3(0.0,0.0,0.0);
-        collidable = collidablee;
+    id = idd;
+    ps = pss;
+    pos = poss;
+    collidable = collidablee;
     
+    size = 1.0f;
+    vel = vec3(0.0,0.0,0.0);
+    isStatic = true;
 }
 
-PObject::PObject(int idd, PhysicShape *pss, vec3 poss, vec3 vell, bool collidablee, float sizee){
+PObject::PObject(int idd, PhysicShape *pss, vec3 poss, vec3 vell, bool collidablee, float sizee,bool stat){
+    
     id =idd;
     ps = pss;
     size = sizee;
     pos = poss;
     vel = vell;
     collidable = collidablee;
+    isStatic = stat;
 }

@@ -31,7 +31,7 @@ int Physics2::addObject(int physicsShape, float size, vector<vec3> vert, vec3 po
     
     int id = ++Physics2::idCounter;
     
-    PObject *po = new PObject(id, ps, pos, vel, collidable, size);
+    PObject *po = new PObject(id, ps, pos, vel, collidable, size,true);
     
     if (movable){
         mv.push_back(po);

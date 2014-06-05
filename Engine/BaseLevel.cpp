@@ -28,15 +28,15 @@ void BaseLevel::teardown(){}
 
 #include <sys/time.h>
 
-long timemillis(){
+long double timemillis(){
     
     timeval time;
     gettimeofday(&time, NULL);
-    return (time.tv_sec * 1000) + (time.tv_usec / 1000);
+    return (time.tv_sec * 1000.0) + (time.tv_usec / 1000.0);
 }
 
 
-long clamp(long n,long min, long max){
+long double clamp(long double n,long double min, long double max){
 
     return std::max(min, std::min(n, max));
 
@@ -46,26 +46,22 @@ void BaseLevel::run(){
 
     shouldBeRunning = true;
     
-    long lastTime = timemillis();
+    long double lastTime = timemillis();
     
     while (shouldBeRunning) {
         
-        long newTime = timemillis();
-        
-        printf("nt:%ld\n",newTime);
-        printf("lt:%ld\n",lastTime);
-        
+        long double newTime = timemillis();
+    
         float timeDiff = newTime - lastTime;
         
         lastTime = newTime;
+        
         
         tick(timeDiff/1000.0f);
         
         long maxSleepTime = 20;
         
         long sleeptime = clamp(maxSleepTime - timeDiff , 0, maxSleepTime);
-        printf("st:%ld\n",sleeptime);
-        printf("-----\n");
         
         std::this_thread::sleep_for(std::chrono::milliseconds(sleeptime));
         
@@ -101,6 +97,7 @@ void BaseLevel::tick(float deltaTime){
     physicsEngine->tick(physicObjects, deltaTime);
     
     vector<Collision> collisions = physicsEngine->getCollisions();
+    
     
     for (int i = 0 ; i<collisions.size(); i++){
     
