@@ -10,6 +10,8 @@
 #include "Tile.h"
 #include "Tee.h"
 #include "Cup.h"
+#include "Wall.h"
+#include "Ball.h"
 
 void TestLevel::setup(){
     
@@ -21,7 +23,7 @@ void TestLevel::setup(){
     
     GameObject *tile = new Tile(v,0);
     this->addObject(tile);
-    
+    /*
     GameObject *tee = new Tee(vec3(-1.0,0.0,0.0),1.0,1);
     
     this->addObject(tee);
@@ -29,5 +31,14 @@ void TestLevel::setup(){
     GameObject *cup = new Cup(vec3(-1.0,-1.0,0.0), vec3(1.0,1.0,1.0),  1.0, 2);
     
     this->addObject(cup);
+
+    GameObject *wall = new Wall(v[0], v[2], .2f , 3);
+    
+    this->addObject(wall);
+*/
+    
+    GameObject *ball = new Ball(vec3(1.0, 1.0, 1.0), 1.0f, 4);
+    this->addObject(ball);
     
 }
+

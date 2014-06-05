@@ -26,7 +26,7 @@ void GameObject::collidedWith(GameObject *other, vec3 hitNormal, vec3 pos){
 
 }
 
-Mesh * GameObject::getMesh(){
+Drawable * GameObject::getMesh(){
 
     return mesh;
 }

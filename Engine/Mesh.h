@@ -10,13 +10,11 @@
 #define __Engine__Mesh__
 
 #include <iostream>
-#include <GL/glew.h>
 #include <string>
 #include <vector>
-#include "glm.hpp"
 
 #include "Program.h"
-
+#include "Drawable.h"
 /**
  
  
@@ -33,7 +31,7 @@
 using namespace glm;
 using namespace std;
 
-class Mesh{
+class Mesh : public Drawable{
     
     GLuint uMMatrixId;
     GLuint uVPMatrixId;
@@ -43,7 +41,6 @@ class Mesh{
     GLuint vbo_norm;
     
     GLuint drawMethod;
-    
     GLuint vert_num;
     
     Program *program;

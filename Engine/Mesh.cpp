@@ -8,10 +8,8 @@
 
 #include "Mesh.h"
 
-#define VERT_SHADER_NAME "vert"
-#define NORM_SHADER_NAME "aVertexNormal"
 
-Mesh::Mesh(string vs, string fs, vector<vec3> *vp, vector<vec3> *normals,GLuint drawingMethode){
+Mesh::Mesh(string vs, string fs, vector<vec3> *vp, vector<vec3> *normals,GLuint drawingMethode) : Drawable(){
     
     if (normals != nullptr && vp->size() != normals->size()){
         throw std::runtime_error(std::string("Size on verts and normals differ") + "mesh");
@@ -39,9 +37,8 @@ Mesh::Mesh(string vs, string fs, vector<vec3> *vp, vector<vec3> *normals,GLuint 
     glVertexAttribPointer(program->attrib(VERT_SHADER_NAME), 3, GL_FLOAT, GL_FALSE, 0, NULL);
     
     
-    // Put the three triangle verticies into the VBO
+    // Put the verticies into the VBO
     glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec3) * vp->size(), &vp->front(), GL_STATIC_DRAW);
-
     
     if (normals != nullptr){
         
@@ -61,10 +58,12 @@ Mesh::Mesh(string vs, string fs, vector<vec3> *vp, vector<vec3> *normals,GLuint 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
     
+    
 }
 
 
 void Mesh::setMatrices(const mat4 *uMMatrix,const mat4 *uVPMatrix){
+    
     
     program->setMatrixUniform(uMMatrixId,*uMMatrix);
     program->setMatrixUniform(uVPMatrixId,*uVPMatrix);

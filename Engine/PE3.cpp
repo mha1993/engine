@@ -10,7 +10,6 @@
 
 #include "PhysicsUtil.h"
 
-
 void PE3::calcForces(PObject* obj) {
     for (int i = 0; i < forces.size(); i++) {
         obj->vel += forces[i]->calcForce();
@@ -31,6 +30,11 @@ bool PE3::doSimplex(vector<glm::vec3> simplex, glm::vec3 d) {
 }
 
 bool PE3::boundingBoxCheck(PObject* obj1, PObject* obj2) {
+    
+    
+    return false; //TEMP!!!!
+    
+    
     vector<glm::vec3> simplex;
     
     glm::vec3 s = support(obj1, obj2, glm::vec3(1,0,0));
@@ -73,13 +77,15 @@ void PE3::tick(vector<PObject*> objs, float dTime) {
     }
     
     vector<PObject*> moveables;
+    vector<PObject*> imoveables;
     
     for (int i = 0; i<objs.size(); i++) {
         if (!objs[i]->isStatic) {
             moveables.push_back(objs[i]);
+        }else{
+            imoveables.push_back(objs[i]);
         }
     }
-
     
     //CHECK COLLISIONS MOVABLE - MOVABLE
     for (int i = 0; i < moveables.size(); i++) {
@@ -96,12 +102,13 @@ void PE3::tick(vector<PObject*> objs, float dTime) {
             
         }
     }
+    
     //CHECK COLLISIONS MOVABLE - STATIC
     for (int i = 0; i < moveables.size(); i++) {
         PObject *moveable = moveables[i];
         
-        for (int j = 0; j < objs.size(); j++) {
-            PObject *imoveable = objs[j];
+        for (int j = 0; j < imoveables.size(); j++) {
+            PObject *imoveable = imoveables[j];
             
             if (boundingBoxCheck(moveable,imoveable))
                 cout << "COLLISION HAPPENED" << endl;
@@ -112,4 +119,5 @@ void PE3::tick(vector<PObject*> objs, float dTime) {
     for (int i = 0; i < collisions.size(); i++) {
         moveBack(collisions[i]);
     }
+    
 }

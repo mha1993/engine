@@ -39,6 +39,11 @@
 		D6F7ED57193FD66A00F36A6F /* Tile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F7ED55193FD66A00F36A6F /* Tile.cpp */; };
 		D6F7ED5A193FE8DB00F36A6F /* Tee.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F7ED58193FE8DB00F36A6F /* Tee.cpp */; };
 		D6F7ED5D193FEDF000F36A6F /* Cup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F7ED5B193FEDF000F36A6F /* Cup.cpp */; };
+		D6F7ED60193FF3B700F36A6F /* Wall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F7ED5E193FF3B700F36A6F /* Wall.cpp */; };
+		D6F7ED671940164300F36A6F /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F7ED651940164300F36A6F /* Ball.cpp */; };
+		D6F7ED6A1940174900F36A6F /* Drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F7ED681940174900F36A6F /* Drawable.cpp */; };
+		D6F7ED7019401A5B00F36A6F /* DrawableSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F7ED6E19401A5B00F36A6F /* DrawableSphere.cpp */; };
+		D6F7ED7319401C1D00F36A6F /* SphereShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F7ED7119401C1D00F36A6F /* SphereShape.cpp */; };
 		D6FD2576192FD1430020A8C9 /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FD2574192FD1430020A8C9 /* Mesh.cpp */; };
 		D6FD257D192FEADE0020A8C9 /* WindowManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FD257B192FEADE0020A8C9 /* WindowManager.cpp */; };
 		D6FD25841930093E0020A8C9 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FD25821930093E0020A8C9 /* GameObject.cpp */; };
@@ -768,6 +773,17 @@
 		D6F7ED59193FE8DB00F36A6F /* Tee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tee.h; sourceTree = "<group>"; };
 		D6F7ED5B193FEDF000F36A6F /* Cup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cup.cpp; sourceTree = "<group>"; };
 		D6F7ED5C193FEDF000F36A6F /* Cup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cup.h; sourceTree = "<group>"; };
+		D6F7ED5E193FF3B700F36A6F /* Wall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Wall.cpp; sourceTree = "<group>"; };
+		D6F7ED5F193FF3B700F36A6F /* Wall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wall.h; sourceTree = "<group>"; };
+		D6F7ED64193FF80500F36A6F /* brown.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = brown.fsh; sourceTree = "<group>"; };
+		D6F7ED651940164300F36A6F /* Ball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ball.cpp; sourceTree = "<group>"; };
+		D6F7ED661940164300F36A6F /* Ball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ball.h; sourceTree = "<group>"; };
+		D6F7ED681940174900F36A6F /* Drawable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Drawable.cpp; sourceTree = "<group>"; };
+		D6F7ED691940174900F36A6F /* Drawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drawable.h; sourceTree = "<group>"; };
+		D6F7ED6E19401A5B00F36A6F /* DrawableSphere.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DrawableSphere.cpp; sourceTree = "<group>"; };
+		D6F7ED6F19401A5B00F36A6F /* DrawableSphere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawableSphere.h; sourceTree = "<group>"; };
+		D6F7ED7119401C1D00F36A6F /* SphereShape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SphereShape.cpp; sourceTree = "<group>"; };
+		D6F7ED7219401C1D00F36A6F /* SphereShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SphereShape.h; sourceTree = "<group>"; };
 		D6FD2574192FD1430020A8C9 /* Mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mesh.cpp; sourceTree = "<group>"; };
 		D6FD2575192FD1430020A8C9 /* Mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
 		D6FD257A192FE9AD0020A8C9 /* easylogging++.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "easylogging++.h"; sourceTree = "<group>"; };
@@ -850,6 +866,10 @@
 				D6FD2593193154250020A8C9 /* Physics2 */,
 				D669992E19319310005EF7D4 /* BaseLevel.cpp */,
 				D669992F19319310005EF7D4 /* BaseLevel.h */,
+				D6F7ED681940174900F36A6F /* Drawable.cpp */,
+				D6F7ED691940174900F36A6F /* Drawable.h */,
+				D6F7ED6E19401A5B00F36A6F /* DrawableSphere.cpp */,
+				D6F7ED6F19401A5B00F36A6F /* DrawableSphere.h */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -893,6 +913,7 @@
 				B08E02A619172C220030C111 /* red.fsh */,
 				D6FD2589193053E70020A8C9 /* min.vs */,
 				D6E9E9FA191B0C1300F4778F /* blue.fsh */,
+				D6F7ED64193FF80500F36A6F /* brown.fsh */,
 			);
 			name = Shaders;
 			sourceTree = "<group>";
@@ -1744,6 +1765,10 @@
 				D6F7ED59193FE8DB00F36A6F /* Tee.h */,
 				D6F7ED5B193FEDF000F36A6F /* Cup.cpp */,
 				D6F7ED5C193FEDF000F36A6F /* Cup.h */,
+				D6F7ED5E193FF3B700F36A6F /* Wall.cpp */,
+				D6F7ED5F193FF3B700F36A6F /* Wall.h */,
+				D6F7ED651940164300F36A6F /* Ball.cpp */,
+				D6F7ED661940164300F36A6F /* Ball.h */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -1774,6 +1799,8 @@
 				D6FD2595193157550020A8C9 /* PolygonShape.h */,
 				D6FD259A19315E150020A8C9 /* PObject.cpp */,
 				D6FD259B19315E150020A8C9 /* PObject.h */,
+				D6F7ED7119401C1D00F36A6F /* SphereShape.cpp */,
+				D6F7ED7219401C1D00F36A6F /* SphereShape.h */,
 			);
 			name = Physics2;
 			sourceTree = "<group>";
@@ -1829,7 +1856,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6F7ED671940164300F36A6F /* Ball.cpp in Sources */,
 				D6F7ED5D193FEDF000F36A6F /* Cup.cpp in Sources */,
+				D6F7ED7019401A5B00F36A6F /* DrawableSphere.cpp in Sources */,
+				D6F7ED6A1940174900F36A6F /* Drawable.cpp in Sources */,
+				D6F7ED7319401C1D00F36A6F /* SphereShape.cpp in Sources */,
 				B08E029C1912D08B0030C111 /* main.cpp in Sources */,
 				D6FD259219314EEA0020A8C9 /* PhysicShape.cpp in Sources */,
 				B003A9D519105549005838F5 /* Renderer.cpp in Sources */,
@@ -1863,6 +1894,7 @@
 				D6F7ED5A193FE8DB00F36A6F /* Tee.cpp in Sources */,
 				B003ADE019107CF4005838F5 /* FileReader.cpp in Sources */,
 				D669993019319310005EF7D4 /* BaseLevel.cpp in Sources */,
+				D6F7ED60193FF3B700F36A6F /* Wall.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

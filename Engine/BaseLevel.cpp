@@ -70,6 +70,7 @@ void BaseLevel::run(){
 
 void BaseLevel::render(){
 
+    
     vector<GameObject *> gameObjects = sceneManager->getObjects();
     
     mat4 cameraMatrix = currentCamera->matrix();
@@ -80,10 +81,11 @@ void BaseLevel::render(){
     for (int i=0; i<gameObjects.size(); i++){
     
         GameObject *gameObject = gameObjects[i];
-        Mesh *mesh = gameObject->getMesh();
+        Drawable *mesh = gameObject->getMesh();
         
         vec3 pos = gameObject->getPhysicsObject()->pos;
         mat4 uM = glm::translate(identityMatrix, pos);
+        
         
         mesh->setMatrices(&uM,&cameraMatrix);
         mesh->draw();
