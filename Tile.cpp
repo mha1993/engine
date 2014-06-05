@@ -26,6 +26,6 @@ Tile::Tile(vector<glm::vec3> verts, int idd): GameObject::GameObject(idd){
         normal.push_back(n);
     }
     
-    mesh = new Mesh("default.vs","green.fsh", &verts,&normal,GL_TRIANGLES);
+    mesh = new Mesh("default.vs","green.fsh", &verts,&normal,GL_TRIANGLE_STRIP);
     
 }

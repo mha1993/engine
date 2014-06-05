@@ -12,7 +12,15 @@
 
 #include "PhysicsUtil.h"
 
-Tee::Tee(vector<glm::vec3> verts, int idd): GameObject::GameObject(idd){
+Tee::Tee(glm::vec3 pos, float size, int idd): GameObject::GameObject(idd){
+    
+    
+    vector<glm::vec3> verts;
+    
+    verts.push_back(pos + vec3(-size,-size,0.0));
+    verts.push_back(pos + vec3(-size,+size,0.0));
+    verts.push_back(pos + vec3(size,-size,0.0));
+    verts.push_back(pos + vec3(size,size,0.0));
     
     PhysicShape *pss = new PolygonShape(verts);
     
@@ -26,6 +34,6 @@ Tee::Tee(vector<glm::vec3> verts, int idd): GameObject::GameObject(idd){
         normal.push_back(n);
     }
     
-    mesh = new Mesh("default.vs","blue.fsh", &verts,&normal,GL_TRIANGLES);
+    mesh = new Mesh("default.vs","blue.fsh", &verts,&normal,GL_TRIANGLE_STRIP);
     
 }

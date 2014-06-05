@@ -38,6 +38,7 @@
 		D6F7ED53193FAC3100F36A6F /* TestLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F7ED51193FAC3100F36A6F /* TestLevel.cpp */; };
 		D6F7ED57193FD66A00F36A6F /* Tile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F7ED55193FD66A00F36A6F /* Tile.cpp */; };
 		D6F7ED5A193FE8DB00F36A6F /* Tee.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F7ED58193FE8DB00F36A6F /* Tee.cpp */; };
+		D6F7ED5D193FEDF000F36A6F /* Cup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F7ED5B193FEDF000F36A6F /* Cup.cpp */; };
 		D6FD2576192FD1430020A8C9 /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FD2574192FD1430020A8C9 /* Mesh.cpp */; };
 		D6FD257D192FEADE0020A8C9 /* WindowManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FD257B192FEADE0020A8C9 /* WindowManager.cpp */; };
 		D6FD25841930093E0020A8C9 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FD25821930093E0020A8C9 /* GameObject.cpp */; };
@@ -765,6 +766,8 @@
 		D6F7ED56193FD66A00F36A6F /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
 		D6F7ED58193FE8DB00F36A6F /* Tee.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tee.cpp; sourceTree = "<group>"; };
 		D6F7ED59193FE8DB00F36A6F /* Tee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tee.h; sourceTree = "<group>"; };
+		D6F7ED5B193FEDF000F36A6F /* Cup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cup.cpp; sourceTree = "<group>"; };
+		D6F7ED5C193FEDF000F36A6F /* Cup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cup.h; sourceTree = "<group>"; };
 		D6FD2574192FD1430020A8C9 /* Mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mesh.cpp; sourceTree = "<group>"; };
 		D6FD2575192FD1430020A8C9 /* Mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
 		D6FD257A192FE9AD0020A8C9 /* easylogging++.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "easylogging++.h"; sourceTree = "<group>"; };
@@ -1739,6 +1742,8 @@
 				D6F7ED56193FD66A00F36A6F /* Tile.h */,
 				D6F7ED58193FE8DB00F36A6F /* Tee.cpp */,
 				D6F7ED59193FE8DB00F36A6F /* Tee.h */,
+				D6F7ED5B193FEDF000F36A6F /* Cup.cpp */,
+				D6F7ED5C193FEDF000F36A6F /* Cup.h */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -1824,6 +1829,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6F7ED5D193FEDF000F36A6F /* Cup.cpp in Sources */,
 				B08E029C1912D08B0030C111 /* main.cpp in Sources */,
 				D6FD259219314EEA0020A8C9 /* PhysicShape.cpp in Sources */,
 				B003A9D519105549005838F5 /* Renderer.cpp in Sources */,

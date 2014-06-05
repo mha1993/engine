@@ -17,7 +17,7 @@ class Tee : public GameObject{
     
 public:
     
-    Tee(vector<glm::vec3>, int);
+    Tee(vec3 pos, float size, int idd);
     
     
 };
