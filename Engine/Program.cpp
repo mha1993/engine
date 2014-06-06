@@ -140,8 +140,6 @@ Program* Program::fetchProgram(string vs,string fs)
     if (i == Program::instances->end()) {
         /* Not found */
         
-        printf("making new sizz");
-        
         GLuint fsp = Program::makeShader(fs, GL_FRAGMENT_SHADER);
         GLuint vsp = Program::makeShader(vs, GL_VERTEX_SHADER);
         

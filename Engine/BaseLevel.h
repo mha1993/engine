@@ -13,22 +13,18 @@
 #include <vector>
 #include "GameObject.h"
 #include "SceneManager.h"
-#include "WindowManager.h"
+#include "Level.h"
 #include "PE3.h"
 #include "ECamera.h"
 
 using namespace std;
 
-class BaseLevel{
+class BaseLevel : public Level{
     
     //vector<GameObject *> gameObjects;
     SceneManager *sceneManager;
-    WindowManager *windowManager;
     PE3 *physicsEngine;
     
-    bool shouldBeRunning;
-    
-
 protected:
     ECamera *currentCamera;
     
@@ -38,7 +34,6 @@ public:
     int addObject(GameObject *go);
     virtual void setCurrentCamera(ECamera *camera);
     virtual ECamera *getCurrentCamera();
-    virtual void run();
     virtual void setup();
     virtual void teardown();
     virtual void tick(float deltaTime);

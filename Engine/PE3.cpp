@@ -12,7 +12,6 @@
 #include "PolygonShape.h"
 #include <math.h>
 
-
 void PE3::calcForces(PObject* obj) {
     for (int i = 0; i < forces.size(); i++) {
         obj->vel += forces[i]->calcForce();
@@ -63,6 +62,7 @@ bool SpherePlaneCollision(PObject *a, PObject *b) {
     vector<vec3> verts = ps->PolygonShape::getVerts();
     vec3 norm = CalcNormal(verts);
     vec3 intersect = LinePlaneIntersect(norm, verts[0], sPos, -norm);
+
     
     if (distance(sPos, intersect) > a->size) {
         return false;
@@ -94,32 +94,37 @@ void PE3::tick(vector<PObject*> objs, float dTime) {
     }
     
     vector<PObject*> moveables;
+    vector<PObject*> imoveables;
     
     for (int i = 0; i<objs.size(); i++) {
         if (!objs[i]->isStatic) {
             moveables.push_back(objs[i]);
+        }else{
+            imoveables.push_back(objs[i]);
         }
     }
-
     
     //CHECK COLLISIONS MOVABLE - MOVABLE
     for (int i = 0; i < moveables.size(); i++) {
         
         PObject *a = moveables[i];
         
-        for (int j = i+1; j < moveables.size(); j++) {
+        for (int j = 0; j < imoveables.size(); j++) {
             
-            PObject *b = moveables[j];
-            
+            PObject *b = imoveables[j];
             if (SpherePlaneCollision(a, b)){
-                cout << "COLLISION HAPPENED" << endl;
+                Collision c;
+                c.obj1 = a->id;
+                c.obj2 = b->id;
+                collisions.push_back(c);
             }
-            
         }
     }
+    
     
     //MOVEBACK
     for (int i = 0; i < collisions.size(); i++) {
         moveBack(collisions[i]);
     }
+    
 }

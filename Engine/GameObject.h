@@ -11,7 +11,7 @@
 
 #include <iostream>
 #include "PObject.h"
-#include "Mesh.h"
+#include "Drawable.h"
 
 class GameObject{
     
@@ -20,12 +20,12 @@ class GameObject{
 
 protected:
     PObject *physicsObject;
-    Mesh* mesh;
+    Drawable* mesh;
 
 public:
     GameObject(int idd);
     PObject* getPhysicsObject();
-    Mesh* getMesh();
+    Drawable* getMesh();
     
     
     virtual void tick(float tickTime);

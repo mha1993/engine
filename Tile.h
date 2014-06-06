@@ -11,15 +11,16 @@
 
 #include <iostream>
 
+
+#include "Mesh.h"
+
+
 #include "GameObject.h"
 
 class Tile : public GameObject{
 
 public:
-    
-    Tile(vector<glm::vec3>, int);
-
-
+    Tile(vector<glm::vec3> verts , int idd);
 };
 
 #endif /* defined(__Engine__Tile__) */

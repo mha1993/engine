@@ -9,6 +9,7 @@
 #include "Cup.h"
 
 #include "PolygonShape.h"
+#include "Mesh.h"
 
 #include "PhysicsUtil.h"
 
