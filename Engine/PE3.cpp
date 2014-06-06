@@ -9,6 +9,8 @@
 #include "PE3.h"
 
 #include "PhysicsUtil.h"
+#include "PolygonShape.h"
+#include <math.h>
 
 void PE3::calcForces(PObject* obj) {
     for (int i = 0; i < forces.size(); i++) {
@@ -20,37 +22,52 @@ void PE3::move(PObject* obj, float dTime){
     obj->pos += dTime*obj->vel;
 }
 
-glm::vec3 PE3::support(PObject* obj1, PObject* obj2, glm::vec3 d) {
-    return obj1->ps->mSupport(d) - obj2->ps->mSupport(-d);
+vec3 CalcNormal(vector<vec3> verts) {
+    vec3 a = verts[0];
+    vec3 b = verts[1];
+    vec3 c = verts[2];
+    
+    return cross(b-a, c-a);
 }
 
-bool PE3::doSimplex(vector<glm::vec3> simplex, glm::vec3 d) {
-    
-    return false;
+vec3 LinePlaneIntersect(vec3 pNorm, vec3 pPoint, vec3 lPoint, vec3 lDir) {
+    float d = dot((pPoint - lPoint), pNorm)/dot(lDir, pNorm);
+    return d * lDir + lPoint;
 }
 
-bool PE3::boundingBoxCheck(PObject* obj1, PObject* obj2) {
+float Magnitude(vec3 v) {
+    return sqrt(pow(v.x, 2)+pow(v.y, 2)+pow(v.z, 2));
+}
+
+float AngleBetweenPoints(vec3 a, vec3 b, vec3 c) {
+    vec3 v1 = b-a;
+    vec3 v2 = c-a;
+    return acos(dot(v1, v2)/Magnitude(v1)/Magnitude(v2));
+}
+
+bool PointInPoly(vec3 p, vector<vec3> verts) {
+    float angleSum = 0;
+    for (int i = 0; i<verts.size(); i++) {
+        angleSum += AngleBetweenPoints(p, verts[i], verts[(i+1)%verts.size()]);
+    }
+    if (angleSum < 2*M_PI)
+        return false;
+    else
+        return true;
+}
+
+bool SpherePlaneCollision(PObject *a, PObject *b) {
+    vec3 sPos = a->pos;
+    PolygonShape *ps = (PolygonShape*)b->ps;
+    vector<vec3> verts = ps->PolygonShape::getVerts();
+    vec3 norm = CalcNormal(verts);
+    vec3 intersect = LinePlaneIntersect(norm, verts[0], sPos, -norm);
+
     
-    
-    return false; //TEMP!!!!
-    
-    
-    vector<glm::vec3> simplex;
-    
-    glm::vec3 s = support(obj1, obj2, glm::vec3(1,0,0));
-    simplex.push_back(s);
-    glm::vec3 d = -s;
-    
-    while (true) {
-        glm::vec3 a = support(obj1, obj2, d);
-        if (glm::dot(a, d)) {
-            return false;
-        } else {
-            simplex.push_back(a);
-            if (doSimplex(simplex, d)) {
-                return true;
-            }
-        }
+    if (distance(sPos, intersect) > a->size) {
+        return false;
+    } else {
+        return PointInPoly(intersect, verts);
     }
 }
 
@@ -92,28 +109,18 @@ void PE3::tick(vector<PObject*> objs, float dTime) {
         
         PObject *a = moveables[i];
         
-        for (int j = i+1; j < moveables.size(); j++) {
+        for (int j = 0; j < imoveables.size(); j++) {
             
-            PObject *b = moveables[j];
-            
-            if (boundingBoxCheck(a, b)){
-                cout << "COLLISION HAPPENED" << endl;
+            PObject *b = imoveables[j];
+            if (SpherePlaneCollision(a, b)){
+                Collision c;
+                c.obj1 = a->id;
+                c.obj2 = b->id;
+                collisions.push_back(c);
             }
-            
         }
     }
     
-    //CHECK COLLISIONS MOVABLE - STATIC
-    for (int i = 0; i < moveables.size(); i++) {
-        PObject *moveable = moveables[i];
-        
-        for (int j = 0; j < imoveables.size(); j++) {
-            PObject *imoveable = imoveables[j];
-            
-            if (boundingBoxCheck(moveable,imoveable))
-                cout << "COLLISION HAPPENED" << endl;
-        }
-    }
     
     //MOVEBACK
     for (int i = 0; i < collisions.size(); i++) {

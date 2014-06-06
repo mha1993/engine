@@ -22,4 +22,7 @@ Ball::Ball(glm::vec3 pos, float size, int idd) : GameObject(idd){
     
     
 
+}void Ball::collidedWith(GameObject *other, vec3 hitNormal, vec3 pos) {
+    cout << "COLLLISION CALLBACK!!!!!!!!!!!!!!!" << endl;
+    getPhysicsObject()->vel = -getPhysicsObject()->vel;
 }

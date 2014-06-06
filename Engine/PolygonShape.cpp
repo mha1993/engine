@@ -32,3 +32,7 @@ vec3 PolygonShape::mSupport(vec3 dir){
     }
     return edges[index];
 }
+
+vector<vec3> PolygonShape::getVerts() {
+    return edges;
+}

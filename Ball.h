@@ -20,6 +20,7 @@ public:
     
     Ball(glm::vec3 pos, float size, int idd);
 
+    virtual void collidedWith(GameObject *other, vec3 hitNormal, vec3 pos) override;
 };
 
 

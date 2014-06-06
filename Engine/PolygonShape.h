@@ -26,7 +26,7 @@ class PolygonShape : public PhysicShape{
     
 public:
     PolygonShape(vector<vec3> v);
-
+    vector<vec3> getVerts();
     vec3 mSupport(vec3 dir);
 
 };
