@@ -10,7 +10,7 @@
 #define __Engine__FollowCamera__
 
 #include <iostream>
-#include "PhysicsObject.h"
+#include "PObject.h"
 #include "ECamera.h"
 
 #endif /* defined(__Engine__FollowCamera__) */
@@ -18,10 +18,10 @@
 
 class FollowCamera : public ECamera{
 
-    PhysicsObject *followObject;
+    PObject *followObject;
     glm::vec3 lastPos;
 public:
-    FollowCamera(PhysicsObject *po );
+    FollowCamera(PObject *po );
     glm::mat4 matrix();
     void update(float time);
 };

@@ -9,7 +9,6 @@
 #include <iostream>
 
 #include "WindowManager.h"
-#include "Physics2.h"
 #include "LevelManager.h"
 #include "TestLevel.h"
 
@@ -25,6 +24,7 @@ int main(int argv, const char** argc) {
     Level *levelManager = new LevelManager(wm);
 
     levelManager->setup();
+    
     levelManager->run();
     
     wm->stop();

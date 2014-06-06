@@ -22,12 +22,12 @@ using namespace std;
 class BaseLevel : public Level{
     
     //vector<GameObject *> gameObjects;
-    SceneManager *sceneManager;
-    PE3 *physicsEngine;
+
     
 protected:
     ECamera *currentCamera;
-    
+    SceneManager *sceneManager;
+    PE3 *physicsEngine;
 public:
     
     BaseLevel(WindowManager *wm);

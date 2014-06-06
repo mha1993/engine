@@ -11,10 +11,9 @@
 
 #include <iostream>
 
-
+#include <GL/glew.h>
 
 #include <vector>
-#include "Shader.h"
 #include "glm.hpp"
 #include <glm/gtc/type_ptr.hpp>
 #if defined __GNUC__ || defined __APPLE__
