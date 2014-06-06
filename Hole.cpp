@@ -18,38 +18,16 @@ void Hole::setName(string name){
 }
 
 void Hole::addLine(vector<string> line){
-    
     lines.push_back(line);
-    
-}
-
-
-void Hole::run(){
-    
-    
-    int  nrobje = sceneManager->getObjects().size();
-    
-    printf("amount of objects : %d\n",nrobje);
-    
-    BaseLevel::run();
-    
 }
 
 
 void Hole::setup(){
     
-    int nrobje = lines.size();
-    
-    printf("amount of lines : %d\n",nrobje);
-
-    
-    
     for (int i = 0; i<lines.size(); i++){
         vector<string> line = lines[i];
         
         string lineType = line[0];
-        
-        printf("l:%s\n", TextUtils::myconcat(line, " ", 0).c_str());
         
         if (lineType.compare(PAR) == 0){
             setPar(line);
@@ -62,8 +40,8 @@ void Hole::setup(){
         }else if (lineType.compare(CUP) == 0){
             addCup(line, i);
         }else{
-            printf("else:%s\n",lineType.c_str());
-        }
+            std::cout << "ERROR: incomplete word "<< lineType << endl;
+            exit(EXIT_FAILURE);        }
     }
 }
 
@@ -95,10 +73,6 @@ void Hole::addTile(vector<string> line, int lineid){
         verts.push_back(v);
     }
     
-    if (tileId == 15){
-        printf("mombo nr five: %d\n",verts.size());
-    }
-    
     this->addObject(new Tile(verts,tileId));
     
     for (int i = 0; i<numberOfVertices ; i++){
@@ -118,8 +92,8 @@ void Hole::addTee(vector<string> line, int lineid){
         exit(EXIT_FAILURE);
     }
     glm::vec3 loc = glm::vec3(atof(line[2].c_str()),atof(line[3].c_str()),atof(line[4].c_str()));
-    
-    this->addObject(new Tee(loc, .1, extraIds++));
+    loc += vec3(0.0, 0.001, 0.0);
+    this->addObject(new Tee(loc, 0.1, extraIds++));
     
 }
 
@@ -133,30 +107,17 @@ void Hole::addCup(vector<string> line, int lineid){
     
     int tileId = atof(line[1].c_str());
     
-    printf("adding cup:%d\n",tileId);
+    Tile *t             = (Tile *)          this->getObject(tileId);
+    PObject *pobj       = (PObject * )      t->getPhysicsObject();
+    PolygonShape *dsa   = (PolygonShape *)  pobj->ps;
+    vector<vec3> verts  =                   dsa->getVerts();
+    vec3 normal         =                   calcNormal(verts[0],verts[1],verts[2]);
     
-    Tile            *t      = (Tile *)          this->getObject(tileId);
+    loc += vec3(0.0, 0.001, 0.0);
     
-    printf("getting cup:%d\n",t->objectId);
+    normal = vec3(0.0,1.0,0.0);
     
-    PObject *pobj     = (PObject * ) t->getPhysicsObject();
-    
-    PolygonShape *  dsa = (PolygonShape *) pobj->ps;
-    
-    
-    dsa->getName();
-    
-    vector<vec3>    verts   =                   dsa->getVerts();
-    
-    
-    printf("checking some stuff : %d \n",verts.size());
-    
-    
-    vec3 normal = calcNormal(verts[0],verts[1],verts[2]);
-    
-    this->addObject(new Cup(loc, normal, 1.1, extraIds++));
-    
-    
+    this->addObject(new Cup(loc , normal, 0.07, extraIds++));
 }
 
 

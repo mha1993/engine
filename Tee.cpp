@@ -18,10 +18,10 @@ Tee::Tee(glm::vec3 pos, float size, int idd): GameObject::GameObject(idd){
     
     vector<glm::vec3> verts;
     
-    verts.push_back(pos + vec3(-size,-size,0.0));
-    verts.push_back(pos + vec3(-size,+size,0.0));
-    verts.push_back(pos + vec3(size,size,0.0));
-    verts.push_back(pos + vec3(size,-size,0.0));
+    verts.push_back(pos + vec3(-size, 0.0, -size));
+    verts.push_back(pos + vec3(-size, 0.0, +size));
+    verts.push_back(pos + vec3(size, 0.0, size));
+    verts.push_back(pos + vec3(size, 0.0, -size));
     
     PhysicShape *pss = new PolygonShape(verts);
     

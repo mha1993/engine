@@ -743,6 +743,7 @@
 		D6B2C13019415CDA00830778 /* Hole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hole.h; sourceTree = "<group>"; };
 		D6B2C13819417A1F00830778 /* TextUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextUtils.cpp; sourceTree = "<group>"; };
 		D6B2C13919417A1F00830778 /* TextUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextUtils.h; sourceTree = "<group>"; };
+		D6B2C13B194258D300830778 /* black.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = black.fsh; sourceTree = "<group>"; };
 		D6C03FEC191C9899003757F7 /* PhysicsUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsUtil.cpp; sourceTree = "<group>"; };
 		D6C03FED191C9899003757F7 /* PhysicsUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsUtil.h; sourceTree = "<group>"; };
 		D6E9E9FA191B0C1300F4778F /* blue.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = blue.fsh; sourceTree = "<group>"; };
@@ -878,6 +879,7 @@
 				D6FD2589193053E70020A8C9 /* min.vs */,
 				D6E9E9FA191B0C1300F4778F /* blue.fsh */,
 				D6F7ED64193FF80500F36A6F /* brown.fsh */,
+				D6B2C13B194258D300830778 /* black.fsh */,
 			);
 			name = Shaders;
 			sourceTree = "<group>";

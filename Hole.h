@@ -52,8 +52,6 @@ public:
     void setPar(vector<string> i);
     void setup();
     
-    void run();
-    
 private:
     void addWall(vec3 a, vec3 b);
     
