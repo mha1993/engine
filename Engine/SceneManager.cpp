@@ -18,9 +18,8 @@ vector<PObject*> SceneManager::getPhysicsObjects() {
 }
 
 int SceneManager::addObject(GameObject *object){
-    objects[idCounter] = object;
-    idCounter++;
-    return idCounter;
+    objects[object->objectId] = object;
+    return object->objectId;
 }
 
 GameObject* SceneManager::getObject(int id) {

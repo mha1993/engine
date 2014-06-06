@@ -19,6 +19,7 @@ protected:
     Level * current;
     vector<Level*> levels;
 public:
+    LevelManager(WindowManager *wm);
     void setup();
 
 };

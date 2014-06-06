@@ -12,14 +12,18 @@
 #include <iostream>
 #include <string>
 
+#include <vector>
+
 
 using namespace std;
 
 class FileReader {
     string basepath;
 public:
-    FileReader();
-    string readFile(string fileName);
+    static string basePath();
+    static vector<string> readFile(string fileName);
+    static string readFileToString(string filename);
+    static vector<vector<string>> readFileToVectors(string fileName);
     
 };
 

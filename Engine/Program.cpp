@@ -17,7 +17,7 @@ GLuint Program::makeShader(string filename, GLenum t) {
     //load source
     FileReader *filereader = new FileReader();
     
-    string str = filereader->FileReader::readFile(filename);
+    string str = filereader->FileReader::readFileToString(filename);
     const char *source = str.c_str();
     int s = sizeof(char)*str.length();
     const GLint *size = &s;

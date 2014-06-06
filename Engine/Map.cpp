@@ -266,9 +266,7 @@ Map::Map(string file) {
     {
         vector<string> vec;
         istringstream iss((line));
-        copy(istream_iterator<string>(iss),
-             istream_iterator<string>(),
-             back_inserter(vec));
+        copy(istream_iterator<string>(iss),istream_iterator<string>(),back_inserter(vec));
         processLine(vec, lineNumber);
         lineNumber++;
     }
