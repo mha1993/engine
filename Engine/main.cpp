@@ -16,17 +16,13 @@
 using namespace std;
 using namespace glm;
 
-
-
-
-
 int main(int argv, const char** argc) {
 
     
     WindowManager *wm = new WindowManager;
     wm->init();
     
-    Level *levelManager = new TestLevel(wm);
+    Level *levelManager = new LevelManager(wm);
 
     levelManager->setup();
     levelManager->run();

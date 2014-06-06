@@ -77,6 +77,11 @@ int BaseLevel::addObject(GameObject *go){
     return sceneManager->addObject(go);
 }
 
+GameObject* BaseLevel::getObject(int idd){
+
+    return sceneManager->getObject(idd);
+}
+
 void BaseLevel::setCurrentCamera(ECamera *camera){
     currentCamera = camera;
 }

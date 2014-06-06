@@ -32,6 +32,7 @@ public:
     
     BaseLevel(WindowManager *wm);
     int addObject(GameObject *go);
+    GameObject* getObject(int idd);
     virtual void setCurrentCamera(ECamera *camera);
     virtual ECamera *getCurrentCamera();
     virtual void setup();
