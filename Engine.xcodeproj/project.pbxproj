@@ -32,6 +32,7 @@
 		D669993019319310005EF7D4 /* BaseLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D669992E19319310005EF7D4 /* BaseLevel.cpp */; };
 		D69834C2191AF8A20074B5C4 /* PhysicsEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D69834C0191AF8A20074B5C4 /* PhysicsEngine.cpp */; };
 		D6B2C12A1941086A00830778 /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6B2C1281941086A00830778 /* Level.cpp */; };
+		D6B2C12D19410C3500830778 /* LevelManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6B2C12B19410C3500830778 /* LevelManager.cpp */; };
 		D6C03FE9191C9280003757F7 /* PhysicsPlane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6C03FE7191C9280003757F7 /* PhysicsPlane.cpp */; };
 		D6C03FEE191C9899003757F7 /* PhysicsUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6C03FEC191C9899003757F7 /* PhysicsUtil.cpp */; };
 		D6E9E9F6191AFB3400F4778F /* PhysicsObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6E9E9F4191AFB3400F4778F /* PhysicsObject.cpp */; };
@@ -759,6 +760,9 @@
 		D69834C1191AF8A20074B5C4 /* PhysicsEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsEngine.h; sourceTree = "<group>"; };
 		D6B2C1281941086A00830778 /* Level.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Level.cpp; sourceTree = "<group>"; };
 		D6B2C1291941086A00830778 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
+		D6B2C12B19410C3500830778 /* LevelManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LevelManager.cpp; path = Engine/LevelManager.cpp; sourceTree = "<group>"; };
+		D6B2C12C19410C3500830778 /* LevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LevelManager.h; path = Engine/LevelManager.h; sourceTree = "<group>"; };
+		D6B2C12E1941568700830778 /* course.db */ = {isa = PBXFileReference; lastKnownFileType = text; path = course.db; sourceTree = "<group>"; };
 		D6C03FE7191C9280003757F7 /* PhysicsPlane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsPlane.cpp; sourceTree = "<group>"; };
 		D6C03FE8191C9280003757F7 /* PhysicsPlane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsPlane.h; sourceTree = "<group>"; };
 		D6C03FEC191C9899003757F7 /* PhysicsUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsUtil.cpp; sourceTree = "<group>"; };
@@ -1762,6 +1766,9 @@
 		D6F7ED54193FD5CE00F36A6F /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				D6B2C12E1941568700830778 /* course.db */,
+				D6B2C12B19410C3500830778 /* LevelManager.cpp */,
+				D6B2C12C19410C3500830778 /* LevelManager.h */,
 				D6F7ED51193FAC3100F36A6F /* TestLevel.cpp */,
 				D6F7ED52193FAC3100F36A6F /* TestLevel.h */,
 				D6F7ED55193FD66A00F36A6F /* Tile.cpp */,
@@ -1861,6 +1868,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6B2C12D19410C3500830778 /* LevelManager.cpp in Sources */,
 				D6F7ED671940164300F36A6F /* Ball.cpp in Sources */,
 				D6F7ED5D193FEDF000F36A6F /* Cup.cpp in Sources */,
 				D6F7ED7019401A5B00F36A6F /* DrawableSphere.cpp in Sources */,

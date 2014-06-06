@@ -23,7 +23,7 @@ void TestLevel::setup(){
     
     GameObject *tile = new Tile(v,0);
     this->addObject(tile);
-    /*
+    
     GameObject *tee = new Tee(vec3(-1.0,0.0,0.0),1.0,1);
     
     this->addObject(tee);
@@ -35,7 +35,6 @@ void TestLevel::setup(){
     GameObject *wall = new Wall(v[0], v[2], .2f , 3);
     
     this->addObject(wall);
-*/
     
     GameObject *ball = new Ball(vec3(1.0, 1.0, 1.0), 1.0f, 4);
     this->addObject(ball);
