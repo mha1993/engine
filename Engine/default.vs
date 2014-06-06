@@ -1,5 +1,6 @@
 #version 150
 
+out vec3 coord;
 in vec3 aVertexNormal;
 in vec3 vert;
 
@@ -10,9 +11,10 @@ out vec3 aNormal;
 
 void main() {
     
-    vec4 tmp = uVPMatrix * uMMatrix * vec4(aVertexNormal,0.0);
+    vec4 tmp = uMMatrix * vec4(aVertexNormal,0.0);
     
     aNormal = tmp.xyz;
-    
-    gl_Position = uVPMatrix * uMMatrix * vec4(vert, 1.0);
+    tmp = uVPMatrix * uMMatrix * vec4(vert, 1.0);
+    coord = tmp.xyz;
+    gl_Position = tmp;
 }

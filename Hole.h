@@ -36,11 +36,6 @@ using namespace std;
 
 class Hole : public BaseLevel{
     
-    string name;
-    vector<vector<string>> lines;
-    
-    int par;
-    
 public:
     Hole(WindowManager *wm);
     void setName(string name);
@@ -52,7 +47,10 @@ public:
     void setPar(vector<string> i);
     void setup();
     
-private:
+protected:
+    string name;
+    vector<vector<string>> lines;
+    int par;
     void addWall(vec3 a, vec3 b);
     
 };

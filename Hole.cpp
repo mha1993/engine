@@ -21,7 +21,6 @@ void Hole::addLine(vector<string> line){
     lines.push_back(line);
 }
 
-
 void Hole::setup(){
     
     for (int i = 0; i<lines.size(); i++){
@@ -113,10 +112,7 @@ void Hole::addCup(vector<string> line, int lineid){
     vector<vec3> verts  =                   dsa->getVerts();
     vec3 normal         =                   calcNormal(verts[0],verts[1],verts[2]);
     
-    loc += vec3(0.0, 0.001, 0.0);
-    
-    normal = vec3(0.0,1.0,0.0);
-    
+    loc += vec3(0.0, 0.001, 0.0);    
     this->addObject(new Cup(loc , normal, 0.07, extraIds++));
 }
 

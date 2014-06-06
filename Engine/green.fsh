@@ -1,8 +1,12 @@
 #version 150
 
+in vec3 coord;
 in vec3 aNormal;
-
 out vec4 finalColor;
+
+float rand(vec2 co){
+    return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
+}
 
 void main() {
     
@@ -13,7 +17,8 @@ void main() {
     vec3 diffVec = vec3(0.0, 0.0, 0.0);
     
     if ( length(aNormal) > 0.0){
-        vec3 lightDir = normalize(vec3(1.0, 1.0, 1.0));
+        
+        vec3 lightDir = normalize(vec3(0.1, 1.0, -0.1));
         float diffuse = dot(normalize(aNormal),lightDir);
 	
         if (diffuse < 0.0){

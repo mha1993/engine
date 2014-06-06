@@ -10,6 +10,7 @@
 
 #include "LevelManager.h"
 
+#include "CourseHole.h"
 
 
 LevelManager::LevelManager(WindowManager *wm): Level(wm){}
@@ -37,7 +38,7 @@ void LevelManager::setup(){
             if (lineType.compare(COURSE) == 0){
                 name = TextUtils::myconcat(line," ",1);
             }else if (lineType.compare(BEGIN_HOLE) == 0){
-                levels.push_back(new Hole(windowManager));
+                levels.push_back(new CourseHole(windowManager));
             }else{
                 last()->addLine(line);
             }
@@ -49,7 +50,7 @@ void LevelManager::run(){
 
     shouldBeRunning = true;
 
-    current = 0;
+    current = 11;
 
     
     while (shouldBeRunning) {

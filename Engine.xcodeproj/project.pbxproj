@@ -28,6 +28,7 @@
 		D6B2C12D19410C3500830778 /* LevelManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6B2C12B19410C3500830778 /* LevelManager.cpp */; };
 		D6B2C13119415CDA00830778 /* Hole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6B2C12F19415CDA00830778 /* Hole.cpp */; };
 		D6B2C13A19417A1F00830778 /* TextUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6B2C13819417A1F00830778 /* TextUtils.cpp */; };
+		D6B2C13E19425A1A00830778 /* CourseHole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6B2C13C19425A1A00830778 /* CourseHole.cpp */; };
 		D6C03FEE191C9899003757F7 /* PhysicsUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6C03FEC191C9899003757F7 /* PhysicsUtil.cpp */; };
 		D6F7ED53193FAC3100F36A6F /* TestLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F7ED51193FAC3100F36A6F /* TestLevel.cpp */; };
 		D6F7ED57193FD66A00F36A6F /* Tile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F7ED55193FD66A00F36A6F /* Tile.cpp */; };
@@ -744,6 +745,8 @@
 		D6B2C13819417A1F00830778 /* TextUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextUtils.cpp; sourceTree = "<group>"; };
 		D6B2C13919417A1F00830778 /* TextUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextUtils.h; sourceTree = "<group>"; };
 		D6B2C13B194258D300830778 /* black.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = black.fsh; sourceTree = "<group>"; };
+		D6B2C13C19425A1A00830778 /* CourseHole.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CourseHole.cpp; sourceTree = "<group>"; };
+		D6B2C13D19425A1A00830778 /* CourseHole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseHole.h; sourceTree = "<group>"; };
 		D6C03FEC191C9899003757F7 /* PhysicsUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsUtil.cpp; sourceTree = "<group>"; };
 		D6C03FED191C9899003757F7 /* PhysicsUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsUtil.h; sourceTree = "<group>"; };
 		D6E9E9FA191B0C1300F4778F /* blue.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = blue.fsh; sourceTree = "<group>"; };
@@ -1768,6 +1771,8 @@
 				D6F7ED661940164300F36A6F /* Ball.h */,
 				D6B2C12F19415CDA00830778 /* Hole.cpp */,
 				D6B2C13019415CDA00830778 /* Hole.h */,
+				D6B2C13C19425A1A00830778 /* CourseHole.cpp */,
+				D6B2C13D19425A1A00830778 /* CourseHole.h */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -1837,6 +1842,7 @@
 				D6F7ED57193FD66A00F36A6F /* Tile.cpp in Sources */,
 				B08E02951912C2710030C111 /* glew.c in Sources */,
 				B08E029F1912D1A10030C111 /* Program.cpp in Sources */,
+				D6B2C13E19425A1A00830778 /* CourseHole.cpp in Sources */,
 				D6F7ED53193FAC3100F36A6F /* TestLevel.cpp in Sources */,
 				D63FEEA01922AD9400F254F6 /* FPCamera.cpp in Sources */,
 				B002AAFF1937F0500056F20E /* PE3.cpp in Sources */,
