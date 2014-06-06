@@ -26,7 +26,7 @@
 void World::loadMap() {
     currCamera = 0;
     FileReader *fr = new FileReader::FileReader();
-    map = new Map::Map(fr->readFile("maps/hole.02.db"));
+    map = new Map::Map(fr->readFileToString("maps/hole.02.db"));
     cameras = map->getCameras(WINDOW_WIDTH/WINDOW_HEIGHT);
     dsa = true;
 }

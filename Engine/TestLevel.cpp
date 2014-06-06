@@ -33,7 +33,7 @@ void TestLevel::setup(){
     v.push_back(vec3(-10.7,0.0,10.0));
     
     
-    GameObject *tile2 = new Tile(v,0);
+    GameObject *tile2 = new Tile(v,1);
     this->addObject(tile2);
     
     /*
@@ -52,9 +52,9 @@ void TestLevel::setup(){
      
      */
     
-    GameObject *ball = new Ball(vec3(1.0, 1.0, 1.0), 1.0f, 1);
+    GameObject *ball = new Ball(vec3(1.0, 1.0, 1.0), 1.0f, 2);
     ball->getPhysicsObject()->isStatic = false;
-    ball->getPhysicsObject()->vel = glm::vec3(.5,0,0);
+    ball->getPhysicsObject()->vel = glm::vec3(5,0,0);
     
     this->addObject(ball);
     

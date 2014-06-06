@@ -16,7 +16,7 @@ Shader::Shader(string filename, GLenum t) {
     
     //load source
     FileReader *filereader = new FileReader();
-    const char *source = filereader->FileReader::readFile(filename).c_str();
+    const char *source = filereader->FileReader::readFileToString(filename).c_str();
     glShaderSource(shader, 1, (const GLchar**)&source, NULL);
     
     //compile shader

@@ -15,7 +15,6 @@
 
 class GameObject{
     
-    const int objectId;
     int physicsID;
 
 protected:
@@ -26,6 +25,7 @@ public:
     GameObject(int idd);
     PObject* getPhysicsObject();
     Drawable* getMesh();
+    const int objectId;
     
     
     virtual void tick(float tickTime);

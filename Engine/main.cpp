@@ -10,6 +10,7 @@
 
 #include "WindowManager.h"
 #include "Physics2.h"
+#include "LevelManager.h"
 #include "TestLevel.h"
 
 using namespace std;
@@ -25,14 +26,14 @@ int main(int argv, const char** argc) {
     WindowManager *wm = new WindowManager;
     wm->init();
     
-    TestLevel *tl = new TestLevel(wm);
+    Level *levelManager = new TestLevel(wm);
 
-    tl->setup();
-    tl->run();
+    levelManager->setup();
+    levelManager->run();
     
     wm->stop();
     
-    delete tl;
+    delete levelManager;
     delete wm;
     
     
