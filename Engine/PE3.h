@@ -33,9 +33,7 @@ public:
     void tick(vector<PObject*> objs, float dTime);
     void calcForces(PObject* obj);
     void move(PObject* obj, float dTime);
-    bool boundingBoxCheck(PObject* obj1, PObject* obj2);
     glm::vec3 support(PObject* obj1, PObject* obj2, glm::vec3 d);
-    bool doSimplex(vector<glm::vec3> simplex, glm::vec3 d);
     void moveBack(Collision c);
 };
 

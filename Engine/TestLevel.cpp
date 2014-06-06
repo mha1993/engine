@@ -30,4 +30,6 @@ void TestLevel::setup(){
     
     this->addObject(cup);
     
+    GameObject *ball = new Ball
+    
 }
