@@ -11,6 +11,7 @@
 #include "WindowManager.h"
 #include "Physics2.h"
 #include "LevelManager.h"
+#include "TestLevel.h"
 
 using namespace std;
 using namespace glm;
@@ -25,7 +26,7 @@ int main(int argv, const char** argc) {
     WindowManager *wm = new WindowManager;
     wm->init();
     
-    Level *levelManager = new LevelManager(wm);
+    Level *levelManager = new TestLevel(wm);
 
     levelManager->setup();
     levelManager->run();
