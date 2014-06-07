@@ -22,16 +22,19 @@ using namespace std;
 class BaseLevel : public Level{
     
     //vector<GameObject *> gameObjects;
-    SceneManager *sceneManager;
-    PE3 *physicsEngine;
+
     
 protected:
     ECamera *currentCamera;
-    
+    SceneManager *sceneManager;
+    PE3 *physicsEngine;
 public:
+    
+    virtual void stop();
     
     BaseLevel(WindowManager *wm);
     int addObject(GameObject *go);
+    GameObject* getObject(int idd);
     virtual void setCurrentCamera(ECamera *camera);
     virtual ECamera *getCurrentCamera();
     virtual void setup();

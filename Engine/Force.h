@@ -16,7 +16,7 @@
 class Force {
     
 public:
-    glm::vec3 calcForce();
+    virtual glm::vec3 calcForce(float dt);
 };
 
 #endif /* defined(__Engine__Force__) */

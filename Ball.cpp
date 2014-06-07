@@ -7,25 +7,23 @@
 //
 
 #include "Ball.h"
-
 #include "SphereShape.h"
-
 #include "DrawableSphere.h"
 
-Ball::Ball(glm::vec3 pos, float size, int idd) : GameObject(idd){
+
+Ball::Ball(glm::vec3 pos, glm::vec3 vel, float size, int idd) : GameObject(idd){
 
 
     PhysicShape *pss = new SphereShape();
-    physicsObject = new PObject(idd, pss, pos, vec3(0.0,0.0,0.0), true, size, false);
+    physicsObject = new PObject(idd, pss, pos, vel, true, size, false);
 
     mesh = new DrawableSphere(size, 10, 10, "default.vs","red.fsh");
-    
-    
-
 }
 
 void Ball::collidedWith(GameObject *other, vec3 hitNormal, vec3 pos) {
+    float bounceCoefficient = 0.8f;
     vec3 n = normalize(hitNormal);
     vec3 d = getPhysicsObject()->vel;
-    getPhysicsObject()->vel = d-2*(dot(d,n))*n;
+    vec3 reflection = d-2*(dot(d,n))*n;
+    getPhysicsObject()->vel =  bounceCoefficient*reflection;
 }

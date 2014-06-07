@@ -7,15 +7,17 @@
 //
 
 #include "BaseLevel.h"
+#include "Gravity.h"
 
 #include "FPCamera.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 
 BaseLevel::BaseLevel(WindowManager *wm) : Level(wm){
-
     sceneManager = new SceneManager();
     physicsEngine = new PE3();
+    Gravity *g = new Gravity();
+    physicsEngine->addForce((Force*)g);
     currentCamera = new FPCamera();
     shouldBeRunning = false;
 }
@@ -23,7 +25,9 @@ BaseLevel::BaseLevel(WindowManager *wm) : Level(wm){
 void BaseLevel::setup(){}
 void BaseLevel::teardown(){}
 
-
+void BaseLevel::stop(){
+    shouldBeRunning = false;
+}
 
 void BaseLevel::render(){
 
@@ -57,7 +61,6 @@ void BaseLevel::tick(float deltaTime){
     
     vector<Collision> collisions = physicsEngine->getCollisions();
     
-    
     for (int i = 0 ; i<collisions.size(); i++){
     
         Collision col = collisions[i];
@@ -74,7 +77,13 @@ void BaseLevel::tick(float deltaTime){
 }
 int BaseLevel::addObject(GameObject *go){
     
+    go->setLevel(this);
     return sceneManager->addObject(go);
+}
+
+GameObject* BaseLevel::getObject(int idd){
+
+    return sceneManager->getObject(idd);
 }
 
 void BaseLevel::setCurrentCamera(ECamera *camera){

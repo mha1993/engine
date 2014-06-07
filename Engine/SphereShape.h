@@ -13,11 +13,14 @@
 
 #include "PhysicShape.h"
 
+#include <string>
+
 class SphereShape : public PhysicShape{
 
 public:
     vec3 mSupport(vec3 dir);
     
+    std::string getName();
 
 };
 

@@ -9,16 +9,13 @@
 #include <iostream>
 
 #include "WindowManager.h"
-#include "Physics2.h"
 #include "LevelManager.h"
 #include "TestLevel.h"
+#include "HudRenderer.h"
+#include "TestHudElement.h"
 
 using namespace std;
 using namespace glm;
-
-
-
-
 
 int main(int argv, const char** argc) {
 
@@ -26,17 +23,25 @@ int main(int argv, const char** argc) {
     WindowManager *wm = new WindowManager;
     wm->init();
     
-    Level *levelManager = new TestLevel(wm);
+    Level *levelManager = new LevelManager(wm);
 
     levelManager->setup();
+    
     levelManager->run();
     
     wm->stop();
     
-    delete levelManager;
-    delete wm;
+    /*
+    HudRenderer * hr = new HudRenderer(wm);
     
+    TestHudElement *THudE = new TestHudElement();
     
+    hr->addElement(THudE);
+    
+    while (!wm->quitRequest()) {
+        hr->render();
+    }
+    */
 }
 
 

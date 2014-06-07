@@ -14,3 +14,10 @@ vec3 SphereShape::mSupport(vec3 dir){
     return vec3(0.0,0.0,0.0);
     
 }
+
+
+
+std::string SphereShape::getName(){
+
+    return "sphere";
+}

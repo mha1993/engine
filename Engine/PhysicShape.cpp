@@ -16,3 +16,10 @@ vec3 PhysicShape::mSupport(vec3 dir){
     return vec3(0.0,0.0,0.0);
     
 }
+
+
+
+std::string PhysicShape::getName(){
+
+    return  "NOOO";
+}

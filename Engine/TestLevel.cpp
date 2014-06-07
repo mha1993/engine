@@ -37,7 +37,7 @@ void TestLevel::setup(){
     this->addObject(tile2);
 
     
-    GameObject *ball = new Ball(vec3(1.0, 1.0, 1.0), 1.0f, 2);
+    GameObject *ball = new Ball(vec3(1.0, 1.0, 1.0), vec3(0,0,0), 1.0f, 2);
     ball->getPhysicsObject()->isStatic = false;
     ball->getPhysicsObject()->vel = glm::vec3(5,0,0);
     

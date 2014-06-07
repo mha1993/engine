@@ -28,7 +28,7 @@ public:
     PolygonShape(vector<vec3> v);
     vector<vec3> getVerts();
     vec3 mSupport(vec3 dir);
-
+    std::string getName();
 };
 
 #endif /* defined(__Engine__PolygonShape__) */

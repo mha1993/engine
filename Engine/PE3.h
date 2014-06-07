@@ -29,9 +29,10 @@ class PE3 {
     vector<Collision> collisions;
     
 public:
+    void addForce(Force *force);
     vector<Collision> getCollisions();
     void tick(vector<PObject*> objs, float dTime);
-    void calcForces(PObject* obj);
+    void calcForces(PObject* obj, float dt);
     void move(PObject* obj, float dTime);
     glm::vec3 support(PObject* obj1, PObject* obj2, glm::vec3 d);
     void moveBack(PObject *ob1, PObject *ob2);

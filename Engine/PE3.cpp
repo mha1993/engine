@@ -12,9 +12,13 @@
 #include "PolygonShape.h"
 #include <math.h>
 
-void PE3::calcForces(PObject* obj) {
+void PE3::addForce(Force *force) {
+    forces.push_back(force);
+}
+
+void PE3::calcForces(PObject* obj, float dt) {
     for (int i = 0; i < forces.size(); i++) {
-        obj->vel += forces[i]->calcForce();
+        obj->vel += forces[i]->calcForce(dt);
     }
 }
 
@@ -60,6 +64,11 @@ bool SpherePlaneCollision(PObject *a, PObject *b) {
     vec3 sPos = a->pos;
     PolygonShape *ps = (PolygonShape*)b->ps;
     vector<vec3> verts = ps->PolygonShape::getVerts();
+    
+    for (int i = 0; i<verts.size(); i++) {
+        verts[i] += b->pos;
+    }
+    
     vec3 norm = CalcNormal(verts);
     vec3 intersect = LinePlaneIntersect(norm, verts[0], sPos, -norm);
 
@@ -87,16 +96,6 @@ void PE3::tick(vector<PObject*> objs, float dTime) {
     //CLEAR COLLISIONS
     collisions.clear();
     
-    //FORCES
-    for (int i = 0; i < objs.size(); i++) {
-        calcForces(objs[i]);
-    }
-    
-    //MOVE
-    for (int i = 0; i < objs.size(); i++) {
-        move(objs[i], dTime);
-    }
-    
     vector<PObject*> moveables;
     vector<PObject*> imoveables;
     
@@ -108,7 +107,18 @@ void PE3::tick(vector<PObject*> objs, float dTime) {
         }
     }
     
-    //CHECK COLLISIONS MOVABLE - MOVABLE
+    //FORCES
+    for (int i = 0; i < moveables.size(); i++) {
+        calcForces(moveables[i], dTime);
+    }
+    
+    //MOVE
+    for (int i = 0; i < moveables.size(); i++) {
+        move(moveables[i], dTime);
+    }
+
+    
+    //CHECK COLLISIONS MOVABLE - IMOVABLE
     for (int i = 0; i < moveables.size(); i++) {
         
         PObject *a = moveables[i];
@@ -117,6 +127,7 @@ void PE3::tick(vector<PObject*> objs, float dTime) {
             
             PObject *b = imoveables[j];
             if (SpherePlaneCollision(a, b)){
+                cout << "COLLISION" << endl;
                 Collision c;
                 moveBack(a, b);
                 c.obj1 = a->id;

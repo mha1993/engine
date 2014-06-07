@@ -8,7 +8,6 @@
 
 #include "GameObject.h"
 
-
 GameObject::GameObject(int idd): objectId(idd){
     
 }
@@ -30,4 +29,11 @@ void GameObject::collidedWith(GameObject *other, vec3 hitNormal, vec3 pos){
 Drawable * GameObject::getMesh(){
 
     return mesh;
+}
+
+
+void GameObject::setLevel(BaseLevel *bl){
+
+    level = bl;
+
 }

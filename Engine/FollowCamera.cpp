@@ -11,7 +11,7 @@
 
 #include <glm/gtx/vector_angle.hpp>
 
-FollowCamera::FollowCamera(PhysicsObject *po){
+FollowCamera::FollowCamera(PObject *po){
 
     followObject = po;
 
@@ -25,7 +25,7 @@ void FollowCamera::update(float time){
     
     float ballDist = 2.0;
     
-    glm::vec3 v = followObject->getVelocity();
+    glm::vec3 v = followObject->vel;
     
     v = glm::vec3(v.x,0,v.z);
     
@@ -34,7 +34,7 @@ void FollowCamera::update(float time){
     v *= ballDist;
     
     
-    glm::vec3 newPos = followObject->getPosition() - v + glm::vec3(0.0,1.0,0.0);
+    glm::vec3 newPos = followObject->pos - v + glm::vec3(0.0,1.0,0.0);
     
     glm::vec3 diff =  newPos - lastPos;
     
@@ -51,6 +51,6 @@ void FollowCamera::update(float time){
     
     setPosition(newPos);
     
-    lookAt(followObject->getPosition());
+    lookAt(followObject->pos);
     
 }

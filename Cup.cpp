@@ -16,8 +16,18 @@
 Cup::Cup(glm::vec3 pos, vec3 normal, float size, int idd): GameObject::GameObject(idd){
     
     glm::vec3 n = normal;
+    glm::vec3 p1;
     
-    glm::vec3 p1 = glm::vec3(1.0,1.0,-(n.x + n.y)/n.z);
+    if (n.y != 0.0f){
+        p1 = glm::vec3(1.0,-(n.x + n.z)/n.y,1.0);
+    }else if (n.z != 0.0f){
+        p1 = glm::vec3(1.0,1.0,-(n.x + n.y)/n.z);
+    }else if (n.x != 0.0f){
+        p1 = glm::vec3(0,1.0,1.0);
+    }else {
+        std::cout << "Cup without normal setting something else";
+        p1 = glm::vec3(0,1.0,1.0);
+    }
     
     p1 = glm::normalize(p1);
     glm::vec3 p2 = glm::cross(n, p1);
@@ -27,12 +37,12 @@ Cup::Cup(glm::vec3 pos, vec3 normal, float size, int idd): GameObject::GameObjec
     
     float r = size;
     
-    for (float i = 0; i<= 2*M_PI ; i+= M_PI/10){
+    for (float i = 0; i<= 2*M_PI ; i+= M_PI/5.0){
         
         glm::vec3 na = p1 * r * cosf(i);
         glm::vec3 nb = p2 * r * sinf(i);
         
-        glm::vec3 v = pos + na + nb;
+        glm::vec3 v = na + nb;
         
         cupVerts.push_back(v);
         
@@ -43,7 +53,7 @@ Cup::Cup(glm::vec3 pos, vec3 normal, float size, int idd): GameObject::GameObjec
     
     PhysicShape *pss = new PolygonShape(verts);
     
-    physicsObject = new PObject(idd,pss,vec3(0.0,0.0,0.0), true);
+    physicsObject = new PObject(idd,pss,pos, true);
     
     vector<vec3> normals;
     
@@ -51,7 +61,13 @@ Cup::Cup(glm::vec3 pos, vec3 normal, float size, int idd): GameObject::GameObjec
         normals.push_back(n);
     }
     
-    mesh = new Mesh("default.vs","red.fsh", &verts,&normals,GL_TRIANGLE_FAN);
+    mesh = new Mesh("default.vs","black.fsh", &verts,&normals,GL_TRIANGLE_FAN);
+    
+}
+
+void Cup::collidedWith(GameObject *other, vec3 hitNormal, vec3 pos){
+    
+    printf("yes this is dog %d\n",this->objectId);
     
 }
 

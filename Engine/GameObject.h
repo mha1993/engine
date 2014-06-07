@@ -13,6 +13,8 @@
 #include "PObject.h"
 #include "Drawable.h"
 
+class BaseLevel;
+
 class GameObject{
     
     int physicsID;
@@ -20,11 +22,13 @@ class GameObject{
 protected:
     PObject *physicsObject;
     Drawable* mesh;
+    BaseLevel *level;
 
 public:
     GameObject(int idd);
     PObject* getPhysicsObject();
     Drawable* getMesh();
+    void setLevel(BaseLevel *bl);
     const int objectId;
     
     

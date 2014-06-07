@@ -11,10 +11,9 @@
 #include<limits>
 
 
-PolygonShape::PolygonShape(vector<vec3> v){
+PolygonShape::PolygonShape(vector<vec3> v) : PhysicShape(){
     
     edges = v;
-    
 }
 
 vec3 PolygonShape::mSupport(vec3 dir){
@@ -35,4 +34,10 @@ vec3 PolygonShape::mSupport(vec3 dir){
 
 vector<vec3> PolygonShape::getVerts() {
     return edges;
+}
+
+
+std::string PolygonShape::getName(){
+    
+    return "sphere";
 }

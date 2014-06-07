@@ -12,13 +12,15 @@
 #include <iostream>
 #include "glm.hpp"
 
+#include <string>
+
 using namespace glm;
 
 class PhysicShape{
     
 public:
     virtual vec3 mSupport(vec3 dir);
-
+    virtual std::string getName();
 };
 
 

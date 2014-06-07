@@ -11,16 +11,30 @@
 
 #include <iostream>
 
-#include "Level.h"
+
+#include "Hole.h"
+#include "FileReader.h"
+#include "TextUtils.h"
+
+#define COURSE "course"
+#define BEGIN_HOLE "begin_hole"
+#define END_HOLE "end_hole"
 
 class LevelManager : public Level{
 
 protected:
-    Level * current;
-    vector<Level*> levels;
+    string name;
+    int current;
+    vector<Hole*> levels;
 public:
     LevelManager(WindowManager *wm);
     void setup();
+
+    void run();
+    
+private:
+    Hole * last();
+ 
 
 };
 
