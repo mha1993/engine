@@ -19,7 +19,7 @@ void TestLevel::setup(){
     
     v.push_back(vec3(3.0,0.0,-10.0));
     v.push_back(vec3(3.0,20.0,-10.0));
-    v.push_back(vec3(2.7,0.0,10.0));
+    v.push_back(vec3(3.01,0.0,10.0));
     
     
     GameObject *tile = new Tile(v,0);
@@ -30,27 +30,12 @@ void TestLevel::setup(){
     
     v.push_back(vec3(-10.0,0.0,-10.0));
     v.push_back(vec3(-10.0,20.0,-10.0));
-    v.push_back(vec3(-10.7,0.0,10.0));
+    v.push_back(vec3(-10.01,0.0,10.0));
     
     
     GameObject *tile2 = new Tile(v,1);
     this->addObject(tile2);
-    
-    /*
-    
-    GameObject *tee = new Tee(vec3(-1.0,0.0,0.0),1.0,1);
-    
-    this->addObject(tee);
-    
-    GameObject *cup = new Cup(vec3(-1.0,-1.0,0.0), vec3(1.0,1.0,1.0),  1.0, 2);
-    
-    this->addObject(cup);
 
-    GameObject *wall = new Wall(v[0], v[2], .2f , 3);
-    
-    this->addObject(wall);
-     
-     */
     
     GameObject *ball = new Ball(vec3(1.0, 1.0, 1.0), 1.0f, 2);
     ball->getPhysicsObject()->isStatic = false;

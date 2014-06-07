@@ -65,9 +65,6 @@ void BaseLevel::tick(float deltaTime){
         GameObject *gameObject1 = sceneManager->getObject(col.obj1);
         GameObject *gameObject2 = sceneManager->getObject(col.obj2);
         
-        
-        cout << "testting" << gameObject1->objectId << gameObject2->objectId << endl;
-        
         gameObject1->collidedWith(gameObject2, col.norm , col.pos);
         gameObject2->collidedWith(gameObject1, -col.norm , col.pos);
     }

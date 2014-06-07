@@ -34,7 +34,7 @@ public:
     void calcForces(PObject* obj);
     void move(PObject* obj, float dTime);
     glm::vec3 support(PObject* obj1, PObject* obj2, glm::vec3 d);
-    void moveBack(Collision c);
+    void moveBack(PObject *ob1, PObject *ob2);
 };
 
 #endif /* defined(__Engine__PE3__) */

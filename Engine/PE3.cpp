@@ -75,8 +75,12 @@ vector<Collision> PE3::getCollisions(){
     return collisions;
 }
 
-void PE3::moveBack(Collision c) {
-    
+void PE3::moveBack(PObject *ob1, PObject *ob2) {
+    PolygonShape *tile = (PolygonShape*)ob2->ps;
+    vec3 norm = CalcNormal(tile->getVerts());
+    vec3 intersect = LinePlaneIntersect(norm, tile->getVerts()[0], ob1->pos, ob1->vel);
+    vec3 move = ob1->pos - intersect;
+    ob1->pos += move;
 }
 
 void PE3::tick(vector<PObject*> objs, float dTime) {
@@ -114,17 +118,16 @@ void PE3::tick(vector<PObject*> objs, float dTime) {
             PObject *b = imoveables[j];
             if (SpherePlaneCollision(a, b)){
                 Collision c;
+                moveBack(a, b);
                 c.obj1 = a->id;
                 c.obj2 = b->id;
+                PolygonShape *tile = (PolygonShape*)b->ps;
+                c.norm = CalcNormal(tile->getVerts());
+                c.pos = LinePlaneIntersect(c.norm, tile->getVerts()[0], a->pos, c.norm);
+                
                 collisions.push_back(c);
             }
         }
-    }
-    
-    
-    //MOVEBACK
-    for (int i = 0; i < collisions.size(); i++) {
-        moveBack(collisions[i]);
     }
     
 }
