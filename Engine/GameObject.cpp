@@ -8,7 +8,6 @@
 
 #include "GameObject.h"
 
-
 GameObject::GameObject(int idd): objectId(idd){
     
 }
@@ -23,11 +22,18 @@ PObject * GameObject::getPhysicsObject(){
 }
 
 void GameObject::collidedWith(GameObject *other, vec3 hitNormal, vec3 pos){
-    std::cout << "empty" << std::endl;
+    //std::cout << "empty" << std::endl;
 
 }
 
 Drawable * GameObject::getMesh(){
 
     return mesh;
+}
+
+
+void GameObject::setLevel(BaseLevel *bl){
+
+    level = bl;
+
 }

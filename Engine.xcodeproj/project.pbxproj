@@ -29,7 +29,11 @@
 		D6B2C13119415CDA00830778 /* Hole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6B2C12F19415CDA00830778 /* Hole.cpp */; };
 		D6B2C13A19417A1F00830778 /* TextUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6B2C13819417A1F00830778 /* TextUtils.cpp */; };
 		D6B2C13E19425A1A00830778 /* CourseHole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6B2C13C19425A1A00830778 /* CourseHole.cpp */; };
+		D6B2C14119426EDA00830778 /* GameBall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6B2C13F19426EDA00830778 /* GameBall.cpp */; };
 		D6C03FEE191C9899003757F7 /* PhysicsUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6C03FEC191C9899003757F7 /* PhysicsUtil.cpp */; };
+		D6E36AD0194286CC0089E3FA /* HudRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6E36ACE194286CC0089E3FA /* HudRenderer.cpp */; };
+		D6E36AD3194287C90089E3FA /* HudElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6E36AD1194287C90089E3FA /* HudElement.cpp */; };
+		D6E36AD619428CD60089E3FA /* TestHudElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6E36AD419428CD60089E3FA /* TestHudElement.cpp */; };
 		D6F7ED53193FAC3100F36A6F /* TestLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F7ED51193FAC3100F36A6F /* TestLevel.cpp */; };
 		D6F7ED57193FD66A00F36A6F /* Tile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F7ED55193FD66A00F36A6F /* Tile.cpp */; };
 		D6F7ED5A193FE8DB00F36A6F /* Tee.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F7ED58193FE8DB00F36A6F /* Tee.cpp */; };
@@ -747,8 +751,16 @@
 		D6B2C13B194258D300830778 /* black.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = black.fsh; sourceTree = "<group>"; };
 		D6B2C13C19425A1A00830778 /* CourseHole.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CourseHole.cpp; sourceTree = "<group>"; };
 		D6B2C13D19425A1A00830778 /* CourseHole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseHole.h; sourceTree = "<group>"; };
+		D6B2C13F19426EDA00830778 /* GameBall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameBall.cpp; sourceTree = "<group>"; };
+		D6B2C14019426EDA00830778 /* GameBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBall.h; sourceTree = "<group>"; };
 		D6C03FEC191C9899003757F7 /* PhysicsUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsUtil.cpp; sourceTree = "<group>"; };
 		D6C03FED191C9899003757F7 /* PhysicsUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsUtil.h; sourceTree = "<group>"; };
+		D6E36ACE194286CC0089E3FA /* HudRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HudRenderer.cpp; sourceTree = "<group>"; };
+		D6E36ACF194286CC0089E3FA /* HudRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HudRenderer.h; sourceTree = "<group>"; };
+		D6E36AD1194287C90089E3FA /* HudElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HudElement.cpp; sourceTree = "<group>"; };
+		D6E36AD2194287C90089E3FA /* HudElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HudElement.h; sourceTree = "<group>"; };
+		D6E36AD419428CD60089E3FA /* TestHudElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestHudElement.cpp; sourceTree = "<group>"; };
+		D6E36AD519428CD60089E3FA /* TestHudElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHudElement.h; sourceTree = "<group>"; };
 		D6E9E9FA191B0C1300F4778F /* blue.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = blue.fsh; sourceTree = "<group>"; };
 		D6F7ED51193FAC3100F36A6F /* TestLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TestLevel.cpp; path = Engine/TestLevel.cpp; sourceTree = "<group>"; };
 		D6F7ED52193FAC3100F36A6F /* TestLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestLevel.h; path = Engine/TestLevel.h; sourceTree = "<group>"; };
@@ -868,6 +880,12 @@
 				D6B2C137194178E400830778 /* Utils */,
 				D6B2C1351941787700830778 /* Render */,
 				B002AAFC1937EFD70056F20E /* Physics3 */,
+				D6E36ACE194286CC0089E3FA /* HudRenderer.cpp */,
+				D6E36ACF194286CC0089E3FA /* HudRenderer.h */,
+				D6E36AD1194287C90089E3FA /* HudElement.cpp */,
+				D6E36AD2194287C90089E3FA /* HudElement.h */,
+				D6E36AD419428CD60089E3FA /* TestHudElement.cpp */,
+				D6E36AD519428CD60089E3FA /* TestHudElement.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1773,6 +1791,8 @@
 				D6B2C13019415CDA00830778 /* Hole.h */,
 				D6B2C13C19425A1A00830778 /* CourseHole.cpp */,
 				D6B2C13D19425A1A00830778 /* CourseHole.h */,
+				D6B2C13F19426EDA00830778 /* GameBall.cpp */,
+				D6B2C14019426EDA00830778 /* GameBall.h */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -1830,6 +1850,7 @@
 			files = (
 				D6B2C12D19410C3500830778 /* LevelManager.cpp in Sources */,
 				D6F7ED671940164300F36A6F /* Ball.cpp in Sources */,
+				D6E36AD0194286CC0089E3FA /* HudRenderer.cpp in Sources */,
 				D6F7ED5D193FEDF000F36A6F /* Cup.cpp in Sources */,
 				D6B2C13119415CDA00830778 /* Hole.cpp in Sources */,
 				D6F7ED7019401A5B00F36A6F /* DrawableSphere.cpp in Sources */,
@@ -1838,8 +1859,10 @@
 				B08E029C1912D08B0030C111 /* main.cpp in Sources */,
 				D6FD259219314EEA0020A8C9 /* PhysicShape.cpp in Sources */,
 				B08E02A51915D1030030C111 /* Camera.cpp in Sources */,
+				D6B2C14119426EDA00830778 /* GameBall.cpp in Sources */,
 				D6FD2576192FD1430020A8C9 /* Mesh.cpp in Sources */,
 				D6F7ED57193FD66A00F36A6F /* Tile.cpp in Sources */,
+				D6E36AD3194287C90089E3FA /* HudElement.cpp in Sources */,
 				B08E02951912C2710030C111 /* glew.c in Sources */,
 				B08E029F1912D1A10030C111 /* Program.cpp in Sources */,
 				D6B2C13E19425A1A00830778 /* CourseHole.cpp in Sources */,
@@ -1856,6 +1879,7 @@
 				D6FD25841930093E0020A8C9 /* GameObject.cpp in Sources */,
 				D6FD2596193157550020A8C9 /* PolygonShape.cpp in Sources */,
 				D63FEEA31922B03B00F254F6 /* ECamera.cpp in Sources */,
+				D6E36AD619428CD60089E3FA /* TestHudElement.cpp in Sources */,
 				D6FD259C19315E150020A8C9 /* PObject.cpp in Sources */,
 				D6F7ED5A193FE8DB00F36A6F /* Tee.cpp in Sources */,
 				B003ADE019107CF4005838F5 /* FileReader.cpp in Sources */,
@@ -1948,6 +1972,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$SRCROOT/thirdparty/glfw\"",
+					"/Users/jakobfolkesson/Downloads/freetype-2.4.0",
+					"$(PROJECT_DIR)/thirdparty",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1966,6 +1992,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$SRCROOT/thirdparty/glfw\"",
+					"/Users/jakobfolkesson/Downloads/freetype-2.4.0",
+					"$(PROJECT_DIR)/thirdparty",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

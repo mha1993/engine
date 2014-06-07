@@ -10,8 +10,9 @@
 #define __Engine__CourseHole__
 
 #include <iostream>
-
 #include "Hole.h"
+
+#include "GameBall.h"
 
 
 class CourseHole : public Hole{
@@ -22,7 +23,7 @@ public:
 
 protected:
     void tick(float deltaTime);
-
+    void setup();
 };
 
 

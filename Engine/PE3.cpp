@@ -60,6 +60,11 @@ bool SpherePlaneCollision(PObject *a, PObject *b) {
     vec3 sPos = a->pos;
     PolygonShape *ps = (PolygonShape*)b->ps;
     vector<vec3> verts = ps->PolygonShape::getVerts();
+    
+    for (int i = 0; i<verts.size(); i++) {
+        verts[i] += b->pos;
+    }
+    
     vec3 norm = CalcNormal(verts);
     vec3 intersect = LinePlaneIntersect(norm, verts[0], sPos, -norm);
 
@@ -104,7 +109,7 @@ void PE3::tick(vector<PObject*> objs, float dTime) {
         }
     }
     
-    //CHECK COLLISIONS MOVABLE - MOVABLE
+    //CHECK COLLISIONS MOVABLE - IMOVABLE
     for (int i = 0; i < moveables.size(); i++) {
         
         PObject *a = moveables[i];

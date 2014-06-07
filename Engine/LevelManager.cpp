@@ -50,16 +50,15 @@ void LevelManager::run(){
 
     shouldBeRunning = true;
 
-    current = 11;
+    current = 0;
 
     
-    while (shouldBeRunning) {
+    while (shouldBeRunning && current < levels.size()) {
         
         levels[current]->setup();
         levels[current]->run();
         levels[current]->teardown();
-        
-        current = ++current % levels.size();
+        current++;
     }
 
     

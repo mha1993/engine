@@ -18,7 +18,7 @@ void main() {
     
     if ( length(aNormal) > 0.0){
         
-        vec3 lightDir = normalize(vec3(0.1, 1.0, -0.1));
+        vec3 lightDir = normalize(vec3(0.1, 1.0, 1.1));
         float diffuse = dot(normalize(aNormal),lightDir);
 	
         if (diffuse < 0.0){

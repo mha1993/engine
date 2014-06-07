@@ -92,7 +92,8 @@ void Hole::addTee(vector<string> line, int lineid){
     }
     glm::vec3 loc = glm::vec3(atof(line[2].c_str()),atof(line[3].c_str()),atof(line[4].c_str()));
     loc += vec3(0.0, 0.001, 0.0);
-    this->addObject(new Tee(loc, 0.1, extraIds++));
+    tee = new Tee(loc, 0.1, extraIds++);
+    this->addObject(tee);
     
 }
 
@@ -112,8 +113,9 @@ void Hole::addCup(vector<string> line, int lineid){
     vector<vec3> verts  =                   dsa->getVerts();
     vec3 normal         =                   calcNormal(verts[0],verts[1],verts[2]);
     
-    loc += vec3(0.0, 0.001, 0.0);    
-    this->addObject(new Cup(loc , normal, 0.07, extraIds++));
+    loc += vec3(0.0, 0.001, 0.0);
+    cup = new Cup(loc , normal, 0.07, extraIds++);
+    this->addObject(cup);
 }
 
 

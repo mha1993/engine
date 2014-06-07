@@ -30,6 +30,8 @@ protected:
     PE3 *physicsEngine;
 public:
     
+    virtual void stop();
+    
     BaseLevel(WindowManager *wm);
     int addObject(GameObject *go);
     GameObject* getObject(int idd);

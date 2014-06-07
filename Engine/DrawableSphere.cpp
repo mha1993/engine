@@ -54,6 +54,9 @@ void DrawableSphere::setMatrices(const mat4 *uMMatrix,const mat4 *uVPMatrix){
     mesh->setMatrices(uMMatrix, uVPMatrix);
     
 }
+
+
+
 void DrawableSphere::draw(){
 
     mesh->draw();

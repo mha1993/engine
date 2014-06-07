@@ -18,9 +18,9 @@ class Ball : public GameObject{
 
 public:
     
-    Ball(glm::vec3 pos, float size, int idd);
+    Ball(glm::vec3 pos, glm::vec3 vel, float size, int idd);
 
-    virtual void collidedWith(GameObject *other, vec3 hitNormal, vec3 pos) override;
+    virtual void collidedWith(GameObject *other, vec3 hitNormal, vec3 pos);
 };
 
 

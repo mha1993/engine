@@ -11,6 +11,8 @@
 #include "WindowManager.h"
 #include "LevelManager.h"
 #include "TestLevel.h"
+#include "HudRenderer.h"
+#include "TestHudElement.h"
 
 using namespace std;
 using namespace glm;
@@ -29,10 +31,17 @@ int main(int argv, const char** argc) {
     
     wm->stop();
     
-    delete levelManager;
-    delete wm;
+    /*
+    HudRenderer * hr = new HudRenderer(wm);
     
+    TestHudElement *THudE = new TestHudElement();
     
+    hr->addElement(THudE);
+    
+    while (!wm->quitRequest()) {
+        hr->render();
+    }
+    */
 }
 
 

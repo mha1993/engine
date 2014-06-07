@@ -52,6 +52,9 @@ protected:
     vector<vector<string>> lines;
     int par;
     void addWall(vec3 a, vec3 b);
+    Cup *cup;
+    Tee *tee;
+    Ball *ball;
     
 };
 
