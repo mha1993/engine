@@ -28,11 +28,13 @@ void CourseHole::setup(){
     
     vec3 teeLoc = tee->getPhysicsObject()->pos;
 
-    float h = 0.2;
+    float h = 0.4;
     
-    vec3 ballLoc = teeLoc + vec3(0,ballRadius,0);
+    vec3 ballLoc = teeLoc + vec3(0,ballRadius + h,0);
     
-    printf("setup:objectID %d\n",cup->objectId);
+    vec3 cuploc = cup->getPhysicsObject()->pos;
+    
+    printf("setup:%s cupid %d (%f %f %f)\nball (%f %f %f)\n",name.c_str(),cup->objectId,cuploc.x,cuploc.y,cuploc.z,ballLoc.x,ballLoc.y,ballLoc.z);
     
     ball = new GameBall(ballLoc,ballRadius,1000001,cup->objectId);
     

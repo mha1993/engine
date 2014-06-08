@@ -67,20 +67,23 @@ void WindowManager::init() {
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
     
+    glfwDisable(GLFW_AUTO_POLL_EVENTS);
+    
 }
 
 
 string WindowManager::readString(){
 
     if (glfwGetKey(GLFW_KEY_TAB)){
-    
         getline(cin, lastString);
-        
     }
     
     return lastString;
 }
 
+void WindowManager::poll(){
+    glfwPollEvents();
+}
 
 bool WindowManager::quitRequest(){
     return glfwGetKey(GLFW_KEY_ESC);

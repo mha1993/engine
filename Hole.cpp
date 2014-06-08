@@ -120,7 +120,7 @@ void Hole::addCup(vector<string> line, int lineid){
     vec3 normal         =                   calcNormal(verts[0],verts[1],verts[2]);
     
     loc += vec3(0.0, 0.001, 0.0);
-    cup = new Cup(loc , normal, 0.07,extraIds);
+    cup = new Cup(loc , normal, 0.07,extraIds++);
     this->addObject(cup);
 }
 

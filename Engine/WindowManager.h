@@ -25,6 +25,7 @@ public:
     void afterRender();
     bool quitRequest();
     std::string readString();
+    void poll();
 };
 
 #endif /* defined(__Engine__WindowManager__) */
