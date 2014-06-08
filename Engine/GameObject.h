@@ -10,6 +10,7 @@
 #define __Engine__GameObject__
 
 #include <iostream>
+#include <string>
 #include "PObject.h"
 #include "Drawable.h"
 
@@ -25,6 +26,11 @@ protected:
     BaseLevel *level;
 
 public:
+    std::string identifier;
+    
+    void setIdentifier(std::string id);
+    void printIdentifier();
+    
     GameObject(int idd);
     PObject* getPhysicsObject();
     Drawable* getMesh();

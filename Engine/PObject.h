@@ -23,6 +23,7 @@ public:
     bool collidable;
     vec3 pos;
     vec3 vel;
+    mat4 rot;
     PhysicShape * ps;
     float size;
     

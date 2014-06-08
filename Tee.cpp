@@ -16,6 +16,8 @@
 
 Tee::Tee(glm::vec3 pos, float size, int idd): GameObject::GameObject(idd){
     
+    setIdentifier("TEE");
+    
     vector<glm::vec3> verts;
     
     verts.push_back(vec3(-size, 0.0, -size));

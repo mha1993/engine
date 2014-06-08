@@ -30,7 +30,7 @@ public:
     
     DrawableSphere(float rad, unsigned int rings, unsigned int sectors, string vs, string fs);
     
-    void setMatrices(const mat4 *uMMatrix,const mat4 *uVPMatrix);
+    void setMatrices(const mat4 *uMMatrix,const mat4 *uVPMatrix, const mat4 rot);
     void draw();
     void drawWireframe(vec3 *color);
     

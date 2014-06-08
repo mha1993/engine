@@ -22,7 +22,7 @@ using namespace glm;
 class Drawable{
 
 public:
-    virtual void setMatrices(const mat4 *uMMatrix,const mat4 *uVPMatrix);
+    virtual void setMatrices(const mat4 *uMMatrix,const mat4 *uVPMatrix, const mat4 rot = mat4());
     virtual void draw();
     virtual void drawWireframe(vec3 *color);
 };

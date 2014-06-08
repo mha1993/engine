@@ -97,6 +97,14 @@ void Hole::addTee(vector<string> line, int lineid){
     
 }
 
+
+void Hole::addArrow(int lineid){
+    glm::vec3 loc = ball->getPhysicsObject()->pos + vec3(0,0.2,0);
+    arrow = new Arrow(loc, extraIds++);
+    this->addObject(arrow);
+}
+
+
 void Hole::addCup(vector<string> line, int lineid){
     
     if (line.size() != 5) {

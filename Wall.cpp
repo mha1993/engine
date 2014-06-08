@@ -16,6 +16,8 @@
 
 Wall::Wall(vec3 a, vec3 b, float height , int idd): GameObject::GameObject(idd){
     
+    setIdentifier("WALL");
+    
     vector<vec3> verts;
     
     verts.push_back(a);

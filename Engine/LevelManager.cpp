@@ -26,7 +26,6 @@ Hole * LevelManager::last(){
 }
 
 void LevelManager::setup(){
-
     vector<vector<string>> lines = FileReader::readFileToVectors("maps/course.db");
     
     for (int i = 0; i<lines.size(); i++) {

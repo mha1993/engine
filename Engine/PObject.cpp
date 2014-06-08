@@ -12,6 +12,7 @@
 
 
 PObject::PObject(int idd, PhysicShape *pss, vec3 poss, bool collidablee){
+    rot = mat4();
     
     id = idd;
     ps = pss;

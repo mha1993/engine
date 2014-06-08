@@ -11,12 +11,14 @@
 
 #include <iostream>
 #include "Hole.h"
+#include "Text.h"
 
 #include "GameBall.h"
 
 
 class CourseHole : public Hole{
-    
+    bool shoot_mode;
+    Text *text;
 
 public:
     CourseHole(WindowManager *wm);
@@ -24,6 +26,7 @@ public:
 protected:
     void tick(float deltaTime);
     void setup();
+    void shoot();
 };
 
 

@@ -35,6 +35,7 @@ class Mesh : public Drawable{
     
     GLuint uMMatrixId;
     GLuint uVPMatrixId;
+    GLuint rotMatId;
     
     GLuint vao;
     GLuint vbo;
@@ -47,9 +48,10 @@ class Mesh : public Drawable{
     
 public:
     Mesh(string vs, string fs, vector<vec3> *vp, vector<vec3> *normals,GLuint drawingMethode);
-    void setMatrices(const mat4 *uMMatrix,const mat4 *uVPMatrix);
+    void setMatrices(const mat4 *uMMatrix,const mat4 *uVPMatrix, const mat4 rot = mat4());
     void draw();
     void drawWireframe(vec3 *color);
+    Program* getProgram();
 };
 
 

@@ -49,9 +49,9 @@ DrawableSphere::DrawableSphere(float radius, unsigned int rings, unsigned int se
 }
 
 
-void DrawableSphere::setMatrices(const mat4 *uMMatrix,const mat4 *uVPMatrix){
+void DrawableSphere::setMatrices(const mat4 *uMMatrix,const mat4 *uVPMatrix, const mat4 rot){
 
-    mesh->setMatrices(uMMatrix, uVPMatrix);
+    mesh->setMatrices(uMMatrix, uVPMatrix, rot);
     
 }
 

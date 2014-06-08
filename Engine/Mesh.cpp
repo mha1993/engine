@@ -23,6 +23,7 @@ Mesh::Mesh(string vs, string fs, vector<vec3> *vp, vector<vec3> *normals,GLuint 
     
     uMMatrixId = program->uniform("uMMatrix");
     uVPMatrixId = program->uniform("uVPMatrix");
+    rotMatId = program->uniform("rotMat");
     
     // make and bind the VAO
     glGenVertexArrays(1, &vao);
@@ -61,10 +62,8 @@ Mesh::Mesh(string vs, string fs, vector<vec3> *vp, vector<vec3> *normals,GLuint 
     
 }
 
-
-void Mesh::setMatrices(const mat4 *uMMatrix,const mat4 *uVPMatrix){
-    
-    
+void Mesh::setMatrices(const mat4 *uMMatrix,const mat4 *uVPMatrix, mat4 rot){
+    program->setMatrixUniform(rotMatId, rot);
     program->setMatrixUniform(uMMatrixId,*uMMatrix);
     program->setMatrixUniform(uVPMatrixId,*uVPMatrix);
 
@@ -88,4 +87,9 @@ void Mesh::draw(){
     
     
 }
+
+Program* Mesh::getProgram() {
+    return program;
+}
+
 void Mesh::drawWireframe(vec3 *color){}

@@ -9,12 +9,12 @@
 #include "GameBall.h"
 #include "BaseLevel.h"
 
-GameBall::GameBall(glm::vec3 pos, float size, int idd, int goalID) : Ball(pos,vec3(0,-.07,0),size,idd){
+GameBall::GameBall(glm::vec3 pos, float size, int idd, int goalID) : Ball(pos,vec3(0,0,0),size,idd){
     this->goalID = goalID;
 }
 void GameBall::collidedWith(GameObject *other, vec3 hitNormal, vec3 pos){
     
-    printf("col: %d, %d\ngoal%d\n",this->objectId,other->objectId,goalID);
+    other->printIdentifier();
     
     if (other->objectId == goalID){
         Ball::level->stop();
