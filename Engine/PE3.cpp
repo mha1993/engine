@@ -27,6 +27,7 @@ void PE3::calcForces(PObject* obj, float dt) {
 
 void PE3::move(PObject* obj, float dTime){
     obj->pos += dTime*obj->vel;
+    cout << obj->vel.y << endl;
 }
 
 vec3 CalcNormal(vector<vec3> verts) {

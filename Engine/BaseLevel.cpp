@@ -7,7 +7,6 @@
 //
 
 #include "BaseLevel.h"
-#include "Gravity.h"
 
 #include "FPCamera.h"
 
@@ -16,8 +15,6 @@
 BaseLevel::BaseLevel(WindowManager *wm) : Level(wm){
     sceneManager = new SceneManager();
     physicsEngine = new PE3();
-    Gravity *g = new Gravity();
-    physicsEngine->addForce((Force*)g);
     currentCamera = new FPCamera();
     shouldBeRunning = false;
 }
@@ -38,17 +35,16 @@ void BaseLevel::render(){
     mat4 identityMatrix = mat4();
     
     windowManager->beforeRender();
-    
+    cout << gameObjects.size() << endl;
     for (int i=0; i<gameObjects.size(); i++){
-    
         GameObject *gameObject = gameObjects[i];
         Drawable *mesh = gameObject->getMesh();
         
         vec3 pos = gameObject->getPhysicsObject()->pos;
         mat4 uM = glm::translate(identityMatrix, pos);
+        mat4 rot = gameObject->getPhysicsObject()->rot;
         
-        
-        mesh->setMatrices(&uM,&cameraMatrix);
+        mesh->setMatrices(&uM,&cameraMatrix,rot);
         mesh->draw();
     }
     windowManager->afterRender();

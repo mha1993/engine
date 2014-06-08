@@ -21,6 +21,13 @@
 		B08EFFF71912C2310030C111 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B08EFFF61912C2310030C111 /* Cocoa.framework */; };
 		B08EFFF91912C2380030C111 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B08EFFF81912C2380030C111 /* OpenGL.framework */; };
 		B0B469361943BA04004F41F6 /* Gravity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0B469341943BA04004F41F6 /* Gravity.cpp */; };
+		B0B469391943CB33004F41F6 /* Arrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0B469371943CB33004F41F6 /* Arrow.cpp */; };
+		B0B4693B19441EFB004F41F6 /* text.fsh in Sources */ = {isa = PBXBuildFile; fileRef = B0B4693A19441EFB004F41F6 /* text.fsh */; };
+		B0B4693E194423C1004F41F6 /* Bitmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0B4693C194423C1004F41F6 /* Bitmap.cpp */; };
+		B0B46941194423EE004F41F6 /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0B4693F194423EE004F41F6 /* Texture.cpp */; };
+		B0B46944194425E7004F41F6 /* DrawableSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F7ED6E19401A5B00F36A6F /* DrawableSphere.cpp */; };
+		B0B4694719442CE1004F41F6 /* Text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0B4694519442CE1004F41F6 /* Text.cpp */; };
+		B0B4694919443858004F41F6 /* textured.vsh in Sources */ = {isa = PBXBuildFile; fileRef = B0B4694819443858004F41F6 /* textured.vsh */; };
 		D63FEE9D1922A97F00F254F6 /* FollowCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D63FEE9B1922A97F00F254F6 /* FollowCamera.cpp */; };
 		D63FEEA01922AD9400F254F6 /* FPCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D63FEE9E1922AD9400F254F6 /* FPCamera.cpp */; };
 		D63FEEA31922B03B00F254F6 /* ECamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D63FEEA11922B03B00F254F6 /* ECamera.cpp */; };
@@ -42,7 +49,6 @@
 		D6F7ED60193FF3B700F36A6F /* Wall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F7ED5E193FF3B700F36A6F /* Wall.cpp */; };
 		D6F7ED671940164300F36A6F /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F7ED651940164300F36A6F /* Ball.cpp */; };
 		D6F7ED6A1940174900F36A6F /* Drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F7ED681940174900F36A6F /* Drawable.cpp */; };
-		D6F7ED7019401A5B00F36A6F /* DrawableSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F7ED6E19401A5B00F36A6F /* DrawableSphere.cpp */; };
 		D6F7ED7319401C1D00F36A6F /* SphereShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F7ED7119401C1D00F36A6F /* SphereShape.cpp */; };
 		D6FD2576192FD1430020A8C9 /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FD2574192FD1430020A8C9 /* Mesh.cpp */; };
 		D6FD257D192FEADE0020A8C9 /* WindowManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6FD257B192FEADE0020A8C9 /* WindowManager.cpp */; };
@@ -735,6 +741,17 @@
 		B08EFFFF1912C26D0030C111 /* build.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = build.html; sourceTree = "<group>"; };
 		B0B469341943BA04004F41F6 /* Gravity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Gravity.cpp; sourceTree = "<group>"; };
 		B0B469351943BA04004F41F6 /* Gravity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gravity.h; sourceTree = "<group>"; };
+		B0B469371943CB33004F41F6 /* Arrow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Arrow.cpp; sourceTree = "<group>"; };
+		B0B469381943CB33004F41F6 /* Arrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Arrow.h; sourceTree = "<group>"; };
+		B0B4693A19441EFB004F41F6 /* text.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = text.fsh; sourceTree = "<group>"; };
+		B0B4693C194423C1004F41F6 /* Bitmap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bitmap.cpp; sourceTree = "<group>"; };
+		B0B4693D194423C1004F41F6 /* Bitmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bitmap.h; sourceTree = "<group>"; };
+		B0B4693F194423EE004F41F6 /* Texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
+		B0B46940194423EE004F41F6 /* Texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Texture.h; sourceTree = "<group>"; };
+		B0B4694219442436004F41F6 /* stb_image.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stb_image.c; sourceTree = "<group>"; };
+		B0B4694519442CE1004F41F6 /* Text.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Text.cpp; sourceTree = "<group>"; };
+		B0B4694619442CE1004F41F6 /* Text.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Text.h; sourceTree = "<group>"; };
+		B0B4694819443858004F41F6 /* textured.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = textured.vsh; sourceTree = "<group>"; };
 		D63FEE9B1922A97F00F254F6 /* FollowCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FollowCamera.cpp; sourceTree = "<group>"; };
 		D63FEE9C1922A97F00F254F6 /* FollowCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowCamera.h; sourceTree = "<group>"; };
 		D63FEE9E1922AD9400F254F6 /* FPCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FPCamera.cpp; sourceTree = "<group>"; };
@@ -900,12 +917,14 @@
 			children = (
 				B003ADE619108329005838F5 /* shader.vsh */,
 				D6FD2588193049CD0020A8C9 /* default.vs */,
+				B0B4694819443858004F41F6 /* textured.vsh */,
 				B003ADE519108329005838F5 /* green.fsh */,
 				B08E02A619172C220030C111 /* red.fsh */,
 				D6FD2589193053E70020A8C9 /* min.vs */,
 				D6E9E9FA191B0C1300F4778F /* blue.fsh */,
 				D6F7ED64193FF80500F36A6F /* brown.fsh */,
 				D6B2C13B194258D300830778 /* black.fsh */,
+				B0B4693A19441EFB004F41F6 /* text.fsh */,
 			);
 			name = Shaders;
 			sourceTree = "<group>";
@@ -1686,6 +1705,11 @@
 		B08EFFFA1912C26C0030C111 /* thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				B0B4694219442436004F41F6 /* stb_image.c */,
+				B0B4693F194423EE004F41F6 /* Texture.cpp */,
+				B0B46940194423EE004F41F6 /* Texture.h */,
+				B0B4693C194423C1004F41F6 /* Bitmap.cpp */,
+				B0B4693D194423C1004F41F6 /* Bitmap.h */,
 				D6FD257A192FE9AD0020A8C9 /* easylogging++.h */,
 				B08EFFFB1912C26D0030C111 /* glew */,
 				B08E001A1912C26D0030C111 /* glfw */,
@@ -1745,6 +1769,8 @@
 				D6F7ED6F19401A5B00F36A6F /* DrawableSphere.h */,
 				B08E029D1912D1A10030C111 /* Program.cpp */,
 				B08E029E1912D1A10030C111 /* Program.h */,
+				B0B4694519442CE1004F41F6 /* Text.cpp */,
+				B0B4694619442CE1004F41F6 /* Text.h */,
 			);
 			name = Render;
 			sourceTree = "<group>";
@@ -1784,6 +1810,8 @@
 				D6F7ED52193FAC3100F36A6F /* TestLevel.h */,
 				D6F7ED55193FD66A00F36A6F /* Tile.cpp */,
 				D6F7ED56193FD66A00F36A6F /* Tile.h */,
+				B0B469371943CB33004F41F6 /* Arrow.cpp */,
+				B0B469381943CB33004F41F6 /* Arrow.h */,
 				D6F7ED58193FE8DB00F36A6F /* Tee.cpp */,
 				D6F7ED59193FE8DB00F36A6F /* Tee.h */,
 				D6F7ED5B193FEDF000F36A6F /* Cup.cpp */,
@@ -1853,33 +1881,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0B46944194425E7004F41F6 /* DrawableSphere.cpp in Sources */,
 				D6B2C12D19410C3500830778 /* LevelManager.cpp in Sources */,
 				D6F7ED671940164300F36A6F /* Ball.cpp in Sources */,
 				D6E36AD0194286CC0089E3FA /* HudRenderer.cpp in Sources */,
 				D6F7ED5D193FEDF000F36A6F /* Cup.cpp in Sources */,
 				D6B2C13119415CDA00830778 /* Hole.cpp in Sources */,
-				D6F7ED7019401A5B00F36A6F /* DrawableSphere.cpp in Sources */,
 				B0B469361943BA04004F41F6 /* Gravity.cpp in Sources */,
 				D6F7ED6A1940174900F36A6F /* Drawable.cpp in Sources */,
 				D6F7ED7319401C1D00F36A6F /* SphereShape.cpp in Sources */,
 				B08E029C1912D08B0030C111 /* main.cpp in Sources */,
 				D6FD259219314EEA0020A8C9 /* PhysicShape.cpp in Sources */,
 				B08E02A51915D1030030C111 /* Camera.cpp in Sources */,
+				B0B4694919443858004F41F6 /* textured.vsh in Sources */,
 				D6B2C14119426EDA00830778 /* GameBall.cpp in Sources */,
 				D6FD2576192FD1430020A8C9 /* Mesh.cpp in Sources */,
+				B0B469391943CB33004F41F6 /* Arrow.cpp in Sources */,
+				B0B46941194423EE004F41F6 /* Texture.cpp in Sources */,
 				D6F7ED57193FD66A00F36A6F /* Tile.cpp in Sources */,
 				D6E36AD3194287C90089E3FA /* HudElement.cpp in Sources */,
 				B08E02951912C2710030C111 /* glew.c in Sources */,
 				B08E029F1912D1A10030C111 /* Program.cpp in Sources */,
 				D6B2C13E19425A1A00830778 /* CourseHole.cpp in Sources */,
+				B0B4694719442CE1004F41F6 /* Text.cpp in Sources */,
 				D6F7ED53193FAC3100F36A6F /* TestLevel.cpp in Sources */,
 				D63FEEA01922AD9400F254F6 /* FPCamera.cpp in Sources */,
+				B0B4693E194423C1004F41F6 /* Bitmap.cpp in Sources */,
 				B002AAFF1937F0500056F20E /* PE3.cpp in Sources */,
 				D6FD257D192FEADE0020A8C9 /* WindowManager.cpp in Sources */,
 				B002AAFA1937B3D00056F20E /* SceneManager.cpp in Sources */,
 				D6C03FEE191C9899003757F7 /* PhysicsUtil.cpp in Sources */,
 				D6B2C13A19417A1F00830778 /* TextUtils.cpp in Sources */,
 				D6B2C12A1941086A00830778 /* Level.cpp in Sources */,
+				B0B4693B19441EFB004F41F6 /* text.fsh in Sources */,
 				B002AB051937F0D30056F20E /* Force.cpp in Sources */,
 				D63FEE9D1922A97F00F254F6 /* FollowCamera.cpp in Sources */,
 				D6FD25841930093E0020A8C9 /* GameObject.cpp in Sources */,

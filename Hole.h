@@ -23,6 +23,7 @@
 #include "PolygonShape.h"
 #include "PhysicsUtil.h"
 #include "TextUtils.h"
+#include "Arrow.h"
 
 #define PAR "par"
 #define NAME "name"
@@ -42,6 +43,7 @@ public:
     void addTile(vector<string> thing, int lineid);
     void addCup(vector<string> thing, int lineid);
     void addTee(vector<string> thing, int lineid);
+    void addArrow(int lineid);
     
     void addLine(vector<string> line);
     void setPar(vector<string> i);
@@ -54,6 +56,7 @@ protected:
     void addWall(vec3 a, vec3 b);
     Cup *cup;
     Tee *tee;
+    Arrow *arrow;
     Ball *ball;
     
 };

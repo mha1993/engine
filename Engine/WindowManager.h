@@ -26,6 +26,7 @@ public:
     bool quitRequest();
     std::string readString();
     void poll();
+    bool getKey(int c);
 };
 
 #endif /* defined(__Engine__WindowManager__) */

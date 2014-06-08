@@ -12,7 +12,8 @@
 
 
 Ball::Ball(glm::vec3 pos, glm::vec3 vel, float size, int idd) : GameObject(idd){
-
+    
+    setIdentifier("BALL");
 
     PhysicShape *pss = new SphereShape();
     physicsObject = new PObject(idd, pss, pos, vel, true, size, false);

@@ -14,6 +14,8 @@
 
 Tile::Tile(vector<glm::vec3> verts, int idd): GameObject::GameObject(idd){
     
+    setIdentifier("TILE");
+    
     PhysicShape *pss = new PolygonShape(verts);
     
     physicsObject = new PObject(idd,pss,vec3(0.0,0.0,0.0), true);

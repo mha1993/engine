@@ -26,6 +26,7 @@ protected:
     string name;
     int current;
     vector<Hole*> levels;
+    
 public:
     LevelManager(WindowManager *wm);
     void setup();
@@ -34,7 +35,6 @@ public:
     
 private:
     Hole * last();
- 
 
 };
 
