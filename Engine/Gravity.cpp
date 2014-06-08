@@ -11,6 +11,6 @@
 
 glm::vec3 Gravity::calcForce(float dt){
     
-    return dt * glm::vec3(0.0,-0.1,0.0);
+    return dt * glm::vec3(0.0,-1,0.0);
     
 }

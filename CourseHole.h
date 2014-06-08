@@ -27,7 +27,7 @@ public:
 protected:
     void tick(float deltaTime);
     void setup();
-    void shoot_setup();
+    void shoot_setup(float dt);
     void shoot();
 };
 

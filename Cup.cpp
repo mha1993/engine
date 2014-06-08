@@ -16,7 +16,7 @@
 Cup::Cup(glm::vec3 pos, vec3 normal, float size, int idd): GameObject::GameObject(idd){
     
     setIdentifier("CUP");
-    pos += glm::vec3(0,0.1,0);
+    pos += glm::vec3(0,0,0);
     
     glm::vec3 n = normal;
     glm::vec3 p1;

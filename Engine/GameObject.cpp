@@ -23,7 +23,6 @@ PObject * GameObject::getPhysicsObject(){
 }
 
 void GameObject::collidedWith(GameObject *other, vec3 hitNormal, vec3 pos){
-    std::cout << "COLLISION" << std::endl;
 
 }
 

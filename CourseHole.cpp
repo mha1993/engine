@@ -18,13 +18,20 @@ CourseHole::CourseHole(WindowManager *wm) : Hole(wm){
     windowManager = wm;
 }
 
-void CourseHole::shoot_setup() {
-    arrow->getPhysicsObject()->rot = rotate(mat4(), 90.0f, vec3(0,1,0));
+void CourseHole::shoot_setup(float dt) {
+    if(windowManager->getKey('T')) {
+        arrow->getPhysicsObject()->rot = rotate(arrow->getPhysicsObject()->rot, dt*90.0f, vec3(0,1,0));
+    }
+    if(windowManager->getKey('Y')) {
+        arrow->getPhysicsObject()->rot = rotate(arrow->getPhysicsObject()->rot, -dt*90.0f, vec3(0,1,0));
+    }
     arrow->getPhysicsObject()->pos = ball->getPhysicsObject()->pos + vec3(0,0.05,0);
 }
 
 void CourseHole::shoot() {
-    ball->getPhysicsObject()->vel += vec3(0.03,0.03,0.03);
+    float speed = 0.2;
+    vec4 dir = vec4(0,0,-1,0) * arrow->getPhysicsObject()->rot;
+    ball->getPhysicsObject()->vel += speed*vec3(dir);
     //shoot_mode = false;
 }
 
@@ -34,7 +41,7 @@ void CourseHole::tick(float deltaTime){
         shouldBeRunning = false;
     }
     
-    if (shoot_mode) shoot_setup();
+    if (shoot_mode) shoot_setup(deltaTime);
     if (windowManager->getKey(' ') && shoot_mode) {
         shoot();
     }
@@ -44,6 +51,7 @@ void CourseHole::tick(float deltaTime){
 }
 
 void CourseHole::setup(){
+    
     shoot_mode = true;
     
     Hole::setup();
@@ -54,12 +62,12 @@ void CourseHole::setup(){
 
     float h = 0.2;
     
-    vec3 ballLoc = teeLoc + vec3(0,ballRadius + h,0);
+    vec3 ballLoc = teeLoc + vec3(0.1,ballRadius + h,0);
     
     printf("setup:objectID %d\n",cup->objectId);
     
     ball = new GameBall(ballLoc,ballRadius,1000001,cup->objectId);
-    ball->getPhysicsObject()->vel = vec3(0,0.1,0);
+    ball->getPhysicsObject()->vel = vec3(0,0,0);
     
     this->addObject(ball);
     
@@ -69,7 +77,7 @@ void CourseHole::setup(){
     currentCamera->lookAt(teeLoc);
     
     Gravity *g = new Gravity();
-    //physicsEngine->addForce((Force*)g);
+    physicsEngine->addForce((Force*)g);
     
 }
 
