@@ -7,7 +7,6 @@
 //
 
 #include "BaseLevel.h"
-#include "Gravity.h"
 
 #include "FPCamera.h"
 
@@ -16,8 +15,6 @@
 BaseLevel::BaseLevel(WindowManager *wm) : Level(wm){
     sceneManager = new SceneManager();
     physicsEngine = new PE3();
-    Gravity *g = new Gravity();
-    physicsEngine->addForce((Force*)g);
     currentCamera = new FPCamera();
     shouldBeRunning = false;
 }

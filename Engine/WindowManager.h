@@ -25,6 +25,8 @@ public:
     void afterRender();
     bool quitRequest();
     std::string readString();
+    
+    bool getKey(int c);
 };
 
 #endif /* defined(__Engine__WindowManager__) */

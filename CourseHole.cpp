@@ -11,13 +11,21 @@
 #include "Bitmap.h"
 #include "Texture.h"
 #include "Text.h"
+#include "Gravity.h"
 
 
-CourseHole::CourseHole(WindowManager *wm) : Hole(wm){}
+CourseHole::CourseHole(WindowManager *wm) : Hole(wm){
+    windowManager = wm;
+}
 
-void CourseHole::shoot() {
+void CourseHole::shoot_setup() {
     arrow->getPhysicsObject()->rot = rotate(mat4(), 90.0f, vec3(0,1,0));
     arrow->getPhysicsObject()->pos = ball->getPhysicsObject()->pos + vec3(0,0.05,0);
+}
+
+void CourseHole::shoot() {
+    ball->getPhysicsObject()->vel += vec3(0.03,0.03,0.03);
+    //shoot_mode = false;
 }
 
 void CourseHole::tick(float deltaTime){
@@ -26,10 +34,12 @@ void CourseHole::tick(float deltaTime){
         shouldBeRunning = false;
     }
     
-    if (shoot_mode) shoot();
+    if (shoot_mode) shoot_setup();
+    if (windowManager->getKey(' ') && shoot_mode) {
+        shoot();
+    }
 
     Hole::tick(deltaTime);
-    //text->Text::draw();
     
 }
 
@@ -49,6 +59,7 @@ void CourseHole::setup(){
     printf("setup:objectID %d\n",cup->objectId);
     
     ball = new GameBall(ballLoc,ballRadius,1000001,cup->objectId);
+    ball->getPhysicsObject()->vel = vec3(0,0.1,0);
     
     this->addObject(ball);
     
@@ -57,9 +68,8 @@ void CourseHole::setup(){
     currentCamera->setPosition(teeLoc + vec3(1,1,1));
     currentCamera->lookAt(teeLoc);
     
-//    text = new Text();
-//    text->init();
-    
+    Gravity *g = new Gravity();
+    //physicsEngine->addForce((Force*)g);
     
 }
 

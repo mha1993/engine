@@ -12,7 +12,9 @@ vector<PObject*> SceneManager::getPhysicsObjects() {
     vector<PObject*> physicsObjects;
     map<int, GameObject*>::iterator it;
     for (it=objects.begin(); it!=objects.end(); ++it) {
-        physicsObjects.push_back(it->second->getPhysicsObject());
+        PObject *po = it->second->getPhysicsObject();
+        if (po->collidable)
+            physicsObjects.push_back(po);
     }
     return physicsObjects;
 }

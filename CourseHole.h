@@ -19,6 +19,7 @@
 class CourseHole : public Hole{
     bool shoot_mode;
     Text *text;
+    WindowManager *windowManager;
 
 public:
     CourseHole(WindowManager *wm);
@@ -26,6 +27,7 @@ public:
 protected:
     void tick(float deltaTime);
     void setup();
+    void shoot_setup();
     void shoot();
 };
 

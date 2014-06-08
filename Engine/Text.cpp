@@ -11,6 +11,12 @@
 
 void Text::init() {
     
+    tdogl::Bitmap bmp = tdogl::Bitmap::bitmapFromFile("/Users/matsallen/Desktop/NOBEL.png");
+    bmp.flipVertically();
+    texture = new tdogl::Texture(bmp);
+    
+    program = Program::fetchProgram("textured.vsh", "text.fsh");
+    
     // make and bind the VAO
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
@@ -19,23 +25,14 @@ void Text::init() {
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
     
-    tdogl::Bitmap bmp = tdogl::Bitmap::bitmapFromFile("/Users/matsallen/Desktop/hazard.png");
-    bmp.flipVertically();
-    texture = new tdogl::Texture(bmp);
-    
-    program = Program::fetchProgram("textured.vsh", "text.fsh");
-    
-    // connect the uv coords to the "vertTexCoord" attribute of the vertex shader
-    glEnableVertexAttribArray(program->attrib("vertTexCoord"));
-    glVertexAttribPointer(program->attrib("vertTexCoord"), 2, GL_FLOAT, GL_TRUE,  5*sizeof(GLfloat), (const GLvoid*)(3 * sizeof(GLfloat)));
-    
+    // Put the three triangle vertices (XYZ) and texture coordinates (UV) into the VBO
     GLfloat vertexData[] = {
         //  X     Y     Z       U     V
-         0.0f, 10.0f, -0.1f,   0.5f, 1.0f,
-        -10.0f,-10.0f, -0.1f,   0.0f, 0.0f,
-         10.0f,-10.0f, -0.1f,   1.0f, 0.0f,
+        -1.0f, 1.0f, 0.0f,   0.0f, 1.0f,
+        -1.0f,-1.0f, 0.0f,   0.0f, 0.0f,
+        1.0f, 1.0f, 0.0f,   1.0f, 1.0f,
+        1.0f,-1.0f, 0.0f,   1.0f, 0.0f,
     };
-    
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
     
     // connect the xyz to the "vert" attribute of the vertex shader
@@ -48,9 +45,11 @@ void Text::init() {
     
     // unbind the VAO
     glBindVertexArray(0);
+    
 }
 
 void Text::draw() {
+    cout << "TEXT" << endl;
     glUseProgram(program->getProgram());
     
     // bind the texture and set the "tex" uniform in the fragment shader
@@ -63,7 +62,7 @@ void Text::draw() {
     glBindVertexArray(vao);
     
     // draw the VAO
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 3);
     
     // unbind the VAO, the program and the texture
     glBindVertexArray(0);

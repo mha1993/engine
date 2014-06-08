@@ -93,3 +93,7 @@ void WindowManager::stop(){
     glfwTerminate();
     
 }
+
+bool WindowManager::getKey(int c) {
+    return glfwGetKey(c);
+}

@@ -48,5 +48,7 @@ Arrow::Arrow(glm::vec3 pos, int idd): GameObject::GameObject(idd){
     
     mesh = new Mesh("default.vs","blue.fsh", &verts,&normal,GL_TRIANGLES);
     
+    physicsObject->collidable = false;
+    
 }
 
