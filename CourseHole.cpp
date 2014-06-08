@@ -26,11 +26,11 @@ void CourseHole::setup(){
     
     float ballRadius = 0.05;
     
-    vec3 teeLoc = cup->getPhysicsObject()->pos;
+    vec3 teeLoc = tee->getPhysicsObject()->pos;
 
     float h = 0.2;
     
-    vec3 ballLoc = teeLoc + vec3(0,ballRadius + h,0);
+    vec3 ballLoc = teeLoc + vec3(0,ballRadius,0);
     
     printf("setup:objectID %d\n",cup->objectId);
     

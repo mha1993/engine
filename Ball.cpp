@@ -27,3 +27,8 @@ void Ball::collidedWith(GameObject *other, vec3 hitNormal, vec3 pos) {
     vec3 reflection = d-2*(dot(d,n))*n;
     getPhysicsObject()->vel =  bounceCoefficient*reflection;
 }
+
+
+std::string Ball::name(){
+    return "Ball";
+}

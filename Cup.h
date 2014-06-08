@@ -19,7 +19,7 @@ public:
     Cup(glm::vec3 pos, vec3 normal,  float size, int idd);
 
     void collidedWith(GameObject *other, vec3 hitNormal, vec3 pos);
-
+    std::string name();
 };
 
 

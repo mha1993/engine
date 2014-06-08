@@ -38,3 +38,7 @@ Tee::Tee(glm::vec3 pos, float size, int idd): GameObject::GameObject(idd){
     mesh = new Mesh("default.vs","blue.fsh", &verts,&normal,GL_TRIANGLE_FAN);
     
 }
+
+std::string Tee::name(){
+    return "Tee";
+}

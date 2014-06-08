@@ -56,6 +56,13 @@ void BaseLevel::render(){
 }
 void BaseLevel::tick(float deltaTime){
     
+    
+    vector<GameObject *> objects = sceneManager->getObjects();
+    
+    for (int i = 0; i<objects.size(); i++) {
+        objects[i]->tick(deltaTime);
+    }
+    
     vector<PObject *> physicObjects = sceneManager->getPhysicsObjects();
     physicsEngine->tick(physicObjects, deltaTime);
     

@@ -29,3 +29,8 @@ Tile::Tile(vector<glm::vec3> verts, int idd): GameObject::GameObject(idd){
     mesh = new Mesh("default.vs","green.fsh", &verts,&normal,GL_TRIANGLE_FAN);
     
 }
+
+
+std::string Tile::name(){
+    return "Tile";
+}

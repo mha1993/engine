@@ -31,7 +31,7 @@ public:
     void setLevel(BaseLevel *bl);
     const int objectId;
     
-    
+    virtual std::string name();
     virtual void tick(float tickTime);
     virtual void collidedWith(GameObject *other, vec3 hitNormal, vec3 pos);
     

@@ -21,6 +21,7 @@ public:
     Ball(glm::vec3 pos, glm::vec3 vel, float size, int idd);
 
     virtual void collidedWith(GameObject *other, vec3 hitNormal, vec3 pos);
+    std::string name();
 };
 
 

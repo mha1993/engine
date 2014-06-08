@@ -38,3 +38,7 @@ Wall::Wall(vec3 a, vec3 b, float height , int idd): GameObject::GameObject(idd){
     
     
 }
+
+std::string Wall::name(){
+    return "Wall";
+}

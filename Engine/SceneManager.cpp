@@ -23,7 +23,10 @@ int SceneManager::addObject(GameObject *object){
 }
 
 GameObject* SceneManager::getObject(int id) {
-    return objects.at(id);
+    if (objects.count(id))
+        return objects.at(id);
+    else
+        return nullptr;
 }
 
 void SceneManager::removeObject(int id) {

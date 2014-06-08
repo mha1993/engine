@@ -13,7 +13,6 @@ GameObject::GameObject(int idd): objectId(idd){
 }
 
 void GameObject::tick(float tickTime){
-    
 }
 
 PObject * GameObject::getPhysicsObject(){
@@ -22,7 +21,7 @@ PObject * GameObject::getPhysicsObject(){
 }
 
 void GameObject::collidedWith(GameObject *other, vec3 hitNormal, vec3 pos){
-    std::cout << "COLLISION" << std::endl;
+    //std::cout << "COLLISION" << std::endl;
 
 }
 
@@ -36,4 +35,9 @@ void GameObject::setLevel(BaseLevel *bl){
 
     level = bl;
 
+}
+
+
+std::string GameObject::name(){
+    return "GAME OBJECT";
 }
