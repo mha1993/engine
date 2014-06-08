@@ -49,7 +49,7 @@ void LevelManager::run(){
 
     shouldBeRunning = true;
 
-    current = 2;
+    current = 0;
 
     
     while (shouldBeRunning && current < levels.size()) {

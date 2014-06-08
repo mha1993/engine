@@ -27,7 +27,7 @@ void PE3::calcForces(PObject* obj, float dt) {
 
 void PE3::move(PObject* obj, float dTime){
     obj->pos += dTime*obj->vel;
-    cout << obj->vel.y << endl;
+    //cout << obj->vel.y << endl;
 }
 
 vec3 CalcNormal(vector<vec3> verts) {
@@ -60,10 +60,8 @@ bool PointInPoly(vec3 p, vector<vec3> verts) {
         angleSum += ang;
     }
     
-    if (angleSum + tollerance < 2*M_PI )
-        return false;
-    else
-        return true;
+    return angleSum + tollerance >= 2*M_PI;
+    
 }
 
 

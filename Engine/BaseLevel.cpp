@@ -35,7 +35,7 @@ void BaseLevel::render(){
     mat4 identityMatrix = mat4();
     
     windowManager->beforeRender();
-    cout << gameObjects.size() << endl;
+
     for (int i=0; i<gameObjects.size(); i++){
         GameObject *gameObject = gameObjects[i];
         Drawable *mesh = gameObject->getMesh();
