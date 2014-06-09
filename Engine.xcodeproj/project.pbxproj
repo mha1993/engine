@@ -12,6 +12,8 @@
 		B002AB051937F0D30056F20E /* Force.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B002AB031937F0D30056F20E /* Force.cpp */; };
 		B003A8BE1910540B005838F5 /* Engine.1 in Copy Files */ = {isa = PBXBuildFile; fileRef = B003A8BD1910540B005838F5 /* Engine.1 */; };
 		B003ADE019107CF4005838F5 /* FileReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B003ADDE19107CF4005838F5 /* FileReader.cpp */; };
+		B05F7C7F19453DB70080055F /* ortho.vsh in Sources */ = {isa = PBXBuildFile; fileRef = B05F7C7E19453DB70080055F /* ortho.vsh */; };
+		B05F7C8119453E550080055F /* hud.fsh in Sources */ = {isa = PBXBuildFile; fileRef = B05F7C8019453E550080055F /* hud.fsh */; };
 		B08E02951912C2710030C111 /* glew.c in Sources */ = {isa = PBXBuildFile; fileRef = B08E00171912C26D0030C111 /* glew.c */; };
 		B08E02981912C2710030C111 /* libglfw.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B08E001F1912C26D0030C111 /* libglfw.a */; };
 		B08E029C1912D08B0030C111 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B003A8BB1910540B005838F5 /* main.cpp */; };
@@ -86,6 +88,8 @@
 		B003ADDF19107CF4005838F5 /* FileReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileReader.h; sourceTree = "<group>"; };
 		B003ADE519108329005838F5 /* green.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = green.fsh; sourceTree = "<group>"; };
 		B003ADE619108329005838F5 /* shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader.vsh; sourceTree = "<group>"; };
+		B05F7C7E19453DB70080055F /* ortho.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ortho.vsh; sourceTree = "<group>"; };
+		B05F7C8019453E550080055F /* hud.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = hud.fsh; sourceTree = "<group>"; };
 		B08E00001912C26D0030C111 /* credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = credits.html; sourceTree = "<group>"; };
 		B08E00011912C26D0030C111 /* glew.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = glew.css; sourceTree = "<group>"; };
 		B08E00021912C26D0030C111 /* glew.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = glew.html; sourceTree = "<group>"; };
@@ -917,6 +921,7 @@
 			children = (
 				B003ADE619108329005838F5 /* shader.vsh */,
 				D6FD2588193049CD0020A8C9 /* default.vs */,
+				B05F7C7E19453DB70080055F /* ortho.vsh */,
 				B0B4694819443858004F41F6 /* textured.vsh */,
 				B003ADE519108329005838F5 /* green.fsh */,
 				B08E02A619172C220030C111 /* red.fsh */,
@@ -925,6 +930,7 @@
 				D6F7ED64193FF80500F36A6F /* brown.fsh */,
 				D6B2C13B194258D300830778 /* black.fsh */,
 				B0B4693A19441EFB004F41F6 /* text.fsh */,
+				B05F7C8019453E550080055F /* hud.fsh */,
 			);
 			name = Shaders;
 			sourceTree = "<group>";
@@ -1910,9 +1916,11 @@
 				B002AAFF1937F0500056F20E /* PE3.cpp in Sources */,
 				D6FD257D192FEADE0020A8C9 /* WindowManager.cpp in Sources */,
 				B002AAFA1937B3D00056F20E /* SceneManager.cpp in Sources */,
+				B05F7C8119453E550080055F /* hud.fsh in Sources */,
 				D6C03FEE191C9899003757F7 /* PhysicsUtil.cpp in Sources */,
 				D6B2C13A19417A1F00830778 /* TextUtils.cpp in Sources */,
 				D6B2C12A1941086A00830778 /* Level.cpp in Sources */,
+				B05F7C7F19453DB70080055F /* ortho.vsh in Sources */,
 				B0B4693B19441EFB004F41F6 /* text.fsh in Sources */,
 				B002AB051937F0D30056F20E /* Force.cpp in Sources */,
 				D63FEE9D1922A97F00F254F6 /* FollowCamera.cpp in Sources */,

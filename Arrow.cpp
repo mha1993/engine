@@ -22,16 +22,16 @@ Arrow::Arrow(glm::vec3 pos, int idd): GameObject::GameObject(idd){
     vector<glm::vec3> verts;
     
     verts.push_back(vec3(-size, 0.0, -size));
-    verts.push_back(vec3(+size, 0.0, -size));
     verts.push_back(vec3(+size, 0.0, +size));
+    verts.push_back(vec3(+size, 0.0, -size));
     
     verts.push_back(vec3(-size, 0.0, -size));
-    verts.push_back(vec3(-size, 0.0, +size));
     verts.push_back(vec3(+size, 0.0, +size));
+    verts.push_back(vec3(-size, 0.0, +size));
     
     verts.push_back(vec3(-2*size, 0.0, +size));
-    verts.push_back(vec3(0.0,     0.0, 2*size));
     verts.push_back(vec3(+2*size, 0.0, +size));
+    verts.push_back(vec3(0.0,     0.0, +2*size));
     
     
     PhysicShape *pss = new PolygonShape(verts);

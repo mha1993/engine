@@ -55,7 +55,6 @@ bool PointInPoly(vec3 p, vector<vec3> verts) {
         angleSum += AngleBetweenPoints(p, verts[i], verts[(i+1)%verts.size()]);
     }
     if (angleSum>2*M_PI-0.000001) {
-        cout << "      " << angleSum  - 2*M_PI<< endl << endl;
         return true;
     } else
         return false;
@@ -73,12 +72,10 @@ bool SpherePlaneCollision(PObject *a, PObject *b) {
     vec3 norm = CalcNormal(verts);
     vec3 intersect = LinePlaneIntersect(norm, verts[0], sPos, -norm);
     
-    if (distance(sPos, intersect) > a->size) {
+    if (distance(sPos, intersect) > a->size)
         return false;
-    } else {
-        if (b->id == 11181993) cout << "Close to cup...." << endl;
+    else
         return PointInPoly(intersect, verts);
-    }
 }
 
 vector<Collision> PE3::getCollisions(){
@@ -88,9 +85,10 @@ vector<Collision> PE3::getCollisions(){
 void PE3::moveBack(PObject *ob1, PObject *ob2) {
     PolygonShape *tile = (PolygonShape*)ob2->ps;
     vec3 norm = CalcNormal(tile->getVerts());
-    vec3 intersect = LinePlaneIntersect(norm, tile->getVerts()[0], ob1->pos, ob1->vel);
-    vec3 move = ob1->pos - intersect;
+    vec3 intersect = LinePlaneIntersect(norm, tile->getVerts()[0]+ob2->pos, ob1->pos, norm);
+    vec3 move = (ob1->size-length(ob1->pos - intersect))*norm;
     ob1->pos += move;
+
 }
 
 void PE3::tick(vector<PObject*> objs, float dTime) {
@@ -129,7 +127,6 @@ void PE3::tick(vector<PObject*> objs, float dTime) {
             
             PObject *b = imoveables[j];
             if (SpherePlaneCollision(a, b)){
-                cout << "COLLISION" << endl;
                 Collision c;
                 moveBackers.push_back(pair<PObject*, PObject*>(a, b));
                 c.obj1 = a->id;

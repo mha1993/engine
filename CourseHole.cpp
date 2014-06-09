@@ -30,7 +30,9 @@ void CourseHole::shoot_setup(float dt) {
 
 void CourseHole::shoot() {
     float speed = 0.2;
-    vec4 dir = vec4(0,0,-1,0) * arrow->getPhysicsObject()->rot;
+    vec4 dir = vec4(0,0,1,0) * arrow->getPhysicsObject()->rot;
+    dir.x *= -1;
+    
     ball->getPhysicsObject()->vel += speed*vec3(dir);
     //shoot_mode = false;
 }

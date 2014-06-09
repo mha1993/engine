@@ -15,7 +15,6 @@
 #include "Mesh.h"
 
 Tee::Tee(glm::vec3 pos, float size, int idd): GameObject::GameObject(idd){
-    
     setIdentifier("TEE");
     
     vector<glm::vec3> verts;
@@ -27,7 +26,7 @@ Tee::Tee(glm::vec3 pos, float size, int idd): GameObject::GameObject(idd){
     
     PhysicShape *pss = new PolygonShape(verts);
     
-    physicsObject = new PObject(idd, pss, pos, true);
+    physicsObject = new PObject(idd, pss, pos, false);
     
     vec3 n = calcNormal(verts[0], verts[1], verts[2]);
     

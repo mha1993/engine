@@ -13,9 +13,6 @@ GameBall::GameBall(glm::vec3 pos, float size, int idd, int goalID) : Ball(pos,ve
     this->goalID = goalID;
 }
 void GameBall::collidedWith(GameObject *other, vec3 hitNormal, vec3 pos){
-    
-    other->printIdentifier();
-    
     if (other->objectId == goalID){
         Ball::level->stop();
     }else{
