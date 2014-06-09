@@ -15,15 +15,28 @@
 
 #include "GL/glfw.h"
 
+#if defined __GNUC__ || defined __APPLE__
+#include <ext/hash_map>
+#else
+#include <hash_map>
+#endif
+
+
 class Text {
-    Program *program;
-    tdogl::Texture *texture;
-    GLuint vbo;
-    GLuint vao;
+    static Program *program;
+    
+    static hash_map<string, tdogl::Texture*> *textureMap;
+    static GLuint vbo;
+    static GLuint vao;
     
 public:
-    void draw();
-    void init();
+
+    static void init();
+    static void draw(string imageFileName, float x, float y, float w, float h);
+private:
+    
+    static tdogl::Texture * getTexture(std::string filename);
+    
 };
 
 #endif /* defined(__Engine__Text__) */

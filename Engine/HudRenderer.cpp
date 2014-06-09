@@ -27,7 +27,7 @@ void HudRenderer::tick(float deltaT){
 void HudRenderer::render(){
 
     for (int i = 0; i<elements.size(); i++) {
-     
+        
         elements[i]->render();
         
     }

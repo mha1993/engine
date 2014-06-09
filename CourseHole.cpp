@@ -12,10 +12,13 @@
 #include "Texture.h"
 #include "Text.h"
 #include "Gravity.h"
+#include "FollowCamera.h"
 
 
-CourseHole::CourseHole(WindowManager *wm) : Hole(wm){
+CourseHole::CourseHole(WindowManager *wm, HudRenderer * hd, ScoreKeeper *sk) : Hole(wm,hd){
     windowManager = wm;
+    scoreKeeper = sk;
+    cameracounter = 0;
 }
 
 void CourseHole::shoot_setup(float dt) {
@@ -40,13 +43,20 @@ void CourseHole::shoot() {
 void CourseHole::tick(float deltaTime){
 
     if (windowManager->quitRequest()){
-        shouldBeRunning = false;
+        stop();
+        
     }
     
     if (shoot_mode) shoot_setup(deltaTime);
     if (windowManager->getKey(' ') && shoot_mode) {
         shoot();
     }
+    
+    if (windowManager->getKey('P')) {
+        currentCamera = cameras[++cameracounter % cameras.size()];
+    }
+    
+    
 
     Hole::tick(deltaTime);
     
@@ -80,8 +90,26 @@ void CourseHole::setup(){
     currentCamera->setPosition(teeLoc + vec3(1,1,1));
     currentCamera->lookAt(teeLoc);
     
+    cameras.push_back(currentCamera);
+    cameras.push_back(new FollowCamera(ball->getPhysicsObject()));
+    
     Gravity *g = new Gravity();
     physicsEngine->addForce((Force*)g);
     
 }
+
+
+void CourseHole::stop(){
+    
+    scoreKeeper->miss();
+    
+    Hole::stop();
+    
+}
+
+void CourseHole::goal(){
+    scoreKeeper->hit();
+    Hole::stop();
+}
+
 

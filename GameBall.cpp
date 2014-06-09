@@ -8,6 +8,7 @@
 
 #include "GameBall.h"
 #include "BaseLevel.h"
+#include <CourseHole.h>
 
 GameBall::GameBall(glm::vec3 pos, float size, int idd, int goalID) : Ball(pos,vec3(0,0,0),size,idd){
     this->goalID = goalID;
@@ -15,7 +16,10 @@ GameBall::GameBall(glm::vec3 pos, float size, int idd, int goalID) : Ball(pos,ve
 void GameBall::collidedWith(GameObject *other, vec3 hitNormal, vec3 pos){
 
     if (other->objectId == goalID){
-        Ball::level->stop();
+        
+        CourseHole *ch = (CourseHole *) Ball::level;
+        ch->goal();
+        
     }else{
         Ball::collidedWith(other,hitNormal,pos);
     }

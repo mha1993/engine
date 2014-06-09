@@ -14,14 +14,17 @@
 #include "HudRenderer.h"
 #include "TestHudElement.h"
 
+#include "Text.h"
 using namespace std;
 using namespace glm;
 
 int main(int argv, const char** argc) {
 
     
+    
     WindowManager *wm = new WindowManager;
     wm->init();
+    Text::init();
     
     Level *levelManager = new LevelManager(wm);
 
@@ -31,7 +34,8 @@ int main(int argv, const char** argc) {
     
     wm->stop();
     
-    /*
+    return 0;
+    
     HudRenderer * hr = new HudRenderer(wm);
     
     TestHudElement *THudE = new TestHudElement();
@@ -39,9 +43,11 @@ int main(int argv, const char** argc) {
     hr->addElement(THudE);
     
     while (!wm->quitRequest()) {
+        wm->beforeRender();
         hr->render();
+        wm->afterRender();
     }
-    */
+    
 }
 
 

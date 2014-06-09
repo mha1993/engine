@@ -12,7 +12,11 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 
-BaseLevel::BaseLevel(WindowManager *wm) : Level(wm){
+#include "Text.h"
+
+BaseLevel::BaseLevel(WindowManager *wm, HudRenderer * hd) : Level(wm){
+    
+    hudRenderer = hd;
     sceneManager = new SceneManager();
     physicsEngine = new PE3();
     currentCamera = new FPCamera();
@@ -35,7 +39,7 @@ void BaseLevel::render(){
     mat4 identityMatrix = mat4();
     
     windowManager->beforeRender();
-
+    
     for (int i=0; i<gameObjects.size(); i++){
         GameObject *gameObject = gameObjects[i];
         Drawable *mesh = gameObject->getMesh();
@@ -47,6 +51,9 @@ void BaseLevel::render(){
         mesh->setMatrices(&uM,&cameraMatrix,rot);
         mesh->draw();
     }
+    
+    hudRenderer->render();
+    
     windowManager->afterRender();
 
 }
@@ -75,6 +82,7 @@ void BaseLevel::tick(float deltaTime){
         gameObject2->collidedWith(gameObject1, -col.norm , col.pos);
     }
     
+    hudRenderer->tick(deltaTime);
     currentCamera->update(deltaTime);
     this->render();
 }

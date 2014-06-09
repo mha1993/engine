@@ -38,7 +38,7 @@ using namespace std;
 class Hole : public BaseLevel{
     
 public:
-    Hole(WindowManager *wm);
+    Hole(WindowManager *wm, HudRenderer * hd);
     void setName(string name);
     void addTile(vector<string> thing, int lineid);
     void addCup(vector<string> thing, int lineid);

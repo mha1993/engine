@@ -8,5 +8,5 @@ out vec4 finalColor;
 
 void main() {
     vec4 temp = texture(tex, fragTexCoord);
-    finalColor = vec4(1.0,1.0,1.0,1.0);//texture(tex, fragTexCoord);
+    finalColor = vec4(temp.xyz, 0);
 }

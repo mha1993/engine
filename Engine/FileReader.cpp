@@ -16,6 +16,11 @@
 
 string FileReader::basePath() {
     return dirname(__FILE__);
+}
+
+string FileReader::makePath(string file){
+
+    return basePath() + "/" + file;
 
 }
 

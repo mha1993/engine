@@ -27,6 +27,4 @@ void HudElement::drawImage(string imageName, float x, float y, float width, floa
 
 void HudElement::drawText(string s, float x, float y){
     
-    printf("should draw some text ffs");
-    
 }

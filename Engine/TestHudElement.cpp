@@ -8,10 +8,11 @@
 
 #include "TestHudElement.h"
 
+#include "Text.h"
 
 
 void TestHudElement::render(){
 
-    this->drawText("TEST",0.0,0.0);
+    Text::draw("hazard.png", .9, .9, .1, .1);
 
 }

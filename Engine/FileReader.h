@@ -24,7 +24,7 @@ public:
     static vector<string> readFile(string fileName);
     static string readFileToString(string filename);
     static vector<vector<string>> readFileToVectors(string fileName);
-    
+    static string makePath(string file);
 };
 
 #endif /* defined(__GameEngine__FileReader__) */

@@ -7,14 +7,49 @@
 //
 
 #include "Text.h"
+#include "FileReader.h"
+
+
+Program *Text::program;
+hash_map<string, tdogl::Texture*> *Text::textureMap;
+
+GLuint Text::vbo;
+GLuint Text::vao;
+
+tdogl::Texture* Text::getTexture(string filename){
+    
+    if (!Text::textureMap){   // Only allow one instance of class to be generated.
+        Text::textureMap = new hash_map<string, tdogl::Texture*>;
+    }
+    
+    hash_map<string, tdogl::Texture*>::iterator i = Text::textureMap->find(filename);
+    
+    if (i == Text::textureMap->end()) {
+        /* Not found */
+        
+        string fullPath = FileReader::makePath(filename);
+        
+        tdogl::Bitmap bmp = tdogl::Bitmap::bitmapFromFile(fullPath);
+        bmp.flipVertically();
+        tdogl::Texture* texture = new tdogl::Texture(bmp);
+        
+        (*Text::textureMap)[filename] = texture;
+        
+        return texture;
+        
+    }
+    else {
+        /* i->first will contain "apple", i->second will contain 5 */
+        return i->second;
+    }
+    
+    
+}
 
 
 void Text::init() {
     
-    tdogl::Bitmap bmp = tdogl::Bitmap::bitmapFromFile("/Users/matsallen/Desktop/NOBEL.png");
-    bmp.flipVertically();
-    texture = new tdogl::Texture(bmp);
-    
+
     program = Program::fetchProgram("textured.vsh", "text.fsh");
     
     // make and bind the VAO
@@ -45,27 +80,38 @@ void Text::init() {
     
     // unbind the VAO
     glBindVertexArray(0);
-    
 }
 
-void Text::draw() {
-    cout << "TEXT" << endl;
+
+void Text::draw(string imageFileName, float x, float y, float w, float h){
+
+    
     glUseProgram(program->getProgram());
     
     // bind the texture and set the "tex" uniform in the fragment shader
     glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, texture->object());
+    
+    tdogl::Texture *t = getTexture(imageFileName);
+    
+    glBindTexture(GL_TEXTURE_2D, t->object());
     GLuint loc = program->uniform("tex");
     glUniform1i(loc, 0);
+    
+    loc = program->uniform("coord");
+    glUniform2f(loc,x,y);
+    
+    loc = program->uniform("size");
+    glUniform2f(loc,w,h);
     
     // bind the VAO (the triangle)
     glBindVertexArray(vao);
     
     // draw the VAO
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 3);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     
     // unbind the VAO, the program and the texture
     glBindVertexArray(0);
     glBindTexture(GL_TEXTURE_2D, 0);
     glUseProgram(0);
+
 }

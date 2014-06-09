@@ -12,6 +12,9 @@
 
 #include "CourseHole.h"
 
+#include "HudRenderer.h"
+
+#include "ScoreKeeper.h"
 
 LevelManager::LevelManager(WindowManager *wm): Level(wm){}
 
@@ -28,6 +31,11 @@ Hole * LevelManager::last(){
 void LevelManager::setup(){
     vector<vector<string>> lines = FileReader::readFileToVectors("maps/course.db");
     
+    HudRenderer *hudRenderer = new HudRenderer(windowManager);
+    ScoreKeeper * sk = new ScoreKeeper();
+    
+    hudRenderer->addElement(sk);
+    
     for (int i = 0; i<lines.size(); i++) {
         vector<string> line = lines[i];
         
@@ -37,7 +45,7 @@ void LevelManager::setup(){
             if (lineType.compare(COURSE) == 0){
                 name = TextUtils::myconcat(line," ",1);
             }else if (lineType.compare(BEGIN_HOLE) == 0){
-                levels.push_back(new CourseHole(windowManager));
+                levels.push_back(new CourseHole(windowManager,hudRenderer,sk));
             }else{
                 last()->addLine(line);
             }
@@ -49,7 +57,7 @@ void LevelManager::run(){
 
     shouldBeRunning = true;
 
-    current = 11;
+    current = 0;
 
     
     while (shouldBeRunning && current < levels.size()) {

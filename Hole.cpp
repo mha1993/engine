@@ -11,7 +11,7 @@
 
 static unsigned int extraIds = 100000;
 
-Hole::Hole(WindowManager *wm) : BaseLevel(wm){}
+Hole::Hole(WindowManager *wm, HudRenderer * hd) : BaseLevel(wm, hd){}
 
 void Hole::setName(string name){
     this->name = name;

@@ -17,6 +17,8 @@
 #include "PE3.h"
 #include "ECamera.h"
 
+#include "HudRenderer.h"
+
 using namespace std;
 
 class BaseLevel : public Level{
@@ -28,11 +30,12 @@ protected:
     ECamera *currentCamera;
     SceneManager *sceneManager;
     PE3 *physicsEngine;
+    HudRenderer *hudRenderer;
 public:
     
     virtual void stop();
     
-    BaseLevel(WindowManager *wm);
+    BaseLevel(WindowManager *wm, HudRenderer * hd);
     int addObject(GameObject *go);
     GameObject* getObject(int idd);
     virtual void setCurrentCamera(ECamera *camera);

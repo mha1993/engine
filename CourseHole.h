@@ -11,24 +11,33 @@
 
 #include <iostream>
 #include "Hole.h"
-#include "Text.h"
 
 #include "GameBall.h"
+#include "HudRenderer.h"
+#include "ScoreKeeper.h"
 
 
 class CourseHole : public Hole{
     bool shoot_mode;
-    Text *text;
     WindowManager *windowManager;
-
+    ScoreKeeper *scoreKeeper;
+    
+    vector<ECamera *> cameras;
+    
+    int cameracounter;
+    
 public:
-    CourseHole(WindowManager *wm);
+    CourseHole(WindowManager *wm,HudRenderer * hr, ScoreKeeper *sk);
 
+    void stop();
+    void goal();
+    
 protected:
     void tick(float deltaTime);
     void setup();
     void shoot_setup(float dt);
     void shoot();
+    
 };
 
 

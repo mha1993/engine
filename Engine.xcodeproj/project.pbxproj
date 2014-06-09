@@ -34,6 +34,7 @@
 		D63FEEA01922AD9400F254F6 /* FPCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D63FEE9E1922AD9400F254F6 /* FPCamera.cpp */; };
 		D63FEEA31922B03B00F254F6 /* ECamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D63FEEA11922B03B00F254F6 /* ECamera.cpp */; };
 		D669993019319310005EF7D4 /* BaseLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D669992E19319310005EF7D4 /* BaseLevel.cpp */; };
+		D690D14919462F9A00063E95 /* ScoreKeeper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D690D14719462F9A00063E95 /* ScoreKeeper.cpp */; };
 		D6B2C12A1941086A00830778 /* Level.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6B2C1281941086A00830778 /* Level.cpp */; };
 		D6B2C12D19410C3500830778 /* LevelManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6B2C12B19410C3500830778 /* LevelManager.cpp */; };
 		D6B2C13119415CDA00830778 /* Hole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6B2C12F19415CDA00830778 /* Hole.cpp */; };
@@ -756,6 +757,7 @@
 		B0B4694519442CE1004F41F6 /* Text.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Text.cpp; sourceTree = "<group>"; };
 		B0B4694619442CE1004F41F6 /* Text.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Text.h; sourceTree = "<group>"; };
 		B0B4694819443858004F41F6 /* textured.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = textured.vsh; sourceTree = "<group>"; };
+		D60C3A511945542500E78087 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		D63FEE9B1922A97F00F254F6 /* FollowCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FollowCamera.cpp; sourceTree = "<group>"; };
 		D63FEE9C1922A97F00F254F6 /* FollowCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowCamera.h; sourceTree = "<group>"; };
 		D63FEE9E1922AD9400F254F6 /* FPCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FPCamera.cpp; sourceTree = "<group>"; };
@@ -764,6 +766,8 @@
 		D63FEEA21922B03B00F254F6 /* ECamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECamera.h; sourceTree = "<group>"; };
 		D669992E19319310005EF7D4 /* BaseLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseLevel.cpp; sourceTree = "<group>"; };
 		D669992F19319310005EF7D4 /* BaseLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLevel.h; sourceTree = "<group>"; };
+		D690D14719462F9A00063E95 /* ScoreKeeper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScoreKeeper.cpp; sourceTree = "<group>"; };
+		D690D14819462F9A00063E95 /* ScoreKeeper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreKeeper.h; sourceTree = "<group>"; };
 		D6B2C1281941086A00830778 /* Level.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Level.cpp; sourceTree = "<group>"; };
 		D6B2C1291941086A00830778 /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
 		D6B2C12B19410C3500830778 /* LevelManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LevelManager.cpp; path = Engine/LevelManager.cpp; sourceTree = "<group>"; };
@@ -863,6 +867,7 @@
 		B003A8AF1910540B005838F5 = {
 			isa = PBXGroup;
 			children = (
+				D60C3A511945542500E78087 /* GLUT.framework */,
 				D6F7ED54193FD5CE00F36A6F /* Game */,
 				B08EFFFA1912C26C0030C111 /* thirdparty */,
 				B08EFFF81912C2380030C111 /* OpenGL.framework */,
@@ -1832,6 +1837,8 @@
 				D6B2C13D19425A1A00830778 /* CourseHole.h */,
 				D6B2C13F19426EDA00830778 /* GameBall.cpp */,
 				D6B2C14019426EDA00830778 /* GameBall.h */,
+				D690D14719462F9A00063E95 /* ScoreKeeper.cpp */,
+				D690D14819462F9A00063E95 /* ScoreKeeper.h */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -1901,6 +1908,7 @@
 				B08E02A51915D1030030C111 /* Camera.cpp in Sources */,
 				B0B4694919443858004F41F6 /* textured.vsh in Sources */,
 				D6B2C14119426EDA00830778 /* GameBall.cpp in Sources */,
+				D690D14919462F9A00063E95 /* ScoreKeeper.cpp in Sources */,
 				D6FD2576192FD1430020A8C9 /* Mesh.cpp in Sources */,
 				B0B469391943CB33004F41F6 /* Arrow.cpp in Sources */,
 				B0B46941194423EE004F41F6 /* Texture.cpp in Sources */,
@@ -2020,7 +2028,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$SRCROOT/thirdparty/glfw\"",
-					"/Users/jakobfolkesson/Downloads/freetype-2.4.0",
 					"$(PROJECT_DIR)/thirdparty",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2040,7 +2047,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$SRCROOT/thirdparty/glfw\"",
-					"/Users/jakobfolkesson/Downloads/freetype-2.4.0",
 					"$(PROJECT_DIR)/thirdparty",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
