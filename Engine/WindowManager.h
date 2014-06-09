@@ -25,7 +25,7 @@ public:
     void afterRender();
     bool quitRequest();
     std::string readString();
-    
+    void poll();
     bool getKey(int c);
 };
 

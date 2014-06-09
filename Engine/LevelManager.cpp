@@ -56,6 +56,13 @@ void LevelManager::run(){
         
         levels[current]->setup();
         levels[current]->run();
+        
+        while (windowManager->quitRequest()) {
+            sleep(10);
+            windowManager->poll();
+        }
+        
+        //printf("ecape:%d\n",windowManager->quitRequest());
         levels[current]->teardown();
         current++;
     }

@@ -18,7 +18,7 @@ class Wall : public GameObject{
 
 public:
     Wall(vec3 a, vec3 b, float height, int idd);
-
+    std::string name();
 };
 
 

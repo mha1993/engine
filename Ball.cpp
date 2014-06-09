@@ -47,3 +47,8 @@ void Ball::collidedWith(GameObject *other, vec3 hitNormal, vec3 pos) {
 //    }
     
 }
+
+
+std::string Ball::name(){
+    return "Ball";
+}

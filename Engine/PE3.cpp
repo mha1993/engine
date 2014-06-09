@@ -88,7 +88,7 @@ void PE3::moveBack(PObject *ob1, PObject *ob2) {
     vec3 intersect = LinePlaneIntersect(norm, tile->getVerts()[0]+ob2->pos, ob1->pos, norm);
     vec3 move = (ob1->size-length(ob1->pos - intersect))*norm;
     ob1->pos += move;
-
+    
 }
 
 void PE3::tick(vector<PObject*> objs, float dTime) {
@@ -115,7 +115,7 @@ void PE3::tick(vector<PObject*> objs, float dTime) {
     for (int i = 0; i < moveables.size(); i++) {
         move(moveables[i], dTime);
     }
-
+    
     
     //CHECK COLLISIONS MOVABLE - IMOVABLE
     vector<pair<PObject*, PObject*>> moveBackers;

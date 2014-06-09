@@ -18,7 +18,7 @@ class Tee : public GameObject{
 public:
     
     Tee(vec3 pos, float size, int idd);
-    
+    std::string name();
     
 };
 

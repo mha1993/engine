@@ -24,6 +24,7 @@ PObject * GameObject::getPhysicsObject(){
 
 void GameObject::collidedWith(GameObject *other, vec3 hitNormal, vec3 pos){
 
+
 }
 
 Drawable * GameObject::getMesh(){
@@ -38,6 +39,10 @@ void GameObject::setLevel(BaseLevel *bl){
 
 }
 
+
+std::string GameObject::name(){
+    return "GAME OBJECT";
+}
 
 void GameObject::setIdentifier(std::string id) {
     identifier = id;

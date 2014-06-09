@@ -35,6 +35,7 @@ void BaseLevel::render(){
     mat4 identityMatrix = mat4();
     
     windowManager->beforeRender();
+
     for (int i=0; i<gameObjects.size(); i++){
         GameObject *gameObject = gameObjects[i];
         Drawable *mesh = gameObject->getMesh();
@@ -50,6 +51,13 @@ void BaseLevel::render(){
 
 }
 void BaseLevel::tick(float deltaTime){
+    
+    
+    vector<GameObject *> objects = sceneManager->getObjects();
+    
+    for (int i = 0; i<objects.size(); i++) {
+        objects[i]->tick(deltaTime);
+    }
     
     vector<PObject *> physicObjects = sceneManager->getPhysicsObjects();
     physicsEngine->tick(physicObjects, deltaTime);

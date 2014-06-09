@@ -28,6 +28,9 @@ public:
     virtual void teardown();
     virtual void tick(float deltaTime);
     virtual void render();
+    
+    
+    void sleep(long millis);
 };
 
 #endif /* defined(__Engine__Level__) */

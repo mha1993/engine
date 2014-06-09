@@ -13,10 +13,14 @@ GameBall::GameBall(glm::vec3 pos, float size, int idd, int goalID) : Ball(pos,ve
     this->goalID = goalID;
 }
 void GameBall::collidedWith(GameObject *other, vec3 hitNormal, vec3 pos){
+
     if (other->objectId == goalID){
         Ball::level->stop();
     }else{
-        
         Ball::collidedWith(other,hitNormal,pos);
     }
+}
+
+std::string GameBall::name(){
+    return "GameBall";
 }

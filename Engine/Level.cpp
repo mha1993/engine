@@ -35,6 +35,12 @@ long double clamp(long double n,long double min, long double max){
 }
 
 
+void Level::sleep(long millis){
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(millis));
+
+}
+
 void Level::run(){
     
     shouldBeRunning = true;
@@ -50,13 +56,15 @@ void Level::run(){
         lastTime = newTime;
         
         
+        windowManager->poll();
+        
         tick(timeDiff/1000.0f);
         
         long maxSleepTime = 20;
         
         long sleeptime = clamp(maxSleepTime - timeDiff , 0, maxSleepTime);
         
-        std::this_thread::sleep_for(std::chrono::milliseconds(sleeptime));
+        sleep(sleeptime);
         
     }
 }

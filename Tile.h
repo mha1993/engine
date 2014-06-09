@@ -21,6 +21,7 @@ class Tile : public GameObject{
 
 public:
     Tile(vector<glm::vec3> verts , int idd);
+    std::string name();
 };
 
 #endif /* defined(__Engine__Tile__) */

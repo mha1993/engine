@@ -38,33 +38,30 @@ Cup::Cup(glm::vec3 pos, vec3 normal, float size, int idd): GameObject::GameObjec
     
     vector<glm::vec3> cupVerts;
     
-    float r = size;
     
     for (float i = 0; i<= 2*M_PI ; i+= M_PI/5.0){
         
-        glm::vec3 na = p1 * r * cosf(i);
-        glm::vec3 nb = p2 * r * sinf(i);
+        glm::vec3 na = p1  * cosf(i);
+        glm::vec3 nb = p2  * sinf(i);
         
-        glm::vec3 v = na + nb;
+        glm::vec3 v = (na + nb) * size;
         
         cupVerts.push_back(v);
         
     }
-    
-    vector<glm::vec3> verts = cupVerts;
 
     
-    PhysicShape *pss = new PolygonShape(verts);
+    PhysicShape *pss = new PolygonShape(cupVerts);
     
     physicsObject = new PObject(idd,pss,pos, true);
     
     vector<vec3> normals;
     
-    for (int i = 0; i<verts.size(); i++) {
+    for (int i = 0; i<cupVerts.size(); i++) {
         normals.push_back(n);
     }
     
-    mesh = new Mesh("default.vs","black.fsh", &verts,&normals,GL_TRIANGLE_FAN);
+    mesh = new Mesh("default.vs","black.fsh", &cupVerts,&normals,GL_TRIANGLE_FAN);
     
 }
 
@@ -72,6 +69,10 @@ void Cup::collidedWith(GameObject *other, vec3 hitNormal, vec3 pos){
     
     printf("yes this is dog %d\n",this->objectId);
     
+}
+
+std::string Cup::name(){
+    return "Cup";
 }
 
 

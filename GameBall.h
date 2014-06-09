@@ -21,6 +21,8 @@ class GameBall : public Ball{
 public:
     GameBall(glm::vec3 pos, float size, int idd, int goalID);
     virtual void collidedWith(GameObject *other, vec3 hitNormal, vec3 pos) override;
+    
+    std::string name();
 
 protected:
     int goalID;

@@ -116,13 +116,19 @@ void Hole::addCup(vector<string> line, int lineid){
     int tileId = atof(line[1].c_str());
     
     Tile *t             = (Tile *)          this->getObject(tileId);
+    
+    if (t == nullptr){
+        std::cout << "ERROR: no cup to place tile on nr:" << tileId << " on liner:"  << lineid+1;
+        exit(EXIT_FAILURE);
+    }
+    
     PObject *pobj       = (PObject * )      t->getPhysicsObject();
     PolygonShape *dsa   = (PolygonShape *)  pobj->ps;
     vector<vec3> verts  =                   dsa->getVerts();
     vec3 normal         =                   calcNormal(verts[0],verts[1],verts[2]);
     
     loc += vec3(0.0, 0.001, 0.0);
-    cup = new Cup(loc , normal, 0.07, 11181993);
+    cup = new Cup(loc , normal, 0.07,extraIds++);
     this->addObject(cup);
 }
 
@@ -132,3 +138,5 @@ void Hole::addWall(vec3 a, vec3 b){
     this->addObject(new Wall(a,b,0.1f,extraIds++));
     
 }
+
+
