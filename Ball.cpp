@@ -22,30 +22,24 @@ Ball::Ball(glm::vec3 pos, glm::vec3 vel, float size, int idd) : GameObject(idd){
 }
 
 void Ball::collidedWith(GameObject *other, vec3 hitNormal, vec3 pos) {
-    //float bounceCoefficient = 0.8f;
+
+    
     vec3 n = normalize(hitNormal);
     vec3 d = getPhysicsObject()->vel;
     
-    vec3 normalizedNormal = normalize(n);
-    vec3 normalizedDir = normalize(d);
     
-    float dott = dot(normalizedNormal,normalizedDir);
+    if (other->identifier.compare("WALL") == 0){
+        
+        vec3 reflection = d-2*(dot(d,n))*n;
     
-    float bounce = 0.8;
+        physicsObject->vel = reflection * .8f;
+        
+        
+    }else{
+        
+        physicsObject->vel = (d - dot(d,n) * n ) *.999f;
     
-    printf("col : %f\n",bounce);
-    printf("   vel = %f\n", length(physicsObject->vel));
-    vec3 reflection = d-2*(dot(d,n))*n;
-    getPhysicsObject()->vel =  bounce*reflection;
-    
-//    
-//    if (fabsf(dott) > .3 && length(physicsObject->vel) > 0.1){
-//        vec3 reflection = d-2*(dot(d,n))*n;
-//        getPhysicsObject()->vel =  bounceCoefficient*reflection;
-//    }else{
-//        //getPhysicsObject()->vel -= getPhysicsObject()->vel * 0.001f;
-//    }
-    
+    }
 }
 
 
