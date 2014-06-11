@@ -31,9 +31,7 @@ void Ball::collidedWith(GameObject *other, vec3 hitNormal, vec3 pos) {
     if (other->identifier.compare("WALL") == 0){
         
         vec3 reflection = d-2*(dot(d,n))*n;
-    
         physicsObject->vel = reflection * .8f;
-        
         
     }else{
         
