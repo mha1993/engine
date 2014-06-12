@@ -91,10 +91,10 @@ void DriverAI::calcWaypoints(SceneManager *sm, int idStart, int idEnd) {
     waypoints = convertTilePathToEdgePath(sm, tilePath);
 }
 
-DriverAI::DriverAI(Ball *_ball, SceneManager *sm, int idStart, int idEnd) {
+DriverAI::DriverAI(Ball *_ball, SceneManager *sm, int idStart, int idEnd, int idHole) {
     ball = _ball;
-    
     calcWaypoints(sm, idStart, idEnd);
+    waypoints.push_back(sm->getObject(idHole)->getPhysicsObject()->pos);
     curWaypoint = 0;
 }
 

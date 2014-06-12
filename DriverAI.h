@@ -25,7 +25,7 @@ class DriverAI {
     SceneManager *sm;
     
 public:
-    DriverAI(Ball *_ball, SceneManager *sm, int idStart, int idEnd);
+    DriverAI(Ball *_ball, SceneManager *sm, int idStart, int idEnd, int idHole);
     void addWaypoint(vec3 wp);
     void calcWaypoints(SceneManager *sm, int idStart, int idEnd);
     void tick(float dt);
