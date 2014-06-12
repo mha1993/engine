@@ -47,6 +47,10 @@ void CourseHole::tick(float deltaTime){
         
     }
     
+    if (balls[0]->getPhysicsObject()->pos.y < -10) {
+        stop();
+    }
+    
     if (shoot_mode) shoot_setup(deltaTime);
     if (windowManager->getKey(' ') && shoot_mode) {
         shoot();
