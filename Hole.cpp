@@ -71,8 +71,8 @@ void Hole::addTile(vector<string> line, int lineid){
         glm::vec3 v = glm::vec3(atof(line[i+3+0].c_str()),atof(line[i+3+1].c_str()),atof(line[i+3+2].c_str()));
         verts.push_back(v);
     }
-    
-    this->addObject(new Tile(verts,tileId));
+    Tile *tile = new Tile(verts,tileId);
+    this->addObject(tile);
     
     for (int i = 0; i<numberOfVertices ; i++){
         int pos = 3+3*numberOfVertices + i;
@@ -81,6 +81,8 @@ void Hole::addTile(vector<string> line, int lineid){
             int v2 = i+1 < numberOfVertices ? i+1 : 0;
             
             this->addWall(verts[i], verts[v2]);
+        } else {
+            tile->addNeighbor(e, i);
         }
     }
 }
@@ -93,13 +95,16 @@ void Hole::addTee(vector<string> line, int lineid){
     glm::vec3 loc = glm::vec3(atof(line[2].c_str()),atof(line[3].c_str()),atof(line[4].c_str()));
     loc += vec3(0.0, 0.001, 0.0);
     tee = new Tee(loc, 0.1, extraIds++);
+    int tileId = atof(line[1].c_str());
+    tee->tileId = tileId;
+    cout << tileId <<endl;
     this->addObject(tee);
     
 }
 
 
 void Hole::addArrow(int lineid){
-    glm::vec3 loc = ball->getPhysicsObject()->pos + vec3(0,0.2,0);
+    glm::vec3 loc = balls[0]->getPhysicsObject()->pos + vec3(0,0.2,0);
     arrow = new Arrow(loc, extraIds++);
     this->addObject(arrow);
 }
@@ -128,7 +133,9 @@ void Hole::addCup(vector<string> line, int lineid){
     vec3 normal         =                   calcNormal(verts[0],verts[1],verts[2]);
     
     loc += vec3(0.0, 0.001, 0.0);
-    cup = new Cup(loc , normal, 0.07,extraIds++);
+    cup = new Cup(loc, normal, 0.07,extraIds++);
+    cup->tileId = tileId;
+    cout << "TILLE" << cup->tileId << endl;
     this->addObject(cup);
 }
 

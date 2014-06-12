@@ -57,7 +57,7 @@ protected:
     Cup *cup;
     Tee *tee;
     Arrow *arrow;
-    Ball *ball;
+    vector<Ball *> balls;
     
 };
 

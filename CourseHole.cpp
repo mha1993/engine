@@ -28,7 +28,7 @@ void CourseHole::shoot_setup(float dt) {
     if(windowManager->getKey('Y')) {
         arrow->getPhysicsObject()->rot = rotate(arrow->getPhysicsObject()->rot, -dt*90.0f, vec3(0,1,0));
     }
-    arrow->getPhysicsObject()->pos = ball->getPhysicsObject()->pos + vec3(0,0.05,0);
+    arrow->getPhysicsObject()->pos = balls[0]->getPhysicsObject()->pos + vec3(0,0.05,0);
 }
 
 void CourseHole::shoot() {
@@ -36,7 +36,7 @@ void CourseHole::shoot() {
     vec4 dir = vec4(0,0,1,0) * arrow->getPhysicsObject()->rot;
     dir.x *= -1;
     
-    ball->getPhysicsObject()->vel += speed*vec3(dir);
+    balls[0]->getPhysicsObject()->vel += speed*vec3(dir);
     //shoot_mode = false;
 }
 
@@ -56,7 +56,9 @@ void CourseHole::tick(float deltaTime){
         currentCamera = cameras[++cameracounter % cameras.size()];
     }
     
-    
+    for (int i=0; i<ais.size(); i++) {
+        ais[i]->tick(deltaTime);
+    }
 
     Hole::tick(deltaTime);
     
@@ -80,10 +82,24 @@ void CourseHole::setup(){
     
     printf("setup:%s cupid %d (%f %f %f)\nball (%f %f %f)\n",name.c_str(),cup->objectId,cuploc.x,cuploc.y,cuploc.z,ballLoc.x,ballLoc.y,ballLoc.z);
     
-    ball = new GameBall(ballLoc,ballRadius,1000001,cup->objectId);
+    Ball *ball = new GameBall(ballLoc,ballRadius,1000001,cup->objectId);
     ball->getPhysicsObject()->vel = vec3(0,0,0);
     
     this->addObject(ball);
+    balls.push_back(ball);
+    
+    Ball *ball2 = new GameBall(ballLoc+vec3(-0.1,0.3,0),ballRadius,1000002,cup->objectId);
+    ball2->getPhysicsObject()->vel = vec3(0,0,0);
+    
+    cout << "CREATING AI..." << endl;
+    DriverAI *ai = new DriverAI::DriverAI(ball2, sceneManager, tee->tileId, cup->tileId);
+    //ai->showWaypoints(sceneManager);
+    
+    this->addObject(ball2);
+    balls.push_back(ball2);
+    ais.push_back(ai);
+    
+    
     
     addArrow(1000002);
     

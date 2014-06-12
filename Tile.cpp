@@ -28,11 +28,24 @@ Tile::Tile(vector<glm::vec3> verts, int idd): GameObject::GameObject(idd){
         normal.push_back(n);
     }
     
-    mesh = new Mesh("default.vs","green.fsh", &verts,&normal,GL_TRIANGLE_FAN);
+    mesh = new Mesh("default.vs","white.fsh", &verts,&normal,GL_TRIANGLE_FAN);
     
 }
 
 
 std::string Tile::name(){
     return "Tile";
+}
+
+void Tile::addNeighbor(int idd, int edge) {
+    neighbors.push_back(pair<int, int>(idd, edge));
+}
+
+vector<pair<int, int>> Tile::getNeighbors() {
+    return neighbors;
+}
+
+pair<vec3, vec3> Tile::getEdge(int e) {
+    vector<vec3> verts = ((PolygonShape*)physicsObject->ps)->getVerts();
+    return pair<vec3, vec3>(verts[e], verts[(e+1)%verts.size()]);
 }

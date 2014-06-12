@@ -19,6 +19,7 @@ public:
     
     Tee(vec3 pos, float size, int idd);
     std::string name();
+    int tileId;
     
 };
 

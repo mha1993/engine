@@ -15,6 +15,7 @@
 #include "GameBall.h"
 #include "HudRenderer.h"
 #include "ScoreKeeper.h"
+#include "DriverAI.h"
 
 
 class CourseHole : public Hole{
@@ -25,6 +26,8 @@ class CourseHole : public Hole{
     vector<ECamera *> cameras;
     
     int cameracounter;
+    
+    vector<DriverAI*> ais;
     
 public:
     CourseHole(WindowManager *wm,HudRenderer * hr, ScoreKeeper *sk);

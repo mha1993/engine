@@ -12,8 +12,11 @@
 		B002AB051937F0D30056F20E /* Force.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B002AB031937F0D30056F20E /* Force.cpp */; };
 		B003A8BE1910540B005838F5 /* Engine.1 in Copy Files */ = {isa = PBXBuildFile; fileRef = B003A8BD1910540B005838F5 /* Engine.1 */; };
 		B003ADE019107CF4005838F5 /* FileReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B003ADDE19107CF4005838F5 /* FileReader.cpp */; };
+		B041E20719481B930002F5E2 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B041E20519481B930002F5E2 /* Graph.cpp */; };
+		B041E20919491B5F0002F5E2 /* white.fsh in Sources */ = {isa = PBXBuildFile; fileRef = B041E20819491B5F0002F5E2 /* white.fsh */; };
 		B05F7C7F19453DB70080055F /* ortho.vsh in Sources */ = {isa = PBXBuildFile; fileRef = B05F7C7E19453DB70080055F /* ortho.vsh */; };
 		B05F7C8119453E550080055F /* hud.fsh in Sources */ = {isa = PBXBuildFile; fileRef = B05F7C8019453E550080055F /* hud.fsh */; };
+		B06E5E1319466ADA00B3F39A /* DriverAI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B06E5E1119466ADA00B3F39A /* DriverAI.cpp */; };
 		B08E02951912C2710030C111 /* glew.c in Sources */ = {isa = PBXBuildFile; fileRef = B08E00171912C26D0030C111 /* glew.c */; };
 		B08E02981912C2710030C111 /* libglfw.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B08E001F1912C26D0030C111 /* libglfw.a */; };
 		B08E029C1912D08B0030C111 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B003A8BB1910540B005838F5 /* main.cpp */; };
@@ -89,8 +92,13 @@
 		B003ADDF19107CF4005838F5 /* FileReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileReader.h; sourceTree = "<group>"; };
 		B003ADE519108329005838F5 /* green.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = green.fsh; sourceTree = "<group>"; };
 		B003ADE619108329005838F5 /* shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader.vsh; sourceTree = "<group>"; };
+		B041E20519481B930002F5E2 /* Graph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Graph.cpp; sourceTree = "<group>"; };
+		B041E20619481B930002F5E2 /* Graph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Graph.h; sourceTree = "<group>"; };
+		B041E20819491B5F0002F5E2 /* white.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = white.fsh; sourceTree = "<group>"; };
 		B05F7C7E19453DB70080055F /* ortho.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ortho.vsh; sourceTree = "<group>"; };
 		B05F7C8019453E550080055F /* hud.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = hud.fsh; sourceTree = "<group>"; };
+		B06E5E1119466ADA00B3F39A /* DriverAI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DriverAI.cpp; sourceTree = "<group>"; };
+		B06E5E1219466ADA00B3F39A /* DriverAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverAI.h; sourceTree = "<group>"; };
 		B08E00001912C26D0030C111 /* credits.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = credits.html; sourceTree = "<group>"; };
 		B08E00011912C26D0030C111 /* glew.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = glew.css; sourceTree = "<group>"; };
 		B08E00021912C26D0030C111 /* glew.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = glew.html; sourceTree = "<group>"; };
@@ -869,7 +877,6 @@
 			children = (
 				D60C3A511945542500E78087 /* GLUT.framework */,
 				D6F7ED54193FD5CE00F36A6F /* Game */,
-				B08EFFFA1912C26C0030C111 /* thirdparty */,
 				B08EFFF81912C2380030C111 /* OpenGL.framework */,
 				B08EFFF61912C2310030C111 /* Cocoa.framework */,
 				B08EFFF41912C2290030C111 /* IOKit.framework */,
@@ -934,6 +941,7 @@
 				D6E9E9FA191B0C1300F4778F /* blue.fsh */,
 				D6F7ED64193FF80500F36A6F /* brown.fsh */,
 				D6B2C13B194258D300830778 /* black.fsh */,
+				B041E20819491B5F0002F5E2 /* white.fsh */,
 				B0B4693A19441EFB004F41F6 /* text.fsh */,
 				B05F7C8019453E550080055F /* hud.fsh */,
 			);
@@ -1839,6 +1847,11 @@
 				D6B2C14019426EDA00830778 /* GameBall.h */,
 				D690D14719462F9A00063E95 /* ScoreKeeper.cpp */,
 				D690D14819462F9A00063E95 /* ScoreKeeper.h */,
+				B06E5E1119466ADA00B3F39A /* DriverAI.cpp */,
+				B06E5E1219466ADA00B3F39A /* DriverAI.h */,
+				B041E20519481B930002F5E2 /* Graph.cpp */,
+				B041E20619481B930002F5E2 /* Graph.h */,
+				B08EFFFA1912C26C0030C111 /* thirdparty */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -1913,6 +1926,7 @@
 				B0B469391943CB33004F41F6 /* Arrow.cpp in Sources */,
 				B0B46941194423EE004F41F6 /* Texture.cpp in Sources */,
 				D6F7ED57193FD66A00F36A6F /* Tile.cpp in Sources */,
+				B06E5E1319466ADA00B3F39A /* DriverAI.cpp in Sources */,
 				D6E36AD3194287C90089E3FA /* HudElement.cpp in Sources */,
 				B08E02951912C2710030C111 /* glew.c in Sources */,
 				B08E029F1912D1A10030C111 /* Program.cpp in Sources */,
@@ -1923,6 +1937,7 @@
 				B0B4693E194423C1004F41F6 /* Bitmap.cpp in Sources */,
 				B002AAFF1937F0500056F20E /* PE3.cpp in Sources */,
 				D6FD257D192FEADE0020A8C9 /* WindowManager.cpp in Sources */,
+				B041E20719481B930002F5E2 /* Graph.cpp in Sources */,
 				B002AAFA1937B3D00056F20E /* SceneManager.cpp in Sources */,
 				B05F7C8119453E550080055F /* hud.fsh in Sources */,
 				D6C03FEE191C9899003757F7 /* PhysicsUtil.cpp in Sources */,
@@ -1935,6 +1950,7 @@
 				D6FD25841930093E0020A8C9 /* GameObject.cpp in Sources */,
 				D6FD2596193157550020A8C9 /* PolygonShape.cpp in Sources */,
 				D63FEEA31922B03B00F254F6 /* ECamera.cpp in Sources */,
+				B041E20919491B5F0002F5E2 /* white.fsh in Sources */,
 				D6E36AD619428CD60089E3FA /* TestHudElement.cpp in Sources */,
 				D6FD259C19315E150020A8C9 /* PObject.cpp in Sources */,
 				D6F7ED5A193FE8DB00F36A6F /* Tee.cpp in Sources */,
@@ -2024,6 +2040,7 @@
 					"\"$SRCROOT/thirdparty/glfw/include\"",
 					"\"$SRCROOT/thirdparty/glew/include\"",
 					"\"$SRCROOT/thirdparty/glm\"",
+					/usr/local/include/,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2043,6 +2060,7 @@
 					"\"$SRCROOT/thirdparty/glfw/include\"",
 					"\"$SRCROOT/thirdparty/glew/include\"",
 					"\"$SRCROOT/thirdparty/glm\"",
+					/usr/local/include/,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
