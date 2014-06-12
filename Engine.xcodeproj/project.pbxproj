@@ -34,6 +34,7 @@
 		B0B46944194425E7004F41F6 /* DrawableSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6F7ED6E19401A5B00F36A6F /* DrawableSphere.cpp */; };
 		B0B4694719442CE1004F41F6 /* Text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0B4694519442CE1004F41F6 /* Text.cpp */; };
 		B0B4694919443858004F41F6 /* textured.vsh in Sources */ = {isa = PBXBuildFile; fileRef = B0B4694819443858004F41F6 /* textured.vsh */; };
+		B0B63D9F194A4F0000EB0398 /* FollowCamera2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0B63D9D194A4F0000EB0398 /* FollowCamera2.cpp */; };
 		D63FEE9D1922A97F00F254F6 /* FollowCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D63FEE9B1922A97F00F254F6 /* FollowCamera.cpp */; };
 		D63FEEA01922AD9400F254F6 /* FPCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D63FEE9E1922AD9400F254F6 /* FPCamera.cpp */; };
 		D63FEEA31922B03B00F254F6 /* ECamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D63FEEA11922B03B00F254F6 /* ECamera.cpp */; };
@@ -768,6 +769,8 @@
 		B0B4694519442CE1004F41F6 /* Text.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Text.cpp; sourceTree = "<group>"; };
 		B0B4694619442CE1004F41F6 /* Text.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Text.h; sourceTree = "<group>"; };
 		B0B4694819443858004F41F6 /* textured.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = textured.vsh; sourceTree = "<group>"; };
+		B0B63D9D194A4F0000EB0398 /* FollowCamera2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FollowCamera2.cpp; sourceTree = "<group>"; };
+		B0B63D9E194A4F0000EB0398 /* FollowCamera2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowCamera2.h; sourceTree = "<group>"; };
 		D60C3A511945542500E78087 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		D63FEE9B1922A97F00F254F6 /* FollowCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FollowCamera.cpp; sourceTree = "<group>"; };
 		D63FEE9C1922A97F00F254F6 /* FollowCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowCamera.h; sourceTree = "<group>"; };
@@ -1804,6 +1807,8 @@
 				B08E02A41915D1030030C111 /* Camera.h */,
 				D63FEE9B1922A97F00F254F6 /* FollowCamera.cpp */,
 				D63FEE9C1922A97F00F254F6 /* FollowCamera.h */,
+				B0B63D9D194A4F0000EB0398 /* FollowCamera2.cpp */,
+				B0B63D9E194A4F0000EB0398 /* FollowCamera2.h */,
 				D63FEE9E1922AD9400F254F6 /* FPCamera.cpp */,
 				D63FEE9F1922AD9400F254F6 /* FPCamera.h */,
 				D63FEEA11922B03B00F254F6 /* ECamera.cpp */,
@@ -1960,6 +1965,7 @@
 				D6FD259C19315E150020A8C9 /* PObject.cpp in Sources */,
 				D6F7ED5A193FE8DB00F36A6F /* Tee.cpp in Sources */,
 				B09E1D871949887400F2FB7F /* Marker.cpp in Sources */,
+				B0B63D9F194A4F0000EB0398 /* FollowCamera2.cpp in Sources */,
 				B003ADE019107CF4005838F5 /* FileReader.cpp in Sources */,
 				D669993019319310005EF7D4 /* BaseLevel.cpp in Sources */,
 				D6F7ED60193FF3B700F36A6F /* Wall.cpp in Sources */,

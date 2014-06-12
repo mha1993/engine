@@ -66,9 +66,11 @@ Cup::Cup(glm::vec3 pos, vec3 normal, float size, int idd): GameObject::GameObjec
 }
 
 void Cup::collidedWith(GameObject *other, vec3 hitNormal, vec3 pos){
-    
-    printf("yes this is dog %d\n",this->objectId);
-    
+    if (other->name().compare("GameBall")==0) {
+        cout << "WINNER" << endl;
+    } else if (other->name().compare("Ball")==0) {
+        cout << "LOSER" << endl;
+    }
 }
 
 std::string Cup::name(){

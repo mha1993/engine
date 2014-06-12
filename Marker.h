@@ -2,9 +2,8 @@
 //  Marker.h
 //  Engine
 //
-//  Created by Mats Allen on 6/12/14.
-//  Copyright (c) 2014 MHA. All rights reserved.
-//
+//  This is subclass of Ball and is used as a static marker, especially
+//  for debugging.
 
 #ifndef __Engine__Marker__
 #define __Engine__Marker__

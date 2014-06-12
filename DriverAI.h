@@ -2,8 +2,7 @@
 //  DriverAI.h
 //  Engine
 //
-//  Created by Mats Allen on 6/9/14.
-//  Copyright (c) 2014 MHA. All rights reserved.
+//  AI controller used to drive ball to hole
 //
 
 #ifndef __Engine__DriverAI__

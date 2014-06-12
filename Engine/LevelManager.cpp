@@ -57,7 +57,7 @@ void LevelManager::run(){
 
     shouldBeRunning = true;
 
-    current = 1;
+    current = 0;
 
     
     while (shouldBeRunning && current < levels.size()) {

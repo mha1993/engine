@@ -2,8 +2,7 @@
 //  Graph.h
 //  Engine
 //
-//  Created by Mats Allen on 6/10/14.
-//  Copyright (c) 2014 MHA. All rights reserved.
+//  Custom graph type for calculating path for AI
 //
 
 #ifndef __Engine__Graph__

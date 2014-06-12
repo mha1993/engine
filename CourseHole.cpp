@@ -14,6 +14,8 @@
 #include "Gravity.h"
 #include "FollowCamera.h"
 
+#define TURN_SPEED 360.0f
+
 
 CourseHole::CourseHole(WindowManager *wm, HudRenderer * hd, ScoreKeeper *sk) : Hole(wm,hd){
     windowManager = wm;
@@ -23,10 +25,10 @@ CourseHole::CourseHole(WindowManager *wm, HudRenderer * hd, ScoreKeeper *sk) : H
 
 void CourseHole::shoot_setup(float dt) {
     if(windowManager->getKey('T')) {
-        arrow->getPhysicsObject()->rot = rotate(arrow->getPhysicsObject()->rot, dt*90.0f, vec3(0,1,0));
+        arrow->getPhysicsObject()->rot = rotate(arrow->getPhysicsObject()->rot, dt*TURN_SPEED, vec3(0,1,0));
     }
     if(windowManager->getKey('Y')) {
-        arrow->getPhysicsObject()->rot = rotate(arrow->getPhysicsObject()->rot, -dt*90.0f, vec3(0,1,0));
+        arrow->getPhysicsObject()->rot = rotate(arrow->getPhysicsObject()->rot, -dt*TURN_SPEED, vec3(0,1,0));
     }
     arrow->getPhysicsObject()->pos = balls[0]->getPhysicsObject()->pos + vec3(0,0.05,0);
 }
