@@ -91,9 +91,8 @@ void CourseHole::setup(){
     Ball *ball2 = new GameBall(ballLoc+vec3(-0.1,0.3,0),ballRadius,1000002,cup->objectId);
     ball2->getPhysicsObject()->vel = vec3(0,0,0);
     
-    cout << "CREATING AI..." << endl;
     DriverAI *ai = new DriverAI::DriverAI(ball2, sceneManager, tee->tileId, cup->tileId);
-    //ai->showWaypoints(sceneManager);
+    ai->showWaypoints(sceneManager);
     
     this->addObject(ball2);
     balls.push_back(ball2);

@@ -25,6 +25,7 @@
 		B08EFFF51912C2290030C111 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B08EFFF41912C2290030C111 /* IOKit.framework */; };
 		B08EFFF71912C2310030C111 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B08EFFF61912C2310030C111 /* Cocoa.framework */; };
 		B08EFFF91912C2380030C111 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B08EFFF81912C2380030C111 /* OpenGL.framework */; };
+		B09E1D871949887400F2FB7F /* Marker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B09E1D851949887400F2FB7F /* Marker.cpp */; };
 		B0B469361943BA04004F41F6 /* Gravity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0B469341943BA04004F41F6 /* Gravity.cpp */; };
 		B0B469391943CB33004F41F6 /* Arrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0B469371943CB33004F41F6 /* Arrow.cpp */; };
 		B0B4693B19441EFB004F41F6 /* text.fsh in Sources */ = {isa = PBXBuildFile; fileRef = B0B4693A19441EFB004F41F6 /* text.fsh */; };
@@ -752,6 +753,8 @@
 		B08EFFFD1912C26D0030C111 /* advanced.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = advanced.html; sourceTree = "<group>"; };
 		B08EFFFE1912C26D0030C111 /* basic.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = basic.html; sourceTree = "<group>"; };
 		B08EFFFF1912C26D0030C111 /* build.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = build.html; sourceTree = "<group>"; };
+		B09E1D851949887400F2FB7F /* Marker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Marker.cpp; sourceTree = "<group>"; };
+		B09E1D861949887400F2FB7F /* Marker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Marker.h; sourceTree = "<group>"; };
 		B0B469341943BA04004F41F6 /* Gravity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Gravity.cpp; sourceTree = "<group>"; };
 		B0B469351943BA04004F41F6 /* Gravity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gravity.h; sourceTree = "<group>"; };
 		B0B469371943CB33004F41F6 /* Arrow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Arrow.cpp; sourceTree = "<group>"; };
@@ -1851,6 +1854,8 @@
 				B06E5E1219466ADA00B3F39A /* DriverAI.h */,
 				B041E20519481B930002F5E2 /* Graph.cpp */,
 				B041E20619481B930002F5E2 /* Graph.h */,
+				B09E1D851949887400F2FB7F /* Marker.cpp */,
+				B09E1D861949887400F2FB7F /* Marker.h */,
 				B08EFFFA1912C26C0030C111 /* thirdparty */,
 			);
 			name = Game;
@@ -1954,6 +1959,7 @@
 				D6E36AD619428CD60089E3FA /* TestHudElement.cpp in Sources */,
 				D6FD259C19315E150020A8C9 /* PObject.cpp in Sources */,
 				D6F7ED5A193FE8DB00F36A6F /* Tee.cpp in Sources */,
+				B09E1D871949887400F2FB7F /* Marker.cpp in Sources */,
 				B003ADE019107CF4005838F5 /* FileReader.cpp in Sources */,
 				D669993019319310005EF7D4 /* BaseLevel.cpp in Sources */,
 				D6F7ED60193FF3B700F36A6F /* Wall.cpp in Sources */,
